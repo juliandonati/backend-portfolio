@@ -16,7 +16,6 @@ import java.util.Set;
 @Table(name = "portfolios")
 
 @Data
-@NoArgsConstructor
 public class Portfolio {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -90,4 +89,6 @@ public class Portfolio {
     public void removeExperience(Job job) {
         experience.remove(job);
     }
+
+
 }

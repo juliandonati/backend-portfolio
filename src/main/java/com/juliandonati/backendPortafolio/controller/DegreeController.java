@@ -88,12 +88,15 @@ public class DegreeController {
             String imageUrl = fileStorageService.uploadImage(imageMpFile, degreeService.findOwnerUsernameByDegreeId(degreeId));
             logger.debug("¡Imagen subida con éxito!");
 
-            String oldImgUrl = degreeService.findImgUrlByDegreeId(degreeId);
-            if(oldImgUrl != null && !oldImgUrl.isEmpty()) {
+            try{
                 logger.debug("Eliminando imagen vieja...");
-                fileStorageService.deleteImageByUrl(oldImgUrl);
+                fileStorageService.deleteImageByUrl(degreeService.findImgUrlByDegreeId(degreeId));
                 logger.debug("¡Imagen vieja eliminada con éxito!");
             }
+            catch(ResourceNotFoundException ex){
+                logger.debug("El título no tiene ninguna imagen que eliminar.");
+            }
+
             degreeDto.setImgUrl(imageUrl);
         }
 

@@ -1,5 +1,6 @@
 package com.juliandonati.backendPortafolio.exception;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.validation.ValidationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -75,5 +77,27 @@ public class GlobalExceptionHandler {
         responseBody.put("message", ex.getMessage());
 
         return new ResponseEntity<>(responseBody, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<Object> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException ex, WebRequest request){
+        Map<String, Object> responseBody = new HashMap<>();
+
+        responseBody.put("status", HttpStatus.PAYLOAD_TOO_LARGE);
+        responseBody.put("error","La imagen que subiste excede los 15MB!");
+        responseBody.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(responseBody, HttpStatus.PAYLOAD_TOO_LARGE);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<Object> handleExpiredJwtException(ExpiredJwtException ex, WebRequest request){
+        Map <String, Object> responseBody = new HashMap<>();
+
+        responseBody.put("status", HttpStatus.UNAUTHORIZED);
+        responseBody.put("error","Token de acceso expirado. Vuelva a iniciar sesión.");
+        responseBody.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(responseBody, HttpStatus.UNAUTHORIZED);
     }
 }

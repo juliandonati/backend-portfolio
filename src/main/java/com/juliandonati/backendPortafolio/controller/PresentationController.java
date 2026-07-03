@@ -54,11 +54,12 @@ public class PresentationController {
                                                               @RequestPart("presentation") @Valid PresentationDto presentationDto,
                                                               @RequestPart(required = false, value = "img-file") MultipartFile imageMPFile) throws IOException {
 
-        logger.debug("Verificando si el portafolio de {} existe...", ownerUsername);
+        logger.debug("Verificando si la presentación de {} existe...", ownerUsername);
         if(!presentationService.existsByOwnerUsername(ownerUsername)){
-            logger.debug("El portafolio de {} existe, buscando portafolio...", ownerUsername);
+            logger.debug("La presentación de {} existe, buscando portafolio...", ownerUsername);
             Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
             Presentation presentation = presentationMapper.toEntity(presentationDto);
+
 
             if(imageMPFile != null && !imageMPFile.isEmpty()){
                 logger.debug("El usuario subió una nueva imagen, subiendo a Cloudinary...");
@@ -89,6 +90,11 @@ public class PresentationController {
         PresentationDto oldPresentationDto = presentationService.findByOwnerUsername(ownerUsername);
         Long presentationId = oldPresentationDto.getId();
         logger.debug("Se encontró la presentación del portafolio de {}, actualizando...", ownerUsername);
+
+
+
+
+
         if(imageMPFile != null && !imageMPFile.isEmpty()){
             logger.debug("El usuario subió una nueva imagen, subiendo a Cloudinary...");
             String imgUrl = fileStorageService.uploadImage(imageMPFile, ownerUsername);

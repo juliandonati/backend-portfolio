@@ -1,499 +1,523 @@
-2026-04-08 00:01:00.161 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:01:00.215 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:01:00.812 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:01:00.858 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:01:03.476 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:01:03.523 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:01:03.922 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:01:03.969 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:01:49.646 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:01:49.693 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:02:19.227 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:02:19.274 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:02:58.994 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1313 ms
-2026-04-08 00:03:00.016 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:03:00.063 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:03:00.974 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:03:01.023 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:13:49.779 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
-2026-04-08 00:13:49.785 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-04-08 00:13:49.786 INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:13:49.789 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-04-08 00:13:49.790 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:13:50.815 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:13:50.819 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-04-08 00:13:51.325 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-04-08 00:13:51.450 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 14136 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-04-08 00:13:51.451 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-04-08 00:13:51.451 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
-2026-04-08 00:13:51.777 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-04-08 00:13:51.819 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 40 ms. Found 8 JPA repository interfaces.
-2026-04-08 00:13:51.990 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-04-08 00:13:51.992 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:13:51.992 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-04-08 00:13:51.992 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
-2026-04-08 00:13:52.037 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 584 ms
-2026-04-08 00:13:52.137 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-04-08 00:13:52.137 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
-2026-04-08 00:13:52.651 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@3709c2b5
-2026-04-08 00:13:52.651 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
-2026-04-08 00:13:55.367 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:13:55.487 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
-2026-04-08 00:13:55.728 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-04-08 00:13:55.777 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-04-08 00:13:56.137 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://ep-rough-dust-acjm4p4p-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require'
-2026-04-08 00:13:56.168 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-04-08 00:13:56.170 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 4.772 seconds (process running for 4748.79)
-2026-04-08 00:13:56.172 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-04-08 00:13:56.174 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-04-08 00:13:56.714 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:13:56.715 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2026-04-08 00:13:56.719 WARN  c.zaxxer.hikari.pool.ProxyConnection - HikariPool-2 - Connection org.postgresql.jdbc.PgConnection@3709c2b5 marked as broken because of SQLSTATE(08006), ErrorCode(0)
-org.postgresql.util.PSQLException: An I/O error occurred while sending to the backend.
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:399)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:330)
-	at org.postgresql.jdbc.PgConnection.executeTransactionCommand(PgConnection.java:987)
-	at org.postgresql.jdbc.PgConnection.commit(PgConnection.java:1009)
-	at com.zaxxer.hikari.pool.ProxyConnection.commit(ProxyConnection.java:378)
-	at com.zaxxer.hikari.pool.HikariProxyConnection.commit(HikariProxyConnection.java)
-	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.commit(AbstractLogicalConnectionImplementor.java:84)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commitNoRollbackOnly(JdbcResourceLocalTransactionCoordinatorImpl.java:249)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:242)
-	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:89)
-	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:553)
-	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:794)
-	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:757)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:687)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:408)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
-	at com.juliandonati.backendPortafolio.security.service.RoleServiceImpl$$SpringCGLIB$$0.save(<generated>)
-	at com.juliandonati.backendPortafolio.data.DataLoader.run(DataLoader.java:48)
-	at org.springframework.boot.SpringApplication.lambda$callRunner$1(SpringApplication.java:792)
-	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82)
-	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60)
-	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:800)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:791)
-	at org.springframework.boot.SpringApplication.lambda$callRunners$0(SpringApplication.java:776)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
-	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:776)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:328)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.juliandonati.backendPortafolio.BackendPortafolioApplication.main(BackendPortafolioApplication.java:10)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
-Caused by: java.net.SocketException: Socket closed
-	at java.base/sun.nio.ch.NioSocketImpl.endRead(NioSocketImpl.java:242)
-	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:321)
-	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:354)
-	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:798)
-	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:974)
-	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:964)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
-	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
-	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1068)
-	at org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:192)
-	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:159)
-	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:144)
-	at org.postgresql.core.VisibleBufferedInputStream.read(VisibleBufferedInputStream.java:76)
-	at org.postgresql.core.PGStream.receiveChar(PGStream.java:477)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2175)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372)
-	... 42 common frames omitted
-2026-04-08 00:13:56.732 INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+2026-07-01 14:56:40.260 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 14044 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-07-01 14:56:40.264 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-07-01 14:56:40.265 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
+2026-07-01 14:56:40.314 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-01 14:56:40.317 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-01 14:56:43.936 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-01 14:56:44.051 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 101 ms. Found 8 JPA repository interfaces.
+2026-07-01 14:56:44.755 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 14:56:44.768 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 14:56:44.770 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 14:56:44.770 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-07-01 14:56:44.830 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 4513 ms
+2026-07-01 14:56:45.793 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-01 14:56:45.832 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-01 14:56:48.744 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@415c7b50
+2026-07-01 14:56:48.745 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-01 14:56:53.160 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-01 14:56:53.258 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-01 14:56:54.403 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-01 14:56:54.873 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-07-01 14:56:55.053 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-01 14:56:56.029 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://ep-rough-dust-acjm4p4p-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require'
+2026-07-01 14:56:56.099 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 14:56:56.120 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 14:56:56.129 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 16.489 seconds (process running for 17.71)
+2026-07-01 14:58:58.663 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 14:58:58.814 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 14:58:59.115 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 14:59:00.152 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 14:59:00.255 INFO  c.j.b.controller.PortfolioController - No existe.
+2026-07-01 14:59:00.260 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 14:59:00.307 INFO  c.j.b.controller.PortfolioController - No existe.
+2026-07-01 14:59:01.236 DEBUG c.j.b.controller.PortfolioController - Verificando si existe el portafolio de usuario
+2026-07-01 14:59:01.284 DEBUG c.j.b.controller.PortfolioController - El portafolio de usuario no existe, buscando usuario...
+2026-07-01 14:59:01.392 DEBUG c.j.b.controller.PortfolioController - El usuario de usuario existe, creando portafolio...
+2026-07-01 14:59:01.499 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario creado con éxito!
+2026-07-01 14:59:01.544 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 14:59:01.654 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 14:59:01.658 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 14:59:01.767 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 14:59:06.907 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 14:59:07.004 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 14:59:07.007 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 14:59:07.055 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:01:40.474 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 602 ms
+2026-07-01 15:12:06.046 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:12:06.206 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:12:06.211 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:12:06.316 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:12:09.707 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:12:09.800 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:12:09.803 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:12:09.850 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:12:10.341 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:12:10.450 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:12:10.453 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:12:10.560 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:12:13.743 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:12:13.837 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:12:13.840 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:12:13.888 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:13:59.840 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:13:59.993 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:13:59.996 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:14:00.110 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:25:53.187 DEBUG c.j.b.controller.SkillController - Buscando portafolio de usuario
+2026-07-01 15:25:53.296 DEBUG c.j.b.controller.SkillController - Portafolio de usuario encontrado, añadiendo habilidad...
+2026-07-01 15:25:53.297 DEBUG c.j.b.controller.SkillController - El usuario agregó una imagen, subiendo...
+2026-07-01 15:25:57.260 DEBUG c.j.b.controller.SkillController - ¡Imagen subida con éxito!
+2026-07-01 15:25:57.375 INFO  c.j.b.controller.SkillController - ¡Habilidad nueva del portafolio de usuario creada con éxito!
+2026-07-01 15:26:00.329 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:26:00.428 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:26:00.432 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:26:00.478 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:26:01.097 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:26:01.260 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:26:01.263 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:26:01.373 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:26:05.853 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:26:05.948 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:26:05.951 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:26:06.001 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:26:06.683 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:26:06.840 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:26:06.843 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:26:06.953 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:29:09.451 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 15:29:09.679 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 15:29:10.254 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:29:10.348 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:29:10.352 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:29:10.398 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:29:11.199 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:29:11.355 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:29:11.359 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:29:11.466 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:29:14.736 DEBUG c.j.b.c.PresentationController - Verificando si la presentación de usuario existe...
+2026-07-01 15:29:14.785 DEBUG c.j.b.c.PresentationController - La presentación de usuario existe, buscando portafolio...
+2026-07-01 15:29:14.894 DEBUG c.j.b.c.PresentationController - Guardando la nueva presentación en el portafolio de usuario
+2026-07-01 15:29:15.054 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario creada con éxito!
+2026-07-01 15:38:17.886 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:18.044 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:18.049 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:18.159 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:19.808 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:38:19.904 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:38:19.906 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:38:19.957 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:38:20.389 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:20.496 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:20.499 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:20.605 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:22.628 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:38:22.721 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:38:22.723 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:38:22.771 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:38:23.183 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:23.284 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:23.287 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:23.391 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:25.356 DEBUG c.j.b.c.PresentationController - Buscando presentación del portafolio de usuario
+2026-07-01 15:38:25.407 DEBUG c.j.b.c.PresentationController - Se encontró la presentación del portafolio de usuario, actualizando...
+2026-07-01 15:38:25.411 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario actualizada con éxito!
+2026-07-01 15:38:26.767 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:26.919 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:26.922 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:27.027 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:27.489 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:38:27.537 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:38:27.539 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 15:38:27.586 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 15:38:28.298 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:28.448 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:28.451 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:28.563 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:35.485 DEBUG c.j.b.c.PresentationController - Buscando presentación del portafolio de usuario
+2026-07-01 15:38:35.532 DEBUG c.j.b.c.PresentationController - Se encontró la presentación del portafolio de usuario, actualizando...
+2026-07-01 15:38:35.534 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario actualizada con éxito!
+2026-07-01 15:38:42.276 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:42.428 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:42.431 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:38:42.537 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:38:43.811 DEBUG c.j.b.c.PresentationController - Buscando presentación del portafolio de usuario
+2026-07-01 15:38:43.860 DEBUG c.j.b.c.PresentationController - Se encontró la presentación del portafolio de usuario, actualizando...
+2026-07-01 15:38:43.861 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario actualizada con éxito!
+2026-07-01 15:43:48.330 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:43:48.486 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:50:50.471 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:50:50.627 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 15:50:50.630 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 15:50:50.741 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:19:42.226 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 16:19:42.467 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 16:19:56.257 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:19:56.360 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:19:56.367 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:19:56.421 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:20:15.151 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:20:15.323 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:20:15.325 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:20:15.445 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:20:19.546 DEBUG c.j.b.c.PresentationController - Buscando presentación del portafolio de usuario
+2026-07-01 16:20:19.598 DEBUG c.j.b.c.PresentationController - Se encontró la presentación del portafolio de usuario, actualizando...
+2026-07-01 16:20:19.601 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario actualizada con éxito!
+2026-07-01 16:20:26.213 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:20:26.394 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:20:26.405 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:20:26.525 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:26:01.403 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:26:01.510 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:26:01.513 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:26:01.567 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:26:02.543 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:26:02.710 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:26:02.713 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:26:02.830 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:27:50.103 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:27:50.272 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:48:24.965 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:48:25.063 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:48:25.067 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:48:25.117 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:48:26.543 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:48:26.725 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:48:26.728 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:48:26.850 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:48:32.704 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:48:32.802 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:48:32.804 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:48:32.853 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:58:11.901 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:58:12.072 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:58:12.077 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:58:12.194 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:58:19.794 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:58:19.897 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:58:19.900 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:58:19.951 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:58:20.696 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:58:20.857 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:58:20.859 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:58:20.978 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:58:26.712 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:58:26.814 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:58:26.818 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 16:58:26.867 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 16:58:28.591 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:58:28.758 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:58:28.760 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:58:28.876 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:59:12.132 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:59:12.300 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 16:59:12.302 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 16:59:12.417 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:00:30.379 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:00:30.489 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:00:30.492 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:00:30.545 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:00:31.283 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:00:31.461 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:00:31.463 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:00:31.587 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:08:31.340 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 17:08:31.569 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 17:10:02.647 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 17:10:02.867 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 17:10:04.711 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 17:10:04.933 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 17:10:08.541 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 17:10:08.767 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 17:10:37.831 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 17:10:38.052 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 17:10:42.105 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:10:42.199 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:10:42.202 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:10:42.251 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:10:43.023 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:10:43.177 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:10:43.179 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:10:43.289 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:11:27.655 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-01 17:11:27.660 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-01 17:11:29.071 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-01 17:11:29.075 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-01 17:11:29.580 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-01 17:11:32.708 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 21328 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-07-01 17:11:32.710 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-07-01 17:11:32.711 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
+2026-07-01 17:11:32.751 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-01 17:11:32.751 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-01 17:11:33.883 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-01 17:11:33.961 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 71 ms. Found 8 JPA repository interfaces.
+2026-07-01 17:11:34.503 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 17:11:34.515 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 17:11:34.516 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 17:11:34.517 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-07-01 17:11:34.570 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1819 ms
+2026-07-01 17:11:35.320 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-01 17:11:35.356 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-07-01 17:11:36.251 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@704bef59
+2026-07-01 17:11:36.253 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-07-01 17:11:39.870 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-01 17:11:39.944 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-01 17:11:40.835 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-07-01 17:11:41.176 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-07-01 17:11:41.288 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-01 17:11:41.933 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://ep-rough-dust-acjm4p4p-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require'
+2026-07-01 17:11:41.980 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 17:11:41.993 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 17:11:41.999 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 9.804 seconds (process running for 10.566)
+2026-07-01 17:12:10.769 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 17:12:10.834 DEBUG c.j.b.s.controller.UserController - Recuperando usuarios mediante el filtro: A
+2026-07-01 17:12:11.105 INFO  c.j.b.s.controller.UserController - ¡Devolviendo todos los usuarios que contengan el filtro: A!
+2026-07-01 17:12:11.175 WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
 
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2026-04-08 00:13:56.742 ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.dao.DataAccessResourceFailureException: Hibernate transaction: Unable to commit against JDBC Connection; An I/O error occurred while sending to the backend.
-	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:152)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:102)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:111)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:144)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:131)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:105)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:223)
-	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:557)
-	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:794)
-	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:757)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:687)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:408)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
-	at com.juliandonati.backendPortafolio.security.service.RoleServiceImpl$$SpringCGLIB$$0.save(<generated>)
-	at com.juliandonati.backendPortafolio.data.DataLoader.run(DataLoader.java:48)
-	at org.springframework.boot.SpringApplication.lambda$callRunner$1(SpringApplication.java:792)
-	at org.springframework.util.function.ThrowingConsumer$1.acceptWithException(ThrowingConsumer.java:82)
-	at org.springframework.util.function.ThrowingConsumer.accept(ThrowingConsumer.java:60)
-	at org.springframework.util.function.ThrowingConsumer$1.accept(ThrowingConsumer.java:86)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:800)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:791)
-	at org.springframework.boot.SpringApplication.lambda$callRunners$0(SpringApplication.java:776)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:186)
-	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:357)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:571)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
-	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:153)
-	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:176)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
-	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:632)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:776)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:328)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.juliandonati.backendPortafolio.BackendPortafolioApplication.main(BackendPortafolioApplication.java:10)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
-Caused by: org.postgresql.util.PSQLException: An I/O error occurred while sending to the backend.
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:399)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:330)
-	at org.postgresql.jdbc.PgConnection.executeTransactionCommand(PgConnection.java:987)
-	at org.postgresql.jdbc.PgConnection.commit(PgConnection.java:1009)
-	at com.zaxxer.hikari.pool.ProxyConnection.commit(ProxyConnection.java:378)
-	at com.zaxxer.hikari.pool.HikariProxyConnection.commit(HikariProxyConnection.java)
-	at org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor.commit(AbstractLogicalConnectionImplementor.java:84)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commitNoRollbackOnly(JdbcResourceLocalTransactionCoordinatorImpl.java:249)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:242)
-	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:89)
-	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:553)
-	... 32 common frames omitted
-Caused by: java.net.SocketException: Socket closed
-	at java.base/sun.nio.ch.NioSocketImpl.endRead(NioSocketImpl.java:242)
-	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:321)
-	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:354)
-	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:798)
-	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:974)
-	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:964)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
-	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
-	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
-	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1068)
-	at org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:192)
-	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:159)
-	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:144)
-	at org.postgresql.core.VisibleBufferedInputStream.read(VisibleBufferedInputStream.java:76)
-	at org.postgresql.core.PGStream.receiveChar(PGStream.java:477)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2175)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:372)
-	... 42 common frames omitted
-2026-04-08 00:13:56.845 WARN  o.s.boot.SpringApplication - Unable to close ApplicationContext
-java.lang.IllegalStateException: Cannot unregister active application context
-	at org.springframework.util.Assert.state(Assert.java:80)
-	at org.springframework.boot.SpringApplicationShutdownHook.deregisterFailedApplicationContext(SpringApplicationShutdownHook.java:99)
-	at org.springframework.boot.SpringApplication.handleRunFailure(SpringApplication.java:819)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:331)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.juliandonati.backendPortafolio.BackendPortafolioApplication.main(BackendPortafolioApplication.java:10)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
-2026-04-08 00:13:57.204 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
-2026-04-08 00:14:02.596 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 10332 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-04-08 00:14:02.598 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-04-08 00:14:02.598 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
-2026-04-08 00:14:02.635 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-04-08 00:14:02.635 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-04-08 00:14:03.558 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-04-08 00:14:03.653 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 84 ms. Found 8 JPA repository interfaces.
-2026-04-08 00:14:04.234 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-04-08 00:14:04.248 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:14:04.251 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-04-08 00:14:04.251 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
-2026-04-08 00:14:04.306 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1671 ms
-2026-04-08 00:14:05.104 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-04-08 00:14:05.140 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-04-08 00:14:06.138 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7207e85
-2026-04-08 00:14:06.140 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-04-08 00:14:09.747 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:14:09.824 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-04-08 00:14:10.801 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
-2026-04-08 00:14:11.177 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-04-08 00:14:11.300 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-04-08 00:14:12.083 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://ep-rough-dust-acjm4p4p-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require'
-2026-04-08 00:14:12.134 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:14:12.147 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-04-08 00:14:12.156 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 10.038 seconds (process running for 10.904)
-2026-04-08 00:14:15.810 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-08 00:14:15.936 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: admin
-2026-04-08 00:14:16.229 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: admin autenticado con éxito!
-2026-04-08 00:14:16.616 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:14:16.672 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:14:18.052 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:14:18.101 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:16:02.044 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:16:02.093 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:17:25.981 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:17:26.028 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:20:25.777 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:20:25.825 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:20:33.899 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: asfasdf
-2026-04-08 00:20:34.653 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: asfasdf
-2026-04-08 00:20:56.603 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: asfsdaf
-2026-04-08 00:21:18.409 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: asfdsadf
-2026-04-08 00:21:20.230 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: asfdsadf
-2026-04-08 00:21:29.439 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: asfdsadf
-2026-04-08 00:21:41.356 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: admin
-2026-04-08 00:21:41.580 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: admin autenticado con éxito!
-2026-04-08 00:21:41.785 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:21:41.833 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:21:43.185 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:21:43.233 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:22:42.384 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:22:42.430 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:22:43.424 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:22:43.474 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:28:29.994 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:28:30.042 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:28:31.335 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:28:31.384 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:30:36.374 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:30:36.428 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:30:37.970 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:30:38.017 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:31:40.360 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:31:40.407 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:31:47.733 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: admin
-2026-04-08 00:31:47.952 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: admin autenticado con éxito!
-2026-04-08 00:31:48.144 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:31:48.192 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:31:49.079 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:31:49.127 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:32:34.486 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:32:34.535 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:32:41.582 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:32:41.631 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:33:09.952 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 428 ms
-2026-04-08 00:34:43.887 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:34:43.934 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:34:44.905 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:34:44.952 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:37:33.041 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-04-08 00:37:33.045 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-04-08 00:37:33.961 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:37:33.965 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-04-08 00:37:34.442 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-04-08 00:37:38.976 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 24976 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-04-08 00:37:38.978 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-04-08 00:37:38.979 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
-2026-04-08 00:37:39.016 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-04-08 00:37:39.016 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-04-08 00:37:39.788 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-04-08 00:37:39.872 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 77 ms. Found 8 JPA repository interfaces.
-2026-04-08 00:37:40.351 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-04-08 00:37:40.361 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:37:40.362 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-04-08 00:37:40.362 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
-2026-04-08 00:37:40.410 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1394 ms
-2026-04-08 00:37:40.955 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-04-08 00:37:40.987 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-04-08 00:37:41.746 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7207e85
-2026-04-08 00:37:41.748 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-04-08 00:37:45.255 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:37:45.332 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-04-08 00:37:46.252 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
-2026-04-08 00:37:46.645 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-04-08 00:37:46.777 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-04-08 00:37:47.508 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://ep-rough-dust-acjm4p4p-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require'
-2026-04-08 00:37:47.565 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:37:47.581 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-04-08 00:37:47.587 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 9.075 seconds (process running for 9.741)
-2026-04-08 00:37:51.592 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-08 00:37:51.912 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:37:51.963 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:37:52.500 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:37:52.554 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:40:35.710 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-04-08 00:40:35.715 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-04-08 00:40:36.677 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:40:36.702 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-04-08 00:40:37.198 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-04-08 00:40:41.932 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 21580 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-04-08 00:40:41.934 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-04-08 00:40:41.935 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
-2026-04-08 00:40:41.970 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-04-08 00:40:41.971 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-04-08 00:40:42.740 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-04-08 00:40:42.831 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 83 ms. Found 8 JPA repository interfaces.
-2026-04-08 00:40:43.336 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-04-08 00:40:43.347 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:40:43.348 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-04-08 00:40:43.348 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
-2026-04-08 00:40:43.397 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1426 ms
-2026-04-08 00:40:43.964 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-04-08 00:40:43.990 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-04-08 00:40:44.827 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7207e85
-2026-04-08 00:40:44.827 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-04-08 00:40:48.301 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:40:48.390 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-04-08 00:40:49.371 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
-2026-04-08 00:40:49.754 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-04-08 00:40:49.861 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-04-08 00:40:50.527 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://ep-rough-dust-acjm4p4p-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require'
-2026-04-08 00:40:50.574 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:40:50.587 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-04-08 00:40:50.593 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 9.077 seconds (process running for 9.727)
-2026-04-08 00:40:50.643 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-08 00:40:50.946 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-org.springframework.security.core.userdetails.UsernameNotFoundException: No se encontró el usuario de nombre: admin
-	at com.juliandonati.backendPortafolio.security.service.UserDetailsServiceImpl.lambda$loadUserByUsername$0(UserDetailsServiceImpl.java:27)
-	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
-	at com.juliandonati.backendPortafolio.security.service.UserDetailsServiceImpl.loadUserByUsername(UserDetailsServiceImpl.java:27)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:133)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:371)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
-	at com.juliandonati.backendPortafolio.security.service.UserDetailsServiceImpl$$SpringCGLIB$$0.loadUserByUsername(<generated>)
-	at com.juliandonati.backendPortafolio.security.jwt.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:31)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380)
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380)
-	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380)
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
-	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380)
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380)
-	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380)
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237)
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195)
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
-	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
-	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
-	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
-	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317)
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355)
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
-	at java.base/java.lang.VirtualThread.run(VirtualThread.java:456)
-2026-04-08 00:40:54.113 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:40:54.167 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:40:55.226 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:40:55.278 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:40:56.409 DEBUG c.j.b.controller.DegreeController - Eliminando título académico de id: 1
-2026-04-08 00:40:56.409 DEBUG c.j.b.controller.DegreeController - Eliminando imagen del título académico...
-2026-04-08 00:41:03.947 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:41:03.999 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:41:04.795 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:41:04.845 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:41:06.994 DEBUG c.j.b.controller.DegreeController - Eliminando título académico de id: 2
-2026-04-08 00:41:06.995 DEBUG c.j.b.controller.DegreeController - Eliminando imagen del título académico...
-2026-04-08 00:43:58.240 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-04-08 00:43:58.244 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-04-08 00:43:59.204 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:43:59.208 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-04-08 00:43:59.698 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2026-04-08 00:45:31.553 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.1 with PID 6044 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
-2026-04-08 00:45:31.555 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
-2026-04-08 00:45:31.555 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
-2026-04-08 00:45:31.596 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-04-08 00:45:31.598 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-04-08 00:45:32.538 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-04-08 00:45:32.636 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 88 ms. Found 8 JPA repository interfaces.
-2026-04-08 00:45:33.222 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-04-08 00:45:33.234 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:45:33.235 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2026-04-08 00:45:33.235 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
-2026-04-08 00:45:33.287 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1689 ms
-2026-04-08 00:45:33.941 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-04-08 00:45:33.972 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2026-04-08 00:45:34.838 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7b58d039
-2026-04-08 00:45:34.840 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2026-04-08 00:45:38.416 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:45:38.489 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-04-08 00:45:39.539 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
-2026-04-08 00:45:39.940 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2026-04-08 00:45:40.076 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-04-08 00:45:40.822 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://ep-rough-dust-acjm4p4p-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channelBinding=require'
-2026-04-08 00:45:40.874 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-04-08 00:45:40.890 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-04-08 00:45:40.899 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 9.812 seconds (process running for 10.509)
-2026-04-08 00:45:44.580 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-08 00:45:44.697 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: admin
-2026-04-08 00:45:44.993 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: admin autenticado con éxito!
-2026-04-08 00:45:45.440 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:45:45.491 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:45:46.886 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:45:46.935 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:45:48.099 DEBUG c.j.b.controller.DegreeController - Eliminando título académico de id: 1
-2026-04-08 00:45:48.099 DEBUG c.j.b.controller.DegreeController - Eliminando imagen del título académico...
-2026-04-08 00:45:48.158 DEBUG c.j.b.controller.DegreeController - El título académico no tiene imagen que eliminar.
-2026-04-08 00:45:48.421 INFO  c.j.b.controller.DegreeController - ¡Título académico de id: 1 eliminado con éxito!
-2026-04-08 00:45:48.535 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:45:48.582 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:45:51.750 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:45:51.797 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:45:52.826 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:45:52.875 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:46:13.210 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:46:13.257 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:46:14.386 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:46:14.434 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:46:15.346 DEBUG c.j.b.controller.DegreeController - Eliminando título académico de id: 2
-2026-04-08 00:46:15.346 DEBUG c.j.b.controller.DegreeController - Eliminando imagen del título académico...
-2026-04-08 00:46:15.392 DEBUG c.j.b.controller.DegreeController - El título académico no tiene imagen que eliminar.
-2026-04-08 00:46:15.645 INFO  c.j.b.controller.DegreeController - ¡Título académico de id: 2 eliminado con éxito!
-2026-04-08 00:46:15.757 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:46:15.805 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:46:24.986 DEBUG c.j.b.c.PresentationController - Recuperando la presentación del portafolio de: admin
-2026-04-08 00:46:25.034 INFO  c.j.b.c.PresentationController - ¡Devolviendo la presentación del portafolio de: admin!
-2026-04-08 00:46:25.498 DEBUG c.j.b.controller.DegreeController - Recuperando los títulos académicos de admin
-2026-04-08 00:46:25.545 INFO  c.j.b.controller.DegreeController - ¡Devolviendo los títulos académicos de admin!
-2026-04-08 00:46:31.175 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-04-08 00:46:31.179 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-04-08 00:46:32.109 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-04-08 00:46:32.112 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-04-08 00:46:32.630 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-07-01 17:12:19.374 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 17:12:19.673 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 17:12:25.013 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:12:25.118 INFO  c.j.b.controller.PortfolioController - No existe.
+2026-07-01 17:12:25.164 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:12:25.212 INFO  c.j.b.controller.PortfolioController - No existe.
+2026-07-01 17:12:26.081 DEBUG c.j.b.controller.PortfolioController - Verificando si existe el portafolio de usuario
+2026-07-01 17:12:26.138 DEBUG c.j.b.controller.PortfolioController - El portafolio de usuario no existe, buscando usuario...
+2026-07-01 17:12:26.249 DEBUG c.j.b.controller.PortfolioController - El usuario de usuario existe, creando portafolio...
+2026-07-01 17:12:26.356 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario creado con éxito!
+2026-07-01 17:12:26.456 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:12:26.563 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:12:26.605 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:12:26.723 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:12:55.892 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:12:56.047 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:12:56.059 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:12:56.166 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:13:08.397 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:13:08.550 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:13:08.567 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:13:08.673 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:13:37.980 DEBUG c.j.b.c.PresentationController - Verificando si la presentación de usuario existe...
+2026-07-01 17:13:38.031 DEBUG c.j.b.c.PresentationController - La presentación de usuario existe, buscando portafolio...
+2026-07-01 17:13:38.135 DEBUG c.j.b.c.PresentationController - Guardando la nueva presentación en el portafolio de usuario
+2026-07-01 17:13:38.287 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario creada con éxito!
+2026-07-01 17:13:39.282 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:13:39.430 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:13:39.442 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:13:39.545 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:15:02.377 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:15:02.471 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:15:02.506 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:15:02.554 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:15:03.161 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:15:03.312 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:15:03.327 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:15:03.430 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:17:25.763 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: usuario
+2026-07-01 17:17:25.986 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: usuario autenticado con éxito!
+2026-07-01 17:17:33.048 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:17:33.142 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:17:33.154 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:17:33.202 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:17:34.404 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:17:34.556 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:17:34.570 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:17:34.679 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:17:44.469 DEBUG c.j.b.c.PresentationController - Buscando presentación del portafolio de usuario
+2026-07-01 17:17:44.523 DEBUG c.j.b.c.PresentationController - Se encontró la presentación del portafolio de usuario, actualizando...
+2026-07-01 17:17:44.524 DEBUG c.j.b.c.PresentationController - El usuario subió una nueva imagen, subiendo a Cloudinary...
+2026-07-01 17:17:46.844 INFO  c.j.b.c.PresentationController - ¡Nueva imagen del usuario subida con éxito!
+2026-07-01 17:17:46.952 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario actualizada con éxito!
+2026-07-01 17:17:47.988 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:17:48.139 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:17:48.150 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:17:48.256 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:17:48.327 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:17:48.375 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:17:48.391 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:17:48.438 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:17:49.120 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:17:49.268 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:17:49.286 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:17:49.391 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:17:51.250 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:17:51.358 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:17:51.399 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:17:51.454 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:17:52.027 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:17:52.182 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:17:52.193 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:17:52.300 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:18:02.670 DEBUG c.j.b.c.PresentationController - Buscando presentación del portafolio de usuario
+2026-07-01 17:18:02.769 DEBUG c.j.b.c.PresentationController - Se encontró la presentación del portafolio de usuario, actualizando...
+2026-07-01 17:18:02.769 DEBUG c.j.b.c.PresentationController - El usuario subió una nueva imagen, subiendo a Cloudinary...
+2026-07-01 17:18:05.834 INFO  c.j.b.c.PresentationController - ¡Nueva imagen del usuario subida con éxito!
+2026-07-01 17:18:05.835 DEBUG c.j.b.c.PresentationController - Eliminando imagen vieja...
+2026-07-01 17:18:05.835 DEBUG c.j.b.service.FileStorageServiceImpl - Eliminando imagen de publicId = /file_vtyquf
+2026-07-01 17:18:06.434 DEBUG c.j.b.service.FileStorageServiceImpl - ¡Imagen eliminada con éxito!
+2026-07-01 17:18:06.434 DEBUG c.j.b.c.PresentationController - ¡Imagen vieja eliminada con éxito!
+2026-07-01 17:18:06.540 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario actualizada con éxito!
+2026-07-01 17:18:07.583 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:18:07.736 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:18:07.748 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:18:07.853 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:18:08.043 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:18:08.091 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:18:08.131 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:18:08.181 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:18:08.684 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:18:08.849 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:18:09.014 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:18:09.117 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:19:04.868 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:19:04.972 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:19:04.996 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:19:05.043 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:19:17.308 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:19:17.407 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:19:17.425 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:19:17.472 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:19:18.166 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:19:18.318 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:19:18.336 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:19:18.442 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:19:29.780 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:19:29.927 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:19:29.942 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:19:30.045 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:24:19.832 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:24:19.925 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:24:19.928 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:24:19.974 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:24:25.614 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:24:25.762 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:24:25.765 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:24:25.870 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:25:50.936 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:25:51.031 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:25:51.034 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:25:51.080 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:26:10.123 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:26:10.274 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:26:10.277 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:26:10.383 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:26:37.250 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:26:37.347 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:26:37.349 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:26:37.397 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:27:04.630 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:27:04.724 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:27:05.966 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:27:06.119 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:27:06.122 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:27:06.221 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:27:11.808 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:27:11.950 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:27:11.978 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:27:12.077 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:27:13.288 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:27:13.383 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:27:13.397 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:27:13.446 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:27:14.433 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:27:14.584 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:27:14.595 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:27:14.700 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:28:15.291 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:28:15.392 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:28:17.920 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:28:18.013 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:28:20.100 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:28:20.251 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:28:20.265 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:28:20.368 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:28:54.983 DEBUG c.j.b.c.PresentationController - Buscando presentación del portafolio de usuario
+2026-07-01 17:28:55.079 DEBUG c.j.b.c.PresentationController - Se encontró la presentación del portafolio de usuario, actualizando...
+2026-07-01 17:28:55.079 DEBUG c.j.b.c.PresentationController - El usuario subió una nueva imagen, subiendo a Cloudinary...
+2026-07-01 17:28:57.909 INFO  c.j.b.c.PresentationController - ¡Nueva imagen del usuario subida con éxito!
+2026-07-01 17:28:57.911 DEBUG c.j.b.c.PresentationController - Eliminando imagen vieja...
+2026-07-01 17:28:57.911 DEBUG c.j.b.service.FileStorageServiceImpl - Eliminando imagen de publicId = /file_qknywh
+2026-07-01 17:28:58.455 DEBUG c.j.b.service.FileStorageServiceImpl - ¡Imagen eliminada con éxito!
+2026-07-01 17:28:58.455 DEBUG c.j.b.c.PresentationController - ¡Imagen vieja eliminada con éxito!
+2026-07-01 17:28:58.560 INFO  c.j.b.c.PresentationController - ¡Presentación del portafolio de usuario actualizada con éxito!
+2026-07-01 17:29:13.627 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:29:13.778 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:29:13.787 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:29:13.889 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:29:14.162 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:29:14.209 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:29:14.218 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:29:14.266 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:29:14.913 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:29:15.062 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:29:15.076 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:29:15.180 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:29:32.037 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:29:32.129 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:29:32.143 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:29:32.190 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:29:33.236 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:29:33.389 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:29:33.399 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:29:33.500 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:37:43.469 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:37:43.564 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:37:43.567 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:37:43.612 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:37:49.039 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:37:49.189 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:37:49.191 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:37:49.296 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:15.296 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:15.396 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:17.520 DEBUG c.j.b.s.controller.UserController - Recuperando usuarios mediante el filtro: u
+2026-07-01 17:39:17.771 INFO  c.j.b.s.controller.UserController - ¡Devolviendo todos los usuarios que contengan el filtro: u!
+2026-07-01 17:39:18.804 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:18.965 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:18.968 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:19.077 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:25.632 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:25.737 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:25.739 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:25.787 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:26.464 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:26.627 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:26.630 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:26.737 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:28.037 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:28.132 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:28.134 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:28.184 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:36.412 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:36.566 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:36.568 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:36.682 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:39.398 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:39.547 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:39.550 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:39.656 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:41.600 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:41.697 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:41.699 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:41.746 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:42.430 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:42.581 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:42.583 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:42.695 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:43.416 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:43.511 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:43.513 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: usuario
+2026-07-01 17:39:43.560 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-07-01 17:39:44.530 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:44.690 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:44.693 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:44.848 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:47.427 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:47.578 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:39:47.580 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: usuario
+2026-07-01 17:39:47.681 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de usuario recuperado con éxito!
+2026-07-01 17:47:47.600 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-01 17:47:47.606 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-01 17:47:49.237 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-07-01 17:47:49.240 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-07-01 17:47:49.739 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

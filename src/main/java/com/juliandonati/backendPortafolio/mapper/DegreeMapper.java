@@ -5,6 +5,7 @@ import com.juliandonati.backendPortafolio.dto.DegreeDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring")
 public interface DegreeMapper {
@@ -15,5 +16,6 @@ public interface DegreeMapper {
     Degree toEntity(DegreeDto dto);
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "imgUrl", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Degree updateEntity(DegreeDto dto, @MappingTarget Degree entity);
 }

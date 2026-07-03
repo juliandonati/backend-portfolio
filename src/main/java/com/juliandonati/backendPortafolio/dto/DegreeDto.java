@@ -1,6 +1,7 @@
 package com.juliandonati.backendPortafolio.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +20,7 @@ public class DegreeDto {
     private String name;
     @Size(max=255, message="La descripción del título no puede superar los 255 carácteres")
     private String description;
-    @NotBlank(message = "Debes ingresar la fecha en la que comenzaste el título académico")
+    @NotNull(message = "Debes ingresar la fecha en la que comenzaste el título académico")
     private LocalDate startDate;
     private LocalDate endDate;
     private String imgUrl;
