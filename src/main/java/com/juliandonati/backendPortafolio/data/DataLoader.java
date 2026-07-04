@@ -9,6 +9,7 @@ import com.juliandonati.backendPortafolio.security.service.RoleService;
 import com.juliandonati.backendPortafolio.security.service.UserService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,9 @@ public class DataLoader implements CommandLineRunner {
     private final UserService userService;
     private final RoleService roleService;
     private final PortfolioService portfolioService;
+
+    @Value("${DEFAULT_ADMIN_PASSWORD}")
+    private String defaultAdminPassword;
 
     @Override
     public void run(String... args) throws Exception {
@@ -70,7 +74,7 @@ public class DataLoader implements CommandLineRunner {
         catch(ResourceNotFoundException ex){
             RegisterRequestDto requestDto = new RegisterRequestDto();
             requestDto.setUsername("admin");
-            requestDto.setUnencryptedPassword("4ZeBBgAK5a8d");
+            requestDto.setUnencryptedPassword(defaultAdminPassword);
             requestDto.setDisplayName("USER NAME");
             requestDto.setEmail("admin@example.com");
 
@@ -90,7 +94,7 @@ public class DataLoader implements CommandLineRunner {
         catch (ResourceNotFoundException ex){
             adminTestPortfolio = new Portfolio();
 
-            Presentation presentation = new Presentation(null,"John Doe","Ingeniero en Sistemas","Apasionado por la programación y por el café.","https://i.imgur.com/w5FBSjQ.jpeg",adminTestPortfolio);
+            Presentation presentation = new Presentation(null,"Julián Donati","Ingeniero en Sistemas","Apasionado por la programación y por el café.","https://i.imgur.com/w5FBSjQ.jpeg","juliandonati5@gmail.com","5492236900433",adminTestPortfolio);
             adminTestPortfolio.setPresentation(presentation);
 
             AboutMe aboutMe = new AboutMe(null,"SOBRE MÍ","TEXTO SOBRE MÍ",null,null,null,adminTestPortfolio);

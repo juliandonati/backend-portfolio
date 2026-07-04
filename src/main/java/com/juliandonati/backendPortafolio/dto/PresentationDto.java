@@ -1,5 +1,6 @@
 package com.juliandonati.backendPortafolio.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -20,4 +21,8 @@ public class PresentationDto {
     @Size(max=255, message="Tu descripción no puede sobrepasar los 255 carácteres")
     private String description;
     private String imgUrl;
+    @Email(message = "Formato de e-mail inválido")
+    @Size(max = 254, message = "Tu email no puede sobrepasar los 254 caracteres")
+    private String email;
+    private String phoneNumber;
 }
