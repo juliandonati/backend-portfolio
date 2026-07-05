@@ -177,7 +177,7 @@ class DegreeServiceImplTest {
     }
 
     @Test
-    void testFindDegreeByOwnerUsernameReturnsDegree() {
+    void testFindDegreeByOwnerUsernameReturnsDegrees() {
         // Arrange
         String ownerUsername = "pedrito12";
         String mockName = "Generic Degree Title";

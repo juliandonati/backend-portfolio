@@ -7,6 +7,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+// todo Testear mappers
+
 @Mapper(componentModel = "spring")
 public interface AboutMeMapper {
     AboutMeDto toDto(AboutMe entity);
