@@ -42,6 +42,7 @@ public class PortfolioServiceImpl implements PortfolioService{
     public Portfolio update(Portfolio portfolio, Long id) {
         Portfolio portfolioToUpdate = portfolioRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró un portfolio con la id: " + id));
 
+        /* todo Cambiar todo esto por un simple mapper. No se puede testear como está ahora. */
         portfolioToUpdate.setOwner(portfolio.getOwner());
         portfolioToUpdate.setDegrees(portfolio.getDegrees());
         portfolioToUpdate.setExperience(portfolio.getExperience());
@@ -56,9 +57,8 @@ public class PortfolioServiceImpl implements PortfolioService{
     @Override
     @Transactional
     public void deleteById(long id) {
-        if(portfolioRepository.findById(id).isEmpty())
+        if(!portfolioRepository.existsById(id))
             throw new ResourceNotFoundException("No se encontró un portfolio con la id: " + id);
-        System.out.println("holaaaaaaaaaaaaaaaaaaaaaa" + id);
         portfolioRepository.deleteById(id);
     }
 }
