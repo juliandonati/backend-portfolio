@@ -109,21 +109,36 @@ class AboutMeServiceImplTest {
         when(aboutMeRepository.findById(3L)).thenReturn(Optional.of(mockOldAboutMe));
 
         String mockAboutMeUpdatedTitle = "Deberías saber que:";
-        AboutMeDto mockNewAboutMe = new AboutMeDto(null,mockAboutMeUpdatedTitle,null,null,null,null);
+        AboutMeDto mockNewAboutMeDto = new AboutMeDto(null,mockAboutMeUpdatedTitle,null,null,null,null);
         AboutMe mockUpdatedAboutMe = new AboutMe(3L,mockAboutMeUpdatedTitle,null,null,null,null,null);
         when(aboutMeRepository.save(any(AboutMe.class))).thenReturn(mockUpdatedAboutMe);
 
         // Act
-        AboutMeDto result = aboutMeService.update(mockNewAboutMe,3L);
+        AboutMeDto result = aboutMeService.update(mockNewAboutMeDto,3L);
 
         // Assert
         assertNotNull(result);
         assertEquals(3L,result.getId());
         assertEquals(mockAboutMeUpdatedTitle,result.getTitle());
-        verify(aboutMeMapper,times(1)).updateEntity(mockNewAboutMe,mockOldAboutMe);
+        verify(aboutMeMapper,times(1)).updateEntity(mockNewAboutMeDto,mockOldAboutMe);
         verify(aboutMeMapper,times(1)).toDto(mockUpdatedAboutMe);
         verify(aboutMeRepository,times(1)).findById(3L);
         verify(aboutMeRepository,times(1)).save(any(AboutMe.class));
+    }
+
+    @Test
+    void testUpdateAboutMeThrowsResourceNotFoundException(){
+        // Arrange
+        Long mockId = 999L;
+        AboutMeDto mockNewAboutMeDto = new AboutMeDto(null, "About me:", "I like doing things", null, null, null);
+        when(aboutMeRepository.findById(mockId)).thenReturn(Optional.empty());
+
+        // Act + Assert
+        assertThrows(ResourceNotFoundException.class,()->aboutMeService.update(mockNewAboutMeDto,mockId));
+        verify(aboutMeRepository,times(1)).findById(mockId);
+        verify(aboutMeMapper,never()).updateEntity(eq(mockNewAboutMeDto),any(AboutMe.class));
+        verify(aboutMeRepository,never()).save(any(AboutMe.class));
+        verify(aboutMeMapper,never()).toDto(any(AboutMe.class));
     }
 
     @Test

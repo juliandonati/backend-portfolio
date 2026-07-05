@@ -15,6 +15,8 @@ import java.util.Set;
 @Entity
 @Table(name = "portfolios")
 
+/* todo Revisar que la estructura de la BD sea correcta, y que las queries se encuentren optimizadas */
+
 @Data
 public class Portfolio {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

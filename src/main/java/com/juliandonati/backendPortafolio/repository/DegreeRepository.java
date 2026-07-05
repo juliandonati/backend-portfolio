@@ -25,12 +25,6 @@ public interface DegreeRepository extends JpaRepository<Degree, Long> {
             "WHERE d.id = :id")
     Optional<String> findImgUrlByDegreeId(@Param("id") Long id);
 
-    @Query("SELECT d.imgUrl from User u " +
-            " JOIN u.ownedPortfolio AS p " +
-            " JOIN p.degrees AS d " +
-            " WHERE u.username = :ownerUsername")
-    List<String> findImgUrlsByOwnerUsername(@Param("ownerUsername") String ownerUsername);
-
     @Query("SELECT owner.username FROM Degree d " +
             " JOIN d.portfolio AS p " +
             " JOIN p.owner AS owner " +
