@@ -13,7 +13,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface AboutMeMapper {
     AboutMeDto toDto(AboutMe entity);
 
-    @Mapping(target="id",ignore=true)
     @Mapping(target="portfolio",ignore=true)
     AboutMe toEntity(AboutMeDto dto);
 
