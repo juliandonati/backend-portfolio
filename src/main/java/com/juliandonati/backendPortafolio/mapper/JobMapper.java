@@ -10,7 +10,6 @@ import org.mapstruct.MappingTarget;
 public interface JobMapper {
     JobDto toDto(Job job);
 
-    @Mapping(target = "id", ignore = true)
     @Mapping(target = "portfolio", ignore = true)
     Job toEntity(JobDto dto);
 
