@@ -1,8 +1,12 @@
 package com.juliandonati.backendPortafolio.service;
 
+import com.juliandonati.backendPortafolio.domain.AboutMe;
 import com.juliandonati.backendPortafolio.domain.Portfolio;
+import com.juliandonati.backendPortafolio.domain.Presentation;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
+import com.juliandonati.backendPortafolio.repository.AboutMeRepository;
 import com.juliandonati.backendPortafolio.repository.PortfolioRepository;
+import com.juliandonati.backendPortafolio.repository.PresentationRepository;
 import com.juliandonati.backendPortafolio.security.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class PortfolioServiceImpl implements PortfolioService{
     private final PortfolioRepository portfolioRepository;
+    private final AboutMeRepository aboutMeRepository;
+    private final PresentationRepository presentationRepository;
     @Override
     @Transactional(readOnly = true)
     public Portfolio findById(long id) {
@@ -60,5 +66,29 @@ public class PortfolioServiceImpl implements PortfolioService{
         if(!portfolioRepository.existsById(id))
             throw new ResourceNotFoundException("No se encontró un portfolio con la id: " + id);
         portfolioRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAboutMeById(long aboutMeId) {
+        AboutMe aboutMe = aboutMeRepository.findById(aboutMeId).orElseThrow(()->new ResourceNotFoundException("No se encontró un AboutMe con la id: "+ aboutMeId));
+
+        Portfolio portfolio = aboutMe.getPortfolio();
+        if(portfolio != null){
+            portfolio.setAboutMe(null);
+            aboutMe.setPortfolio(null);
+            portfolioRepository.save(portfolio);
+        }
+    }
+
+    @Override
+    public void deletePresentationById(long presentationId) {
+        Presentation presentation = presentationRepository.findById(presentationId).orElseThrow(()->new ResourceNotFoundException("No se encontró un Presentation con la id: "+ presentationId));
+
+        Portfolio portfolio = presentation.getPortfolio();
+        if(portfolio != null){
+            portfolio.setAboutMe(null);
+            presentation.setPortfolio(null);
+            portfolioRepository.save(portfolio);
+        }
     }
 }

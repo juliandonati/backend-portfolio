@@ -139,26 +139,6 @@ class PresentationServiceImplTest {
     }
 
     @Test
-    void testDeletePresentationByIdDeletesPresentationSuccessfully() {
-        Long mockId = 3L;
-        when(presentationRepository.existsById(mockId)).thenReturn(true);
-
-        assertDoesNotThrow(()->presentationService.deleteById(mockId),"El método falló y lanzó una excepción, debería haber finalizado con éxito silenciosamente");
-        verify(presentationRepository,times(1)).existsById(mockId);
-        verify(presentationRepository,times(1)).deleteById(mockId);
-    }
-
-    @Test
-    void testDeletePresentationByIdThrowsResourceNotFoundException() {
-        Long mockId = 99L;
-        when(presentationRepository.existsById(mockId)).thenReturn(false);
-
-        assertThrows(ResourceNotFoundException.class,()->presentationService.deleteById(mockId));
-        verify(presentationRepository,times(1)).existsById(mockId);
-        verify(presentationRepository,never()).deleteById(anyLong());
-    }
-
-    @Test
     void testFindPresentationByOwnerUsernameReturnsPresentation() {
         String ownerUsername = "pedrito.programador";
         Long mockId = 1L;
@@ -221,26 +201,4 @@ class PresentationServiceImplTest {
             verify(presentationRepository,times(1)).existsByOwnerUsername(ownerUsername);
 
     }
-
-    @Test
-    void testDeletePresentationByOwnerUsernameDeletesPresentationSuccessfully() {
-        String ownerUsername = "pedrito.programador";
-        when(presentationRepository.existsByOwnerUsername(ownerUsername)).thenReturn(true);
-
-        assertDoesNotThrow(()->presentationService.deleteByOwnerUsername(ownerUsername),"El método falló y lanzó una excepción, debería haber finalizado con éxito silenciosamente");
-        verify(presentationRepository,times(1)).existsByOwnerUsername(ownerUsername);
-        verify(presentationRepository,times(1)).deleteByOwnerUsername(ownerUsername);
-    }
-
-    @Test
-    void testDeletePresentationByOwnerUsernameThrowsResourceNotFoundException() {
-        String ownerUsername = "pedrrito.programador";
-        when(presentationRepository.existsByOwnerUsername(ownerUsername)).thenReturn(false);
-
-        assertThrows(ResourceNotFoundException.class,()->presentationService.deleteByOwnerUsername(ownerUsername));
-        verify(presentationRepository,times(1)).existsByOwnerUsername(ownerUsername);
-        verify(presentationRepository,never()).deleteByOwnerUsername(anyString());
-    }
-
-
 }

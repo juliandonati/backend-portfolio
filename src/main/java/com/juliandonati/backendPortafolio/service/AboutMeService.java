@@ -6,5 +6,4 @@ import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 public interface AboutMeService extends PortfolioComponentService<AboutMeDto> {
     AboutMeDto findByOwnerUsername(String username) throws ResourceNotFoundException;
     boolean existsByOwnerUsername(String username);
-    void deleteByOwnerUsername(String username) throws ResourceNotFoundException;
 }

@@ -8,6 +8,7 @@ import com.juliandonati.backendPortafolio.mapper.AboutMeMapper;
 import com.juliandonati.backendPortafolio.security.service.UserService;
 import com.juliandonati.backendPortafolio.service.AboutMeService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
+import com.juliandonati.backendPortafolio.service.PresentationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -28,6 +29,7 @@ public class AboutMeController {
     private final PortfolioService portfolioService;
 
     private final Logger logger = LoggerFactory.getLogger(AboutMeController.class);
+    private final PresentationService presentationService;
 
     @GetMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
@@ -79,7 +81,10 @@ public class AboutMeController {
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     public ResponseEntity<Void> deleteAboutMe(@PathVariable String ownerUsername){
         logger.debug("Eliminando el About-Me de "+ownerUsername);
-        aboutMeService.deleteByOwnerUsername(ownerUsername);
+
+        // todo Cuando permita subir imágenes, actualizar que aquí se borre.
+        logger.debug("Obteniendo id del About-Me...");
+        portfolioService.deletePresentationById(presentationService.findByOwnerUsername(ownerUsername).getId());
         logger.info("¡About-Me de "+ownerUsername+" eliminado con éxito!");
         return ResponseEntity.noContent().build();
     }

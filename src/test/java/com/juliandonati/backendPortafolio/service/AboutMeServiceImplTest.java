@@ -142,30 +142,6 @@ class AboutMeServiceImplTest {
     }
 
     @Test
-    void testDeleteAboutMeByIdDeletesSuccessfully() {
-        // Arrange
-        Long mockAboutMeId = 3L;
-        when(aboutMeRepository.existsById(mockAboutMeId)).thenReturn(true);
-
-        // Act + Assert
-        assertDoesNotThrow(()->aboutMeService.deleteById(mockAboutMeId), "El método fallo y lanzó una excepción, debería haber borrado el registro sin problemas.");
-        verify(aboutMeRepository,times(1)).existsById(mockAboutMeId);
-        verify(aboutMeRepository,times(1)).deleteById(mockAboutMeId);
-    }
-
-    @Test
-    void testDeleteAboutMeByIdThrowsResourceNotFoundException() {
-        // Arrange
-        Long mockAboutMeId = 99L;
-        when(aboutMeRepository.existsById(mockAboutMeId)).thenReturn(false);
-
-        // Act + Assert
-        assertThrows(ResourceNotFoundException.class,()->aboutMeService.deleteById(mockAboutMeId));
-        verify(aboutMeRepository,times(1)).existsById(mockAboutMeId);
-        verify(aboutMeRepository,never()).deleteById(any(Long.class));
-    }
-
-    @Test
     void testFindByOwnerUsernameReturnsAboutMe() {
         // Arrange
         Long mockAboutMeId = 45L;
@@ -228,29 +204,5 @@ class AboutMeServiceImplTest {
         // Assert
         assertFalse(result);
         verify(aboutMeRepository,times(1)).existsByOwnerUsername(ownerUsername);
-    }
-
-    @Test
-    void testDeleteAboutMeByOwnerUsernameDeletesSuccessfully() {
-        // Arrange
-        String ownerUsername = "natalia111";
-        when(aboutMeRepository.existsByOwnerUsername(ownerUsername)).thenReturn(true);
-
-        // Act + Assert
-        assertDoesNotThrow(()->aboutMeService.deleteByOwnerUsername(ownerUsername),"El método falló y lanzó una excepción, debería haber borrado el registro sin problemas.");
-        verify(aboutMeRepository,times(1)).existsByOwnerUsername(ownerUsername);
-        verify(aboutMeRepository,times(1)).deleteByOwnerUsername(ownerUsername);
-    }
-
-    @Test
-    void testDeleteAboutMeByOwnerUsernameThrowsResourceNotFoundException() {
-        // Arrange
-        String ownerUsername = "speedygonzales";
-        when(aboutMeRepository.existsByOwnerUsername(ownerUsername)).thenReturn(false);
-
-        // Act + Assert
-        assertThrows(ResourceNotFoundException.class, () -> aboutMeService.deleteByOwnerUsername(ownerUsername));
-        verify(aboutMeRepository,times(1)).existsByOwnerUsername(ownerUsername);
-        verify(aboutMeRepository,never()).deleteByOwnerUsername(any());
     }
 }

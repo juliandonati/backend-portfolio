@@ -22,6 +22,8 @@ class PortfolioServiceImplTest {
     @InjectMocks
     PortfolioServiceImpl portfolioService;
 
+    // todo Agregar tests de eliminación de Presentation y AboutMe faltantes.
+
     @Test
     void testFindPortfolioByIdReturnsPortfolio() {
         Long mockId = 1L;

@@ -10,5 +10,4 @@ public interface PortfolioComponentService<DTO> {
     DTO findById(Long id) throws ResourceNotFoundException;
     DTO save(DTO dto);
     DTO update(DTO dto, Long id) throws ResourceNotFoundException;
-    void deleteById(Long id) throws ResourceNotFoundException;
 }

@@ -9,4 +9,5 @@ public interface DegreeService extends PortfolioComponentService<DegreeDto> {
     public List<DegreeDto> findByOwnerUsername(String username);
     public String findImgUrlByDegreeId(Long id) throws ResourceNotFoundException;
     public String findOwnerUsernameByDegreeId(Long id) throws ResourceNotFoundException;
+    void deleteById(Long id) throws ResourceNotFoundException;
 }

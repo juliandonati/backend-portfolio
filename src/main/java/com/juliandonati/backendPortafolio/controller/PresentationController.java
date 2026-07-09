@@ -125,7 +125,8 @@ public class PresentationController {
         fileStorageService.deleteImageByUrl(presentationService.findImgUrlByOwnerUsername(ownerUsername));
         logger.debug("¡Imagen eliminada con éxito!");
 
-        presentationService.deleteByOwnerUsername(ownerUsername);
+        logger.debug("Obteniendo id de la presentación...");
+        portfolioService.deletePresentationById(presentationService.findByOwnerUsername(ownerUsername).getId());
         logger.info("¡Presentación del portafolio de {} eliminado con éxito!", ownerUsername);
 
         return ResponseEntity.noContent().build();
