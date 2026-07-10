@@ -4,7 +4,6 @@ import com.juliandonati.backendPortafolio.domain.Degree;
 import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.DegreeDto;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
-import com.juliandonati.backendPortafolio.mapper.DegreeMapper;
 import com.juliandonati.backendPortafolio.repository.PortfolioRepository;
 import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.repository.UserRepository;
@@ -30,8 +29,6 @@ class DegreeServiceTest {
     private PortfolioRepository portfolioRepository;
     @Autowired
     private DegreeService degreeService;
-    @Autowired
-    private DegreeMapper degreeMapper;
 
     @Test
     void testFindDegreeByOwnerUsernameReturnsListOfDegreesSuccessfully() {
@@ -120,28 +117,30 @@ class DegreeServiceTest {
         portfolioToSave.setAuthorizedUsers(Set.of(user));
 
         userRepository.save(user);
-        portfolioRepository.save(portfolioToSave);
+
 
         // CREATE
         String name = "Generic Degree Title";
         String desc = "Generic Degree Desc";
         Degree degreeToSave = new Degree(null,name,desc, LocalDate.now(),null,null,portfolioToSave);
 
-        DegreeDto savedDegreeDto = degreeService.save(degreeMapper.toDto(degreeToSave));
+        portfolioToSave.addDegree(degreeToSave);
+        portfolioRepository.save(portfolioToSave);
+        Degree savedDegree = portfolioRepository.save(portfolioToSave).getDegrees().stream().toList().getFirst();
 
-        assertNotNull(savedDegreeDto);
-        assertEquals(name,savedDegreeDto.getName());
-        assertEquals(desc,savedDegreeDto.getDescription());
+        assertNotNull(savedDegree);
+        assertEquals(name,savedDegree.getName());
+        assertEquals(desc,savedDegree.getDescription());
 
-        Long degreeId = savedDegreeDto.getId();
+        Long degreeId = savedDegree.getId();
 
         // READ
         DegreeDto searchedDegreeDto = degreeService.findById(degreeId);
 
         assertNotNull(searchedDegreeDto);
-        assertEquals(savedDegreeDto.getId(),searchedDegreeDto.getId());
-        assertEquals(savedDegreeDto.getName(),searchedDegreeDto.getName());
-        assertEquals(savedDegreeDto.getDescription(),searchedDegreeDto.getDescription());
+        assertEquals(savedDegree.getId(),searchedDegreeDto.getId());
+        assertEquals(name,searchedDegreeDto.getName());
+        assertEquals(desc,searchedDegreeDto.getDescription());
 
         // UPDATE
         String newName = "New Degree Title", newDesc = "New Degree Desc";

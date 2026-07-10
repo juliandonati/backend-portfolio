@@ -29,13 +29,6 @@ public class DegreeServiceImpl implements DegreeService {
     }
 
     @Override
-    public DegreeDto save(DegreeDto degreeDto) {
-        return degreeMapper.toDto(
-                degreeRepository.save(degreeMapper.toEntity(degreeDto))
-        );
-    }
-
-    @Override
     public DegreeDto update(DegreeDto degreeDto, Long id) throws ResourceNotFoundException {
         Degree degreeToUpdate = degreeRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No se encontró un título académico de id: " + id));
         Degree updatedDegree = degreeMapper.updateEntity(degreeDto, degreeToUpdate);

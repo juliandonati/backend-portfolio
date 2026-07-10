@@ -80,26 +80,6 @@ class JobServiceImplTest {
     }
 
     @Test
-    void saveJobSavesJobSuccessfully(){
-        String mockName = "SoftwareMakers";
-        String mockPosition = "Asistente";
-        LocalDate mockStartDate = LocalDate.now();
-        Job mockSavedJob = new Job(2L,mockName,mockPosition,null,mockStartDate,null,null);
-        when(jobRepository.save(any(Job.class))).thenReturn(mockSavedJob);
-
-        JobDto mockNewJobDto = new JobDto(null,mockName,mockPosition,null,mockStartDate,null);
-        JobDto result = jobService.save(mockNewJobDto);
-
-        assertNotNull(result);
-        assertNotNull(result.getId());
-        assertEquals(mockName,result.getName());
-        assertEquals(mockPosition,result.getPosition());
-        verify(jobMapper,times(1)).toEntity(mockNewJobDto);
-        verify(jobRepository,times(1)).save(any(Job.class));
-        verify(jobMapper,times(1)).toDto(mockSavedJob);
-    }
-
-    @Test
     void testUpdateJobUpdatesJobSuccessfully() {
         Long mockId= 2L;
         String mockOldName = "SoftwareMakerss";

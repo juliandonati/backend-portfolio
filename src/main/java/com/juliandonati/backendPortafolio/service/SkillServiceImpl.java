@@ -28,12 +28,6 @@ public class SkillServiceImpl implements SkillService {
         );
     }
 
-    @Override
-    public SkillDto save(SkillDto skillDto) {
-        return skillMapper.toDto(
-                skillRepository.save(skillMapper.toEntity(skillDto))
-        );
-    }
 
     @Override
     public SkillDto update(SkillDto skillDto, Long id) throws ResourceNotFoundException {

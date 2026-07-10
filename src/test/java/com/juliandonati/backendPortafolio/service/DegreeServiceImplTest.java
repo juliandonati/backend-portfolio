@@ -88,28 +88,6 @@ class DegreeServiceImplTest {
     }
 
     @Test
-    void testSaveDegreeSavesDegreeSuccessfully() {
-        // Arrange
-        String mockName = "Generic Degree Title";
-        LocalDate mockStartDate = LocalDate.now();
-        DegreeDto mockNewDegreeDto = new DegreeDto(null,mockName,null,mockStartDate,null,null);
-        Degree mockSavedDegree = new Degree(4L,mockName,null,mockStartDate,null,null,null);
-        when(degreeRepository.save(any(Degree.class))).thenReturn(mockSavedDegree);
-
-        // Act
-        DegreeDto result = degreeService.save(mockNewDegreeDto);
-
-        // Assert
-        assertNotNull(result);
-        assertNotNull(result.getId());
-        assertEquals(mockName,result.getName());
-        assertEquals(mockStartDate,result.getStartDate());
-        verify(degreeMapper,times(1)).toEntity(mockNewDegreeDto);
-        verify(degreeRepository,times(1)).save(any(Degree.class));
-        verify(degreeMapper,times(1)).toDto(mockSavedDegree);
-    }
-
-    @Test
     void testUpdateDegreeUpdatesDegreeSuccessfully() {
         // Arrange
         Long mockId = 45L;

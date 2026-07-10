@@ -29,13 +29,6 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public JobDto save(JobDto jobDto) {
-        return jobMapper.toDto(
-                jobRepository.save(jobMapper.toEntity(jobDto))
-        );
-    }
-
-    @Override
     public JobDto update(JobDto jobDto, Long id) throws ResourceNotFoundException {
         Job jobToUpdate = jobRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("No se encontró una experiencia laboral con la id: " + id));
         Job updatedJob = jobMapper.updateEntity(jobDto, jobToUpdate);

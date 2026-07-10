@@ -78,23 +78,6 @@ class SkillServiceImplTest {
     }
 
     @Test
-    void testSaveSkillSavesSkillSuccessfully() {
-        String mockName = "JavaScript";
-        Skill mockSavedSkill = new Skill(1L,mockName,null,null,null,null,null);
-        when(skillRepository.save(any(Skill.class))).thenReturn(mockSavedSkill);
-
-        SkillDto mockSkillToSave = new SkillDto(null,mockName,null,null,null,null);
-        SkillDto result = skillService.save(mockSkillToSave);
-
-        assertNotNull(result);
-        assertNotNull(result.getId());
-        assertEquals(mockName,result.getName());
-        verify(skillMapper,times(1)).toEntity(mockSkillToSave);
-        verify(skillRepository,times(1)).save(any(Skill.class));
-        verify(skillMapper,times(1)).toDto(mockSavedSkill);
-    }
-
-    @Test
     void testUpdateSkillUpdatesSkillSuccessfully() {
         Long mockId = 1L;
         String mockOldName = "JavaScript",
