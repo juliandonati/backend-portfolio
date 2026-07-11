@@ -5,24 +5,28 @@ import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.DegreeDto;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.repository.PortfolioRepository;
-import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.repository.UserRepository;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.createPortfolio;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@Transactional
 class DegreeServiceTest {
+    @Autowired
+    private EntityManager entityManager;
+
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -30,21 +34,17 @@ class DegreeServiceTest {
     @Autowired
     private DegreeService degreeService;
 
+    private final String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
+
     @Test
     void testFindDegreeByOwnerUsernameReturnsListOfDegreesSuccessfully() {
         // Arrange
-        Portfolio portfolioToSave = new Portfolio();
+        Portfolio portfolioToSave = createPortfolio(userRepository);
         String name = "Generic Degree Title";
         String desc = "Generic Degree Desc";
         Degree degreeToSave = new Degree(null,name,desc, LocalDate.now(),null,null,portfolioToSave);
         // Guardamos el Degree en el Repository para no depender del servicio para guardarlo (este test no trata de eso)
         portfolioToSave.setDegrees(Set.of(degreeToSave));
-        String ownerUsername = "pedrito12";
-        User user = new User(null,ownerUsername,"1234","Pedro","pedro@ejemplo.com",Set.of(),portfolioToSave,null);
-        portfolioToSave.setOwner(user);
-        portfolioToSave.setAuthorizedUsers(Set.of(user));
-
-        userRepository.save(user);
         portfolioRepository.save(portfolioToSave);
 
         // Act
@@ -61,17 +61,12 @@ class DegreeServiceTest {
     @Test
     void testFindImgUrlByDegreeIdReturnsImgUrl() {
         // Arrange
-        Portfolio portfolioToSave = new Portfolio();
-        String name = "Generic Degree Title", desc = "Generic Degree Desc", imgUrl = "http://www.imgurl.com";
+        Portfolio portfolioToSave = createPortfolio(userRepository);
+        String name = "Generic Degree Title", desc = "Generic Degree Desc", imgUrl = "https://www.imgurl.com";
         Degree degreeToSave = new Degree(null,name,desc, LocalDate.now(),null,imgUrl,portfolioToSave);
         // Guardamos el Degree en el Repository para no depender del servicio para guardarlo (este test no trata de eso)
         portfolioToSave.setDegrees(Set.of(degreeToSave));
-        String ownerUsername = "pedrito12";
-        User user = new User(null,ownerUsername,"1234","Pedro","pedro@ejemplo.com",Set.of(),portfolioToSave,null);
-        portfolioToSave.setOwner(user);
-        portfolioToSave.setAuthorizedUsers(Set.of(user));
 
-        userRepository.save(user);
         Long degreeId = portfolioRepository.save(portfolioToSave).getDegrees().stream().toList().getFirst().getId();
 
         // Act
@@ -85,18 +80,13 @@ class DegreeServiceTest {
     @Test
     void testFindOwnerUsernameByDegreeIdReturnsOwnerUsername() {
         // Arrange
-        Portfolio portfolioToSave = new Portfolio();
+        Portfolio portfolioToSave = createPortfolio(userRepository);
         String name = "Generic Degree Title";
         String desc = "Generic Degree Desc";
         Degree degreeToSave = new Degree(null,name,desc, LocalDate.now(),null,null,portfolioToSave);
         // Guardamos el Degree en el Repository para no depender del servicio para guardarlo (este test no trata de eso)
         portfolioToSave.setDegrees(Set.of(degreeToSave));
-        String ownerUsername = "pedrito12";
-        User user = new User(null,ownerUsername,"1234","Pedro","pedro@ejemplo.com",Set.of(),portfolioToSave,null);
-        portfolioToSave.setOwner(user);
-        portfolioToSave.setAuthorizedUsers(Set.of(user));
 
-        userRepository.save(user);
         Long degreeId = portfolioRepository.save(portfolioToSave).getDegrees().stream().toList().getFirst().getId();
 
         // Act
@@ -110,14 +100,7 @@ class DegreeServiceTest {
     @Test
     void testDegreeCRUDLifeCycle(){
         // Arrange
-        Portfolio portfolioToSave = new Portfolio();
-        String ownerUsername = "pedrito12";
-        User user = new User(null,ownerUsername,"1234","Pedro","pedro@ejemplo.com",Set.of(),portfolioToSave,null);
-        portfolioToSave.setOwner(user);
-        portfolioToSave.setAuthorizedUsers(Set.of(user));
-
-        userRepository.save(user);
-
+        Portfolio portfolioToSave = createPortfolio(userRepository);
 
         // CREATE
         String name = "Generic Degree Title";
@@ -154,6 +137,8 @@ class DegreeServiceTest {
         assertEquals(newDesc,updatedDegreeDto.getDescription());
 
         // DELETE
+        entityManager.flush();
+        entityManager.clear();
         assertDoesNotThrow(()->degreeService.deleteById(degreeId),"El método fallo y lanzó una excepción, debería haber terminado con éxito y silenciosamente");
         assertThrows(ResourceNotFoundException.class,()->degreeService.findById(degreeId));
     }

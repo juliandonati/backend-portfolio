@@ -5,25 +5,27 @@ import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.JobDto;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.repository.PortfolioRepository;
-import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.repository.UserRepository;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.createPortfolio;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@Transactional
 class JobServiceTest {
+    @Autowired
+    private EntityManager entityManager;
+
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -31,23 +33,21 @@ class JobServiceTest {
     @Autowired
     private JobService jobService;
 
+    private final String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
+
+    private final String jobName1 = "Google";
+    private final String jobName2 = "Apple";
+    private final String jobPos1 = "Data Analyst";
+    private final String jobPos2 = "Clerk";
+    private final String jobDesc1 = "desc. placeholder 1";
+    private final String jobDesc2 = "desc. placeholder 2";
+    private final LocalDate jobSDate2 =  LocalDate.of(2010, 12, 10), jobEDate2 = LocalDate.of(2012, 6, 1);
 
     @Test
     void testFindJobByOwnerUsernameReturnsListOfJobs() {
         // Arrange
-        String ownerUsername = "usuarioTest";
-        User user = new User(null, ownerUsername, "1234", "usuarioDisplay", "usuario@ejemplo.com", Set.of(), null, Set.of());
-        userRepository.save(user);
-        Portfolio portfolio = new Portfolio();
-        portfolio.setOwner(user);
+        Portfolio portfolio = createPortfolio(userRepository);
 
-        String jobName1 = "Google";
-        String jobName2 = "Apple";
-        String jobPos1 = "Data Analyst";
-        String jobPos2 = "Clerk";
-        String jobDesc1 = "desc. placeholder 1";
-        String jobDesc2 = "desc. placeholder 2";
-        LocalDate jobSDate2 =  LocalDate.of(2010, 12, 10), jobEDate2 = LocalDate.of(2012, 6, 1);
         Job
                 job1 = new Job(null, jobName1, jobPos1, jobDesc1, LocalDate.now(), null, null),
                 job2 = new Job(null, jobName2, jobPos2, jobDesc2,jobSDate2,jobEDate2, null);
@@ -77,43 +77,12 @@ class JobServiceTest {
     }
 
     @Test
-    void testDeleteJobByIdSuccessfully() {
-        // Arrange
-        User user = new User(null, "usuarioTest", "1234", "usuarioDisplay", "usuario@ejemplo.com", Set.of(), null, Set.of());
-        userRepository.save(user);
-        Portfolio portfolio = new Portfolio();
-        portfolio.setOwner(user);
-
-        Job job = new Job(null,"Trabajo","Posición","Descripción de trabajo",LocalDate.now(),null,null);
-        portfolio.addExperience(job);
-        Optional<Job> savedJob = portfolioRepository.save(portfolio).getExperience().stream().findFirst();
-
-        Long jobId;
-        jobId = savedJob.map(Job::getId).orElse(null);
-
-
-        // Act + Assert
-        assertNotNull(jobId,"No se guardó exitosamente el trabajo creado para el test.");
-        assertDoesNotThrow(()->jobService.deleteById(jobId),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
-        assertThrows(ResourceNotFoundException.class,()->jobService.findById(jobId));
-    }
-
-    @Test
     void testJobCRUDLifeCycle() {
         // Arrange
-        User user = new User(null, "usuarioTest", "1234", "usuarioDisplay", "usuario@ejemplo.com", Set.of(), null, Set.of());
-        userRepository.save(user);
-        Portfolio portfolio = new Portfolio();
-        portfolio.setOwner(user);
+        Portfolio portfolio = createPortfolio(userRepository);
 
         // CREATE
-        String jobName1 = "Google";
-        String jobName2 = "Apple";
-        String jobPos1 = "Data Analyst";
-        String jobPos2 = "Clerk";
-        String jobDesc1 = "desc. placeholder 1";
-        String jobDesc2 = "desc. placeholder 2";
-        LocalDate jobSDate2 =  LocalDate.of(2010, 12, 10), jobEDate2 = LocalDate.of(2012, 6, 1);
+
         Job
                 job1 = new Job(null, jobName1, jobPos1, jobDesc1, LocalDate.now(), null, null),
                 job2 = new Job(null, jobName2, jobPos2, jobDesc2,jobSDate2,jobEDate2, null);
@@ -188,6 +157,8 @@ class JobServiceTest {
                 () -> assertNull(updatedJob2.getEndDate())
         );
         // DELETE
+        entityManager.clear();
+        entityManager.flush();
         assertDoesNotThrow(()->jobService.deleteById(jobId1),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
         assertThrows(ResourceNotFoundException.class,()->jobService.findById(jobId1));
         assertDoesNotThrow(()->jobService.deleteById(jobId2),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");

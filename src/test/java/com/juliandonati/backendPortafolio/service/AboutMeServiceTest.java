@@ -8,8 +8,8 @@ import com.juliandonati.backendPortafolio.security.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@Transactional
 class AboutMeServiceTest {
     @Autowired
     private UserService userService;
@@ -26,19 +26,29 @@ class AboutMeServiceTest {
     @Autowired
     private AboutMeService aboutMeService;
 
+    private final String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
+
+    private final String title = "About Me";
+    private final String desc = "Love to code solutions";
+    private final String imgUrl = "http://www,imgurl.test";
+    private final String btnText = "Click here!";
+    private final String btnUrl = "https://www.github.com";
+
+
+    Portfolio createPortfolioWithAboutMe(){
+        User user = new User(null, ownerUsername, "password", "displayName", "user@example.com", Set.of(), null, Set.of());
+        userService.save(user);
+        Portfolio portfolio = new Portfolio();
+        portfolio.setOwner(user);
+        AboutMe aboutMe = new AboutMe(null, title, desc, imgUrl, btnText, btnUrl, portfolio);
+        portfolio.setAboutMe(aboutMe);
+        return portfolio;
+    }
+
     @Test
     void testAboutMeCRUDLifeCycle() {
         // Arrange
-        String ownerUsername = "usuarioTest";
-        User user = new User(null, ownerUsername, "password", "displayName", "user@example.com", Set.of(), null, Set.of());
-        userService.save(user);
-
-        Portfolio portfolio = new Portfolio();
-        portfolio.setOwner(user);
-
-        String title = "About Me", desc = "Love to code solutions", imgUrl = "http://www,imgurl.test", btnText = "Click here!", btnUrl = "https://www.github.com";
-        AboutMe aboutMe = new AboutMe(null, title, desc, imgUrl, btnText, btnUrl, portfolio);
-        portfolio.setAboutMe(aboutMe);
+        Portfolio portfolio = createPortfolioWithAboutMe();
 
         // CREATE
         AboutMe savedAboutMe = portfolioService.save(portfolio).getAboutMe();
@@ -88,14 +98,7 @@ class AboutMeServiceTest {
     @Test
     void testFindAboutMeByOwnerUsernameReturnsAboutMe() {
         // Arrange
-        String ownerUsername = "usuarioTest";
-        User user = new User(null, ownerUsername, "password", "displayName", "user@example.com", Set.of(), null, Set.of());
-        userService.save(user);
-        Portfolio portfolio = new Portfolio();
-        portfolio.setOwner(user);
-        String title = "About Me", desc = "Love to code solutions", imgUrl = "http://www,imgurl.test", btnText = "Click here!", btnUrl = "https://www.github.com";
-        AboutMe aboutMe = new AboutMe(null, title, desc, imgUrl, btnText, btnUrl, portfolio);
-        portfolio.setAboutMe(aboutMe);
+        Portfolio portfolio = createPortfolioWithAboutMe();
         portfolioService.save(portfolio);
 
         // Act
@@ -113,13 +116,7 @@ class AboutMeServiceTest {
     @Test
     void testAboutMeExistsByOwnerUsernameReturnsTrue() {
         // Arrange
-        String ownerUsername = "usuarioTest";
-        User user = new User(null, ownerUsername, "password", "displayName", "user@example.com", Set.of(), null, Set.of());
-        userService.save(user);
-        Portfolio portfolio = new Portfolio();
-        portfolio.setOwner(user);
-        AboutMe aboutMe = new AboutMe(null, "titulo placeholder", "descripcion placeholder", null, null, null, portfolio);
-        portfolio.setAboutMe(aboutMe);
+        Portfolio portfolio = createPortfolioWithAboutMe();
         portfolioService.save(portfolio);
 
         // Act
