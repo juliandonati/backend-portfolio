@@ -144,7 +144,7 @@ class PortfolioServiceImplTest {
     @Test
     void testDeletePortfolioByIdThrowsResourceNotFoundException() {
         Long mockId = 999L;
-        when(portfolioRepository.findById(mockId)).thenReturn(Optional.of(new Portfolio()));
+        when(portfolioRepository.findById(mockId)).thenReturn(Optional.empty());
 
         assertThrows(ResourceNotFoundException.class,()->portfolioService.deleteById(mockId));
         verify(portfolioRepository,times(1)).findById(mockId);
