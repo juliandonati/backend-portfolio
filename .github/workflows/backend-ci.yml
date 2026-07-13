@@ -26,3 +26,5 @@ jobs:
 
       - name: Ejecutar tests
         run: ./mvnw test
+        env:
+          ACTIVE_PROFILE: test
