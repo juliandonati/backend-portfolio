@@ -36,11 +36,11 @@ Si querés clonar el proyecto y correrlo en tu entorno local, seguí estos pasos
 
 ### Pasos
 
-1. Clonar el repositorio:
+1. **Clonar el repositorio:**
    ```bash
    git clone https://github.com/juliandonati/frontend-portfolio-reactts
    
-2. Configurar las variables de entorno: El proyecto lee credenciales sensibles desde el entorno, por lo que antes de levantar la aplicación, tenés
+2. **Configurar las variables de entorno:** El proyecto lee credenciales sensibles desde el entorno, por lo que antes de levantar la aplicación, tenés
 que asegurarte de configurar las siguientes variables de entorno en tu sistema operativo, IDE, o archivo .env:
    ACTIVE_PROFILE: Perfil de Spring Boot activo (ej: dev, prod).
 
@@ -60,4 +60,4 @@ que asegurarte de configurar las siguientes variables de entorno en tu sistema o
 
 * DB_PASSWORD: Contraseña de la base de datos.
 
-3. Correr el proyecto
+3. **Correr el proyecto**
