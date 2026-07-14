@@ -2,6 +2,8 @@ package com.juliandonati.backendPortafolio.security.controller;
 
 import com.juliandonati.backendPortafolio.security.dto.UserSummaryResponseDto;
 import com.juliandonati.backendPortafolio.security.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/users")
 
+@Tag(name = "Users", description = "Permite consultar páginas de usuarios filtradas por letras que contengan sus nombres de usuario")
+
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -24,6 +28,8 @@ public class UserController {
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping
+    @Operation(summary = "Consultar nombres de usuario coincidentes con filtro",
+    description = "Devuelve todos los nombres de usuario y su nombre público que coincidan con el filtro 'name' específicado, páginados en un userSummaryResponseDtoPage")
     public ResponseEntity<Page<UserSummaryResponseDto>> getAll(@RequestParam(required = false) String name,
                                                @PageableDefault(page=0, size = 10, sort="username") Pageable pageable) {
         logger.debug("Recuperando usuarios mediante el filtro: "+name);

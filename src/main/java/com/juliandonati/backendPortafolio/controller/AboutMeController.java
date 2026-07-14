@@ -5,10 +5,11 @@ import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.AboutMeDto;
 import com.juliandonati.backendPortafolio.exception.DuplicatedAttributeException;
 import com.juliandonati.backendPortafolio.mapper.AboutMeMapper;
-import com.juliandonati.backendPortafolio.security.service.UserService;
 import com.juliandonati.backendPortafolio.service.AboutMeService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import com.juliandonati.backendPortafolio.service.PresentationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/about-me")
+
+@Tag(name = "About-Me", description = "CRUD del About-Me individual de cada portafolio")
 
 @RequiredArgsConstructor
 public class AboutMeController {
@@ -33,6 +36,8 @@ public class AboutMeController {
 
     @GetMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    @Operation(summary = "Consultar About-Me por nombre de dueño de un portafolio",
+            description = "Devuelve el About-Me de un portafolio buscándolo por el nombre de su dueño, incluyendo todos sus campos.")
     public ResponseEntity<AboutMeDto> getAboutMeByOwner(@PathVariable String ownerUsername){
         logger.debug("Buscando About-Me de "+ownerUsername);
         AboutMeDto aboutMeDto = aboutMeService.findByOwnerUsername(ownerUsername);
@@ -42,6 +47,8 @@ public class AboutMeController {
 
     @PostMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    @Operation(summary = "Publicar About-Me por nombre del dueño de un portafolio",
+            description = "Publica un nuevo About-Me con todos sus campos, al portafolio perteneciente al usuario cuyo nombre es especificado")
     public ResponseEntity<AboutMeDto> createAboutMe(@PathVariable String ownerUsername,
                                                     @RequestBody @Valid AboutMeDto aboutMeDto){
 
@@ -66,6 +73,8 @@ public class AboutMeController {
 
     @PutMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    @Operation(summary = "Actualizar About-Me por nombre del dueño de un portafolio",
+            description = "Actualiza los campos modificados de un About-Me especificada por el nombre del dueño del portafolio al que pertenece")
     public ResponseEntity<String> updateAboutMe(@PathVariable String ownerUsername,
                                                     @RequestBody @Valid AboutMeDto aboutMeDto){
         logger.debug("Verificando que exista el About-Me de "+ ownerUsername);
@@ -79,6 +88,9 @@ public class AboutMeController {
 
     @DeleteMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    @Operation(summary = "Eliminar About-Me por nombre del dueño de un portafolio",
+            description = "Elimina un About-Me, si existe, especificado por el nombre del dueño del portafolio al que pertenece")
+
     public ResponseEntity<Void> deleteAboutMe(@PathVariable String ownerUsername){
         logger.debug("Eliminando el About-Me de "+ownerUsername);
 

@@ -5,6 +5,8 @@ import com.juliandonati.backendPortafolio.security.dto.LoginRequestDto;
 import com.juliandonati.backendPortafolio.security.dto.RegisterRequestDto;
 import com.juliandonati.backendPortafolio.security.jwt.JwtGenerator;
 import com.juliandonati.backendPortafolio.security.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -24,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/auth")
 
+@Tag(name = "Authorization", description = "Permite el registro y el inicio de sesión de usuarios")
+
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthenticationManager authenticationManager;
@@ -34,6 +38,8 @@ public class AuthController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/register")
+    @Operation(summary = "Registrar nuevo usuario mediante RegisterRequestDto",
+            description = "Permite registrar a un nuevo usuario enviando un objeto RegisterRequestDto con sus campos completos y válidos")
     public ResponseEntity<String> registerUser(@RequestBody @Valid RegisterRequestDto registerRequestDto) {
         logger.debug("Registrando usuario de username: "+ registerRequestDto.getUsername());
         userService.register(registerRequestDto);
@@ -43,6 +49,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @Operation(summary = "Iniciar sesión de usuario mediante LoginRequestDto",
+            description = "Permite iniciar la sesión de un usuario enviando un objeto LoginRequestDto con sus campos completos y válidos, y devuelve un objeto JwtResponseDto que contiene un JWT")
     public ResponseEntity<JwtResponseDto> authenticateUser(@RequestBody @Valid LoginRequestDto loginRequestDto) {
         logger.debug("Autenticando usuario de login: "+ loginRequestDto.getUsernameOrEmail());
         Authentication authentication = authenticationManager.authenticate(

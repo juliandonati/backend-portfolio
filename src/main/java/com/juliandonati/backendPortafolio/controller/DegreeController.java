@@ -8,6 +8,8 @@ import com.juliandonati.backendPortafolio.mapper.DegreeMapper;
 import com.juliandonati.backendPortafolio.service.DegreeService;
 import com.juliandonati.backendPortafolio.service.FileStorageService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -25,6 +27,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/degrees")
 
+@Tag(name = "Degrees", description = "CRUD de los títulos académicos pertenecientes a cada portafolio")
+
 @RequiredArgsConstructor
 public class DegreeController {
     private final DegreeService degreeService;
@@ -40,6 +44,8 @@ public class DegreeController {
 
     @GetMapping("/list/{ownerUsername}")
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
+    @Operation(summary = "Consultar título académico por nombre del dueño de un portafolio",
+            description = "Devuelve todos los títulos académicos de un portafolio buscándolos por el nombre de su dueño, incluyendo todos sus campos.")
     public ResponseEntity<List<DegreeDto>> getAllDegreesByOwner(@PathVariable String ownerUsername){
         logger.debug("Recuperando los títulos académicos de {}", ownerUsername);
         List<DegreeDto> degreeDtos = degreeService.findByOwnerUsername(ownerUsername);
@@ -49,6 +55,8 @@ public class DegreeController {
 
     @PostMapping(path = "/{ownerUsername}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
+    @Operation(summary = "Publicar título académico por nombre del dueño de un portafolio",
+            description = "Publica un nuevo título académico con todos sus campos, al portafolio perteneciente al usuario cuyo nombre es especificado")
     public ResponseEntity<List<DegreeDto>> createDegree(@PathVariable String ownerUsername,
                                                         @Valid @RequestPart("degree") DegreeDto degreeDto,
                                                         @Valid @RequestPart(required = false, value = "img-file") MultipartFile imageMpFile)
@@ -77,6 +85,8 @@ public class DegreeController {
 
     @PutMapping(path = "/{degreeId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("@degreeSecurityEvaluator.isOwner(#degreeId,authentication.name) or hasRole('ADMIN')")
+    @Operation(summary = "Actualizar título académico por ID",
+            description = "Actualiza los campos modificados de un título académico especificado por su ID")
     public ResponseEntity<DegreeDto> updateDegree(@PathVariable Long degreeId,
                                                   @Valid @RequestPart("degree") DegreeDto degreeDto,
                                                   @RequestPart(required = false, value = "img-file") MultipartFile imageMpFile)
@@ -108,6 +118,8 @@ public class DegreeController {
 
     @DeleteMapping("/{degreeId}")
     @PreAuthorize("@degreeSecurityEvaluator.isOwner(#degreeId,authentication.name) or hasRole('ADMIN')")
+    @Operation(summary = "Eliminar título académico por ID",
+            description = "Elimina un título académico, si existe, especificado por su ID")
     public ResponseEntity<Void> deleteDegree(@PathVariable Long degreeId) throws Exception{
         logger.debug("Eliminando título académico de id: {}", degreeId);
 
@@ -127,4 +139,6 @@ public class DegreeController {
 
         return ResponseEntity.noContent().build();
     }
+
+    // todo: Endpoint GET by ID
 }

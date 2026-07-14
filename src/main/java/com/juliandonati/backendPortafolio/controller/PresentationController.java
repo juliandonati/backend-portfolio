@@ -8,6 +8,8 @@ import com.juliandonati.backendPortafolio.mapper.PresentationMapper;
 import com.juliandonati.backendPortafolio.service.FileStorageService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import com.juliandonati.backendPortafolio.service.PresentationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -24,6 +26,8 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/v1/presentation")
 
+@Tag(name = "Presentation", description = "CRUD de la presentación individual de cada portafolio")
+
 @RequiredArgsConstructor
 public class PresentationController {
     private final PresentationMapper presentationMapper;
@@ -39,6 +43,8 @@ public class PresentationController {
 
     @GetMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    @Operation(summary = "Consultar presentación por nombre de dueño de un portafolio",
+            description = "Devuelve la presentación de un portafolio buscándola por el nombre de su dueño, incluyendo todos sus campos.")
     public ResponseEntity<PresentationDto> getPresentationByOwner(@PathVariable String ownerUsername){
         logger.debug("Recuperando la presentación del portafolio de: {}", ownerUsername);
         PresentationDto presentationDto = presentationService.findByOwnerUsername(ownerUsername);
@@ -50,6 +56,8 @@ public class PresentationController {
     // authentication.name tiene como valor el subject de nuestro JWT
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     @PostMapping(path = "/{ownerUsername}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Publicar presentación por nombre del dueño de un portafolio",
+            description = "Publica una nueva presentación con todos sus campos, al portafolio perteneciente al usuario cuyo nombre es especificado")
     public ResponseEntity<PresentationDto> createPresentation(@PathVariable String ownerUsername,
                                                               @RequestPart("presentation") @Valid PresentationDto presentationDto,
                                                               @RequestPart(required = false, value = "img-file") MultipartFile imageMPFile) throws IOException {
@@ -82,6 +90,8 @@ public class PresentationController {
 
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     @PutMapping(path = "/{ownerUsername}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Actualizar presentación por nombre del dueño de un portafolio",
+            description = "Actualiza los campos modificados de una presentación especificada por el nombre del dueño del portafolio al que pertenece")
     public ResponseEntity<PresentationDto> updatePresentation(@PathVariable String ownerUsername,
                                                               @RequestPart("presentation") @Valid PresentationDto presentationDto,
                                                               @RequestPart(value = "img-file", required = false) MultipartFile imageMPFile)
@@ -118,6 +128,8 @@ public class PresentationController {
 
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     @DeleteMapping("/{ownerUsername}")
+    @Operation(summary = "Eliminar presentación por nombre del dueño de un portafolio",
+            description = "Elimina una presentación, si existe, especificada por el nombre del dueño del portafolio al que pertenece")
     public ResponseEntity<Void> deletePresentation(@PathVariable String ownerUsername) throws Exception{
         logger.debug("Eliminando presentación de {}", ownerUsername);
 

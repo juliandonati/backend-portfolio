@@ -11,6 +11,8 @@ import com.juliandonati.backendPortafolio.security.domain.User;
 import com.juliandonati.backendPortafolio.security.service.UserService;
 import com.juliandonati.backendPortafolio.service.FileStorageService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +27,8 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/v1/portfolio")
 
+@Tag(name = "Portfolio", description = "CRUD para modificar cada portfolio individualmente")
+
 @RequiredArgsConstructor
 public class PortfolioController {
     private final PortfolioService portfolioService;
@@ -37,6 +41,8 @@ public class PortfolioController {
 
     // TODOS, incluso quienes no están logueados pueden acceder a este metodo
     @GetMapping("/{ownerUsername}")
+    @Operation(summary = "Consultar portafolio por nombre del dueño",
+            description = "Devuelve un portafolio específico buscándolo por el nombre de su dueño, incluyendo todos sus campos")
     public ResponseEntity<PortfolioResponseDto> getPortfolioByOwner(@PathVariable String ownerUsername){
         logger.debug("Recuperando el portafolio de: {}", ownerUsername);
         PortfolioResponseDto portfolioResponseDto = portfolioMapper.toPortfolioResponseDto(portfolioService.findByOwnerUsername(ownerUsername));
@@ -47,6 +53,8 @@ public class PortfolioController {
 
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
     @PostMapping("/{ownerUsername}")
+    @Operation(summary = "Publicar portafolio por nombre de usuario",
+            description = "Publica un nuevo portafolio con todos sus campos, que tiene como dueño el usuario cuyo nombre fue específicado en la ruta")
     public ResponseEntity<PortfolioResponseDto> createPortfolio(@PathVariable String ownerUsername){
         logger.debug("Verificando si existe el portafolio de {}", ownerUsername);
         if(!portfolioService.existsByOwnerUsername(ownerUsername)){
@@ -67,6 +75,8 @@ public class PortfolioController {
 
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
     @DeleteMapping("/{ownerUsername}")
+    @Operation(summary = "Eliminar portafolio por nombre del dueño",
+            description = "Elimina el portafolio, si existe, perteneciente a su dueño, cuyo nombre es específicado en la ruta")
     public ResponseEntity<String> deletePortfolio(@PathVariable String ownerUsername) throws Exception{
         logger.debug("Verificando si existe el usuario de {}", ownerUsername);
         User user = userService.findByUsername(ownerUsername);
@@ -96,6 +106,8 @@ public class PortfolioController {
     }
 
     @GetMapping("/{ownerUsername}/exists")
+    @Operation(summary = "Consultar si un portafolio existe por nombre de usuario",
+            description = "Devuelve un valor Boolean = Verdadero si el usuario cuyo nombre fue especificado en la ruta posee un portafolio existente")
     public ResponseEntity<Boolean> existsPortfolio(@PathVariable String ownerUsername){
         try{
             logger.debug("Verificando si existe un portafolio de dueño: {}", ownerUsername);

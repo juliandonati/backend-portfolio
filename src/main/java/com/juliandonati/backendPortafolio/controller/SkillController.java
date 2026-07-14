@@ -7,6 +7,8 @@ import com.juliandonati.backendPortafolio.mapper.SkillMapper;
 import com.juliandonati.backendPortafolio.service.FileStorageService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
 import com.juliandonati.backendPortafolio.service.SkillService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -24,6 +26,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/skills")
 
+@Tag(name = "Skills", description = "CRUD de las habilidades pertenecientes a cada portafolio")
+
 @RequiredArgsConstructor
 public class SkillController {
     private final SkillService skillService;
@@ -37,6 +41,8 @@ public class SkillController {
 
     @GetMapping("/list/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    @Operation(summary = "Consultar habilidad por nombre del dueño de un portafolio",
+            description = "Devuelve todas las habilidades de un portafolio buscándolas por el nombre de su dueño, incluyendo todos sus campos.")
     public ResponseEntity<List<SkillDto>> getAllSkillsByOwner(@PathVariable String ownerUsername){
         logger.debug("Buscando habilidades del portafolio de "+ownerUsername);
         List<SkillDto> skillDtos = skillService.findSkillsByOwnerUsername(ownerUsername);
@@ -47,6 +53,8 @@ public class SkillController {
 
     @PostMapping(path = "/{ownerUsername}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
+    @Operation(summary = "Publicar habilidad por nombre del dueño de un portafolio",
+            description = "Publica una nueva habilidad con todos sus campos, al portafolio perteneciente al usuario cuyo nombre es especificado")
     public ResponseEntity<List<SkillDto>> createSkill(@PathVariable String ownerUsername,
                                                       @Valid @RequestPart("skill") SkillDto skillDto,
                                                       @RequestPart(required = false, value = "img-file") MultipartFile imgMpFile)
@@ -73,9 +81,10 @@ public class SkillController {
         return new ResponseEntity<>(updatedSkillDtos, HttpStatus.CREATED);
     }
 
-
     @GetMapping("/{skillId}")
     @PreAuthorize("@skillSecurityEvaluator.isOwner(#skillId,authentication.name) or hasRole('ADMIN')")
+    @Operation(summary = "Consultar habilidad por ID",
+            description = "Devuelve una habilidad específica buscándola por ID, incluyendo todos sus campos.")
     public ResponseEntity<SkillDto> getSkill(@PathVariable Long skillId){
         logger.debug("Buscando habilidad de id: "+skillId);
         SkillDto skillDto = skillService.findById(skillId);
@@ -86,6 +95,8 @@ public class SkillController {
 
     @PutMapping("/{skillId}")
     @PreAuthorize("@skillSecurityEvaluator.isOwner(#skillId,authentication.name) or hasRole('ADMIN')")
+    @Operation(summary = "Actualizar habilidad por ID",
+            description = "Actualiza los campos modificados de una habilidad especificada por su ID")
     public ResponseEntity<SkillDto> updateSkill(@PathVariable Long skillId,
                                                 @Valid @RequestPart("skill") SkillDto skillDto,
                                                 @RequestPart(required = false, value = "img-file") MultipartFile imgMpFile)
@@ -114,6 +125,8 @@ public class SkillController {
 
     @DeleteMapping("/{skillId}")
     @PreAuthorize("@skillSecurityEvaluator.isOwner(#skillId,authentication.name) or hasRole('ADMIN')")
+    @Operation(summary = "Eliminar habilidad por ID",
+            description = "Elimina una habilidad, si existe, especificada por su ID")
     public ResponseEntity<Void> deleteSkill(@PathVariable Long skillId) throws Exception{
         logger.debug("Eliminando habilidad de id: "+skillId+'!');
 
