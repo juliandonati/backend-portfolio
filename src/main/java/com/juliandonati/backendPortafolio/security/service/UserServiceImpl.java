@@ -11,12 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -67,9 +65,9 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public User register(RegisterRequestDto registerRequestDto) {
-        if(userRepository.findByUsername(registerRequestDto.getUsername()).isPresent())
+        if(userRepository.existsByUsername(registerRequestDto.getUsername()))
             throw new UserAlreadyExistsException("Ya existe un usuario con el nombre: " + registerRequestDto.getUsername());
-        if(userRepository.findByEmail(registerRequestDto.getEmail()).isPresent())
+        if(userRepository.existsByEmail(registerRequestDto.getEmail()))
             throw new UserAlreadyExistsException("Ya existe un usuario con el email: " + registerRequestDto.getEmail());
 
         User userToSave = userMapper.toEntity(registerRequestDto);
@@ -88,7 +86,7 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public void deleteByEmail(String email) {
-        if(userRepository.findByEmail(email).isEmpty())
+        if(!userRepository.existsByEmail(email))
             throw new ResourceNotFoundException("No existe un usuario con el email: " + email);
         userRepository.deleteByEmail(email);
     }
@@ -96,7 +94,7 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public void deleteByUsername(String username) {
-        if(userRepository.findByUsername(username).isEmpty())
+        if(!userRepository.existsByUsername(username))
             throw new ResourceNotFoundException("No existe un usuario con el nombre: " + username);
         userRepository.deleteByUsername(username);
     }
