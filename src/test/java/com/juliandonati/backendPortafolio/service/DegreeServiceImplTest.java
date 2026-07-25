@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_THROWS_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -137,7 +138,7 @@ class DegreeServiceImplTest {
 
         // Act + Assert
         assertDoesNotThrow(()->degreeService.deleteById(mockId),
-                "El método falló y lanzó una excepción, cuando debió haber finalizado con éxito y silenciosamente");
+                TEST_THROWS_MESSAGE);
         verify(degreeRepository,times(1)).existsById(mockId);
         verify(degreeRepository,times(1)).deleteById(mockId);
     }

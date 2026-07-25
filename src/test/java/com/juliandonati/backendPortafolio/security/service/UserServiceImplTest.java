@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_THROWS_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -258,7 +259,7 @@ class UserServiceImplTest {
     void testDeleteUserByIdDeletesUserSuccessfully() {
         when(userRepository.existsById(id2)).thenReturn(true);
 
-        assertDoesNotThrow(()->userService.deleteById(id2),"El método falló y lanzó una excepción, debería haber terminado con éxito y silenciosamente");
+        assertDoesNotThrow(()->userService.deleteById(id2),TEST_THROWS_MESSAGE);
         verify(userRepository,times(1)).existsById(id2);
         verify(userRepository,times(1)).deleteById(id2);
     }
@@ -277,7 +278,7 @@ class UserServiceImplTest {
     void testDeleteUserByEmailDeletesUserSuccessfully() {
         when(userRepository.existsByEmail(email2)).thenReturn(true);
 
-        assertDoesNotThrow(()->userService.deleteByEmail(email2),"El método falló y lanzó una excepción, debería haber terminado con éxito y silenciosamente");
+        assertDoesNotThrow(()->userService.deleteByEmail(email2),TEST_THROWS_MESSAGE);
         verify(userRepository,times(1)).existsByEmail(email2);
         verify(userRepository,times(1)).deleteByEmail(email2);
     }
@@ -297,7 +298,7 @@ class UserServiceImplTest {
     void testDeleteUserByUsernameDeletesUserSuccessfully() {
         when(userRepository.existsByUsername(username2)).thenReturn(true);
 
-        assertDoesNotThrow(()->userService.deleteByUsername(username2),"El método falló y lanzó una excepción, debería haber terminado con éxito y silenciosamente");
+        assertDoesNotThrow(()->userService.deleteByUsername(username2),TEST_THROWS_MESSAGE);
         verify(userRepository,times(1)).existsByUsername(username2);
         verify(userRepository,times(1)).deleteByUsername(username2);
     }

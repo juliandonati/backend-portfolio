@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_THROWS_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -121,7 +122,7 @@ class JobServiceImplTest {
         Long mockId = 45L;
         when(jobRepository.existsById(mockId)).thenReturn(true);
 
-        assertDoesNotThrow(()->jobService.deleteById(mockId),"El método falló y lanzó una excepción, debería haber terminado con éxito silenciosamente");
+        assertDoesNotThrow(()->jobService.deleteById(mockId),TEST_THROWS_MESSAGE);
         verify(jobRepository,times(1)).existsById(mockId);
         verify(jobRepository,times(1)).deleteById(mockId);
     }

@@ -8,6 +8,8 @@ import java.util.Set;
 
 public class MiscTestUtilities {
     public static final String TEST_OWNER_USERNAME = "usuarioTest";
+    public static final String TEST_THROWS_MESSAGE = "El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente";
+
     public static User createAndSaveUser(UserRepository userRepository){
         User user = new User(null,TEST_OWNER_USERNAME,"1234",TEST_OWNER_USERNAME,"email@ejemplo.com", Set.of(),null,Set.of());
         return userRepository.save(user);

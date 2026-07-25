@@ -17,8 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_OWNER_USERNAME;
-import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.createPortfolio;
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -138,7 +137,7 @@ class DegreeServiceTest {
         // DELETE
         entityManager.flush();
         entityManager.clear();
-        assertDoesNotThrow(()->degreeService.deleteById(degreeId),"El método fallo y lanzó una excepción, debería haber terminado con éxito y silenciosamente");
+        assertDoesNotThrow(()->degreeService.deleteById(degreeId),TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class,()->degreeService.findById(degreeId));
     }
 }

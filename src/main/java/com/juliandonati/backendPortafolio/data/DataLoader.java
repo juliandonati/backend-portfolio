@@ -11,6 +11,7 @@ import com.juliandonati.backendPortafolio.service.PortfolioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
+@Profile("!test")
 public class DataLoader implements CommandLineRunner {
     private final UserService userService;
     private final RoleService roleService;

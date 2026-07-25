@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_THROWS_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -136,7 +137,7 @@ class PortfolioServiceImplTest {
         Long mockId = 34L;
         when(portfolioRepository.findById(mockId)).thenReturn(Optional.of(new Portfolio()));
 
-        assertDoesNotThrow(()->portfolioService.deleteById(mockId),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertDoesNotThrow(()->portfolioService.deleteById(mockId),TEST_THROWS_MESSAGE);
         verify(portfolioRepository,times(1)).findById(mockId);
         verify(portfolioRepository,times(1)).deleteById(mockId);
     }
@@ -186,7 +187,7 @@ class PortfolioServiceImplTest {
         mockPortfolio.setPresentation(mockPresentation);
         when(presentationRepository.findById(mockPresentationId)).thenReturn(Optional.of(mockPresentation));
 
-        assertDoesNotThrow(()->portfolioService.deletePresentationById(mockPresentationId),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertDoesNotThrow(()->portfolioService.deletePresentationById(mockPresentationId),TEST_THROWS_MESSAGE);
         assertNull(mockPortfolio.getPresentation(),"Si se eliminó el Presentation, debe ser nulo en la entidad del portafolio");
         verify(presentationRepository,times(1)).findById(mockPresentationId);
         verify(portfolioRepository,times(1)).save(mockPortfolio);

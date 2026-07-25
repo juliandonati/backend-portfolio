@@ -5,7 +5,6 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.Uploader;
 
 import com.cloudinary.api.ApiResponse;
-import com.cloudinary.utils.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,6 +19,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import java.io.IOException;
 import java.util.Map;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_THROWS_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyMap;
@@ -68,7 +68,7 @@ class FileStorageServiceImplTest {
         when(mockApi.deleteAllResources(anyMap())).thenReturn(mock(ApiResponse.class));
 
         // Act + Assert
-        assertDoesNotThrow(()->fileStorageService.deleteAllFiles(), "El método falló y lanzó una excepción, debería haber finalizado exitosa y silenciosamente.");
+        assertDoesNotThrow(()->fileStorageService.deleteAllFiles(), TEST_THROWS_MESSAGE);
         verify(cloudinary,times(1)).api();
         verify(mockApi,times(1)).deleteAllResources(anyMap());
     }
@@ -94,7 +94,7 @@ class FileStorageServiceImplTest {
         when(mockUploader.destroy(eq("file_iuofdx"),anyMap())).thenReturn(mock(Map.class));
 
         // Act + Assert
-        assertDoesNotThrow(()->fileStorageService.deleteImageByUrl(mockUrl),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertDoesNotThrow(()->fileStorageService.deleteImageByUrl(mockUrl),TEST_THROWS_MESSAGE);
         verify(cloudinary,times(1)).uploader();
         verify(mockUploader,times(1)).destroy(eq("file_iuofdx"),anyMap());
     }

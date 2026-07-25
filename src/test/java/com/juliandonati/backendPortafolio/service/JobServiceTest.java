@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_THROWS_MESSAGE;
 import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.createPortfolio;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -158,9 +159,9 @@ class JobServiceTest {
         // DELETE
         entityManager.clear();
         entityManager.flush();
-        assertDoesNotThrow(()->jobService.deleteById(jobId1),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertDoesNotThrow(()->jobService.deleteById(jobId1),TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class,()->jobService.findById(jobId1));
-        assertDoesNotThrow(()->jobService.deleteById(jobId2),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertDoesNotThrow(()->jobService.deleteById(jobId2),TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class,()->jobService.findById(jobId2));
     }
 

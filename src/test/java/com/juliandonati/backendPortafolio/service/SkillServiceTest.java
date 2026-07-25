@@ -16,8 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Set;
 
-import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_OWNER_USERNAME;
-import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.createPortfolio;
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -219,9 +218,9 @@ class SkillServiceTest {
         // DELETE
         entityManager.clear();
         entityManager.flush();
-        assertDoesNotThrow(()->skillService.deleteById(skillId1),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertDoesNotThrow(()->skillService.deleteById(skillId1),TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class,()->skillService.findById(skillId1));
-        assertDoesNotThrow(()->skillService.deleteById(skillId2),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertDoesNotThrow(()->skillService.deleteById(skillId2),TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class,()->skillService.findById(skillId2));
     }
 }

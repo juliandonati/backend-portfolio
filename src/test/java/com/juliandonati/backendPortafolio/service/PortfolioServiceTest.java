@@ -13,8 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
-import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_OWNER_USERNAME;
-import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.createPortfolio;
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -122,7 +121,7 @@ class PortfolioServiceTest {
         Long aboutMeId = portfolioRepository.save(portfolio).getAboutMe().getId();
 
         // Act + Assert
-        assertDoesNotThrow(() -> portfolioService.deleteAboutMeById(aboutMeId), "El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente.");
+        assertDoesNotThrow(() -> portfolioService.deleteAboutMeById(aboutMeId), TEST_THROWS_MESSAGE);
         entityManager.flush();
         entityManager.clear();
         assertThrows(ResourceNotFoundException.class, () -> aboutMeService.findById(aboutMeId));
@@ -136,7 +135,7 @@ class PortfolioServiceTest {
         Long presentationId = portfolioRepository.save(portfolio).getPresentation().getId();
 
         // Act + Assert
-        assertDoesNotThrow(() -> portfolioService.deletePresentationById(presentationId), "El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente.");
+        assertDoesNotThrow(() -> portfolioService.deletePresentationById(presentationId), TEST_THROWS_MESSAGE);
         entityManager.flush();
         entityManager.clear();
         assertThrows(ResourceNotFoundException.class, () -> presentationService.findById(presentationId));
@@ -260,7 +259,7 @@ class PortfolioServiceTest {
         );
 
         // DELETE
-        assertDoesNotThrow(()->portfolioService.deleteById(portfolioId),"El método falló y lanzó una excepción, debería haber finalizado con éxito y silenciosamente");
+        assertDoesNotThrow(()->portfolioService.deleteById(portfolioId),TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class,()->portfolioService.findById(portfolioId));
     }
 }

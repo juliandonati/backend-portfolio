@@ -16,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_THROWS_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -115,7 +116,7 @@ class SkillServiceImplTest {
         Long mockId = 1L;
         when(skillRepository.existsById(mockId)).thenReturn(true);
 
-        assertDoesNotThrow(()->skillService.deleteById(mockId),"El método falló y lanzó una excepción, debería haber finalizado con éxito silenciosamente");
+        assertDoesNotThrow(()->skillService.deleteById(mockId),TEST_THROWS_MESSAGE);
         verify(skillRepository,times(1)).existsById(mockId);
         verify(skillRepository,times(1)).deleteById(mockId);
     }
