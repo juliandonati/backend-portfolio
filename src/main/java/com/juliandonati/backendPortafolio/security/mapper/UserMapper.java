@@ -17,10 +17,13 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public abstract class UserMapper {
-    @Autowired
     protected RoleService roleService;
-    @Autowired
     protected PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public void setRoleService(RoleService roleService){this.roleService = roleService;}
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder){this.passwordEncoder = passwordEncoder;}
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "password", source = "registerRequestDto.unencryptedPassword", qualifiedByName = "encryptPassword")
