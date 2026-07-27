@@ -20,4 +20,6 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
             "(SELECT 1 FROM Project p JOIN p.portfolio AS portf JOIN portf.owner AS owner WHERE p.id = :id AND owner.username = :username) " +
             "THEN TRUE ELSE FALSE END")
     boolean isProjectByIdOwnedByUsername(@Param("id") Long id,@Param("username") String username);
+
+    Long id(Long id);
 }
