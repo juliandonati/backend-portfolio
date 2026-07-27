@@ -1,19 +1,14 @@
 package com.juliandonati.backendPortafolio.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.juliandonati.backendPortafolio.domain.Portfolio;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProjectDto {
     private Long id;
 
