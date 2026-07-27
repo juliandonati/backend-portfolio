@@ -12,4 +12,3 @@ class BackendPortafolioApplicationTests {
 
 }
 
-// todo Tests Unitarios, luego Tests de Integración.

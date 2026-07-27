@@ -1,12 +1,8 @@
 package com.juliandonati.backendPortafolio.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.juliandonati.backendPortafolio.security.domain.User;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.HashSet;
@@ -46,10 +42,13 @@ public class Portfolio {
     @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Job> experience = new HashSet<>();
 
-    @Column(length = 8, nullable = true)
+    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Project> projects = new HashSet<>();
+
+    @Column(length = 8)
     @ColumnDefault("'#000000'")
     private String primaryColorHex;
-    @Column(length = 8, nullable = true)
+    @Column(length = 8)
     @ColumnDefault("'#ffffff'")
     private String secondaryColorHex;
 

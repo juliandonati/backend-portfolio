@@ -11,16 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface DegreeRepository extends JpaRepository<Degree, Long> {
-
-    @Override
-    @Query("SELECT d FROM Degree d " +
-            "WHERE d.id = :id")
-    Optional<Degree> findById(@Param("id") Long id);
-
-    @Override
-    @Query("SELECT d FROM Degree d")
-    List<Degree> findAll();
-
     @Query("SELECT d.imgUrl from Degree d " +
             "WHERE d.id = :id")
     Optional<String> findImgUrlByDegreeId(@Param("id") Long id);

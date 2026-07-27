@@ -11,16 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface SkillRepository extends JpaRepository<Skill, Long> {
-
-    @Override
-    @Query("SELECT s FROM Skill s " +
-            "WHERE s.id = :id")
-    Optional<Skill> findById(Long id);
-
-    @Override
-    @Query("SELECT s FROM Skill s")
-    List<Skill> findAll();
-
     @Query("SELECT skills FROM User u " +
             "JOIN u.ownedPortfolio AS p " +
             "JOIN p.skills AS skills " +
@@ -36,12 +26,6 @@ public interface SkillRepository extends JpaRepository<Skill, Long> {
     @Query("SELECT s.imgUrl from Skill s " +
             "WHERE s.id = :id")
     Optional<String> findImgUrlBySkillId(@Param("id") Long id);
-
-    @Query("SELECT s.imgUrl from User u " +
-            " JOIN u.ownedPortfolio AS p " +
-            " JOIN p.skills AS s " +
-            " WHERE u.username = :ownerUsername")
-    List<String> findImgUrlsByOwnerUsername(@Param("ownerUsername") String ownerUsername);
 
     @Query("SELECT CASE WHEN count(skillOwner) > 0 THEN TRUE ELSE FALSE END FROM Skill s " +
             "JOIN s.portfolio AS p " +
