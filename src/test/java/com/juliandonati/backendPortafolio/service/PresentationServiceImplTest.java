@@ -6,7 +6,6 @@ import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.mapper.PresentationMapper;
 import com.juliandonati.backendPortafolio.mapper.PresentationMapperImpl;
 import com.juliandonati.backendPortafolio.repository.PresentationRepository;
-import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -16,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.locks.Lock;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

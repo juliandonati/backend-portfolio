@@ -1,7 +1,6 @@
 package com.juliandonati.backendPortafolio.security.service;
 
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
-import com.juliandonati.backendPortafolio.security.dto.RoleRequestDto;
 import com.juliandonati.backendPortafolio.security.domain.Role;
 import com.juliandonati.backendPortafolio.security.exception.RoleAlreadyExistsException;
 

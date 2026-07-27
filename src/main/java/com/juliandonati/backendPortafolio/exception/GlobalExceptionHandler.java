@@ -1,7 +1,6 @@
 package com.juliandonati.backendPortafolio.exception;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import jakarta.validation.ValidationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

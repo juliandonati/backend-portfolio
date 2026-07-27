@@ -2,7 +2,6 @@ package com.juliandonati.backendPortafolio.security.config;
 
 import com.juliandonati.backendPortafolio.security.jwt.JwtAuthEntryPoint;
 import com.juliandonati.backendPortafolio.security.jwt.JwtAuthenticationFilter;
-import com.juliandonati.backendPortafolio.security.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

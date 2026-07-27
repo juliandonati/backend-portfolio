@@ -1,6 +1,5 @@
 package com.juliandonati.backendPortafolio.security.evaluator;
 
-import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.repository.SkillRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
