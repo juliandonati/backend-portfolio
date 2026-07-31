@@ -24,15 +24,20 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @Transactional
 class DegreeServiceTest {
+    private final EntityManager entityManager;
+    private final UserRepository userRepository;
+    private final PortfolioRepository portfolioRepository;
+    private final DegreeService degreeService;
     @Autowired
-    private EntityManager entityManager;
-
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private PortfolioRepository portfolioRepository;
-    @Autowired
-    private DegreeService degreeService;
+    public DegreeServiceTest(EntityManager entityManager,
+                             UserRepository userRepository,
+                             PortfolioRepository portfolioRepository,
+                             DegreeService degreeService){
+        this.entityManager = entityManager;
+        this.userRepository = userRepository;
+        this.portfolioRepository = portfolioRepository;
+        this.degreeService = degreeService;
+    }
 
     @Test
     void testFindDegreeByOwnerUsernameReturnsListOfDegreesSuccessfully() {
@@ -40,7 +45,7 @@ class DegreeServiceTest {
         Portfolio portfolioToSave = createPortfolio(userRepository);
         String name = "Generic Degree Title";
         String desc = "Generic Degree Desc";
-        Degree degreeToSave = new Degree(null,name,desc, LocalDate.now(),null,null,portfolioToSave);
+        Degree degreeToSave = new Degree(null, name, desc, LocalDate.now(), null, null, portfolioToSave);
         // Guardamos el Degree en el Repository para no depender del servicio para guardarlo (este test no trata de eso)
         portfolioToSave.setDegrees(Set.of(degreeToSave));
         portfolioRepository.save(portfolioToSave);
@@ -50,10 +55,10 @@ class DegreeServiceTest {
 
         // Assert
         assertNotNull(result);
-        assertEquals(1,result.size());
+        assertEquals(1, result.size());
         assertNotNull(result.getFirst().getId());
-        assertEquals(name,result.getFirst().getName());
-        assertEquals(desc,result.getFirst().getDescription());
+        assertEquals(name, result.getFirst().getName());
+        assertEquals(desc, result.getFirst().getDescription());
     }
 
     @Test
@@ -61,7 +66,7 @@ class DegreeServiceTest {
         // Arrange
         Portfolio portfolioToSave = createPortfolio(userRepository);
         String name = "Generic Degree Title", desc = "Generic Degree Desc", imgUrl = "https://www.imgurl.com";
-        Degree degreeToSave = new Degree(null,name,desc, LocalDate.now(),null,imgUrl,portfolioToSave);
+        Degree degreeToSave = new Degree(null, name, desc, LocalDate.now(), null, imgUrl, portfolioToSave);
         // Guardamos el Degree en el Repository para no depender del servicio para guardarlo (este test no trata de eso)
         portfolioToSave.setDegrees(Set.of(degreeToSave));
 
@@ -72,7 +77,7 @@ class DegreeServiceTest {
 
         // Assert
         assertNotNull(result);
-        assertEquals(imgUrl,result);
+        assertEquals(imgUrl, result);
     }
 
     @Test
@@ -81,7 +86,7 @@ class DegreeServiceTest {
         Portfolio portfolioToSave = createPortfolio(userRepository);
         String name = "Generic Degree Title";
         String desc = "Generic Degree Desc";
-        Degree degreeToSave = new Degree(null,name,desc, LocalDate.now(),null,null,portfolioToSave);
+        Degree degreeToSave = new Degree(null, name, desc, LocalDate.now(), null, null, portfolioToSave);
         // Guardamos el Degree en el Repository para no depender del servicio para guardarlo (este test no trata de eso)
         portfolioToSave.setDegrees(Set.of(degreeToSave));
 
@@ -92,26 +97,26 @@ class DegreeServiceTest {
 
         // Assert
         assertNotNull(result);
-        assertEquals(TEST_OWNER_USERNAME,result);
+        assertEquals(TEST_OWNER_USERNAME, result);
     }
 
     @Test
-    void testDegreeCRUDLifeCycle(){
+    void testDegreeCRUDLifeCycle() {
         // Arrange
         Portfolio portfolioToSave = createPortfolio(userRepository);
 
         // CREATE
         String name = "Generic Degree Title";
         String desc = "Generic Degree Desc";
-        Degree degreeToSave = new Degree(null,name,desc, LocalDate.now(),null,null,portfolioToSave);
+        Degree degreeToSave = new Degree(null, name, desc, LocalDate.now(), null, null, portfolioToSave);
 
         portfolioToSave.addDegree(degreeToSave);
         portfolioRepository.save(portfolioToSave);
         Degree savedDegree = portfolioRepository.save(portfolioToSave).getDegrees().stream().toList().getFirst();
 
         assertNotNull(savedDegree);
-        assertEquals(name,savedDegree.getName());
-        assertEquals(desc,savedDegree.getDescription());
+        assertEquals(name, savedDegree.getName());
+        assertEquals(desc, savedDegree.getDescription());
 
         Long degreeId = savedDegree.getId();
 
@@ -119,25 +124,27 @@ class DegreeServiceTest {
         DegreeDto searchedDegreeDto = degreeService.findById(degreeId);
 
         assertNotNull(searchedDegreeDto);
-        assertEquals(savedDegree.getId(),searchedDegreeDto.getId());
-        assertEquals(name,searchedDegreeDto.getName());
-        assertEquals(desc,searchedDegreeDto.getDescription());
+        assertEquals(savedDegree.getId(), searchedDegreeDto.getId());
+        assertEquals(name, searchedDegreeDto.getName());
+        assertEquals(desc, searchedDegreeDto.getDescription());
 
         // UPDATE
         String newName = "New Degree Title", newDesc = "New Degree Desc";
-        DegreeDto newDegreeDto = new DegreeDto(null,newName,newDesc,LocalDate.of(2010,7,7),null,null);
+        DegreeDto newDegreeDto = new DegreeDto(null, newName, newDesc, LocalDate.of(2010, 7, 7), null, null);
 
-        DegreeDto updatedDegreeDto = degreeService.update(newDegreeDto,degreeId);
+        DegreeDto updatedDegreeDto = degreeService.update(newDegreeDto, degreeId);
 
         assertNotNull(updatedDegreeDto);
-        assertEquals(degreeId,updatedDegreeDto.getId());
-        assertEquals(newName,updatedDegreeDto.getName());
-        assertEquals(newDesc,updatedDegreeDto.getDescription());
+        assertEquals(degreeId, updatedDegreeDto.getId());
+        assertEquals(newName, updatedDegreeDto.getName());
+        assertEquals(newDesc, updatedDegreeDto.getDescription());
 
         // DELETE
-        entityManager.flush();
         entityManager.clear();
-        assertDoesNotThrow(()->degreeService.deleteById(degreeId),TEST_THROWS_MESSAGE);
-        assertThrows(ResourceNotFoundException.class,()->degreeService.findById(degreeId));
+        assertDoesNotThrow(() -> {
+            degreeService.deleteById(degreeId);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
+        assertThrows(ResourceNotFoundException.class, () -> degreeService.findById(degreeId));
     }
 }

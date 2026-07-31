@@ -2,7 +2,8 @@ package com.juliandonati.backendPortafolio.domain;
 
 import com.juliandonati.backendPortafolio.security.domain.User;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.HashSet;
@@ -13,7 +14,8 @@ import java.util.Set;
 
 /* todo Revisar que la estructura de la BD sea correcta, y que las queries se encuentren optimizadas */
 
-@Data
+@Getter
+@Setter
 public class Portfolio {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -70,6 +72,7 @@ public class Portfolio {
 
     public void removeDegree(Degree degree) {
         degrees.remove(degree);
+        degree.setPortfolio(null);
     }
 
     public void addSkill(Skill skill) {
@@ -79,6 +82,7 @@ public class Portfolio {
 
     public void removeSkill(Skill skill) {
         skills.remove(skill);
+        skill.setPortfolio(null);
     }
 
 
@@ -89,7 +93,16 @@ public class Portfolio {
 
     public void removeExperience(Job job) {
         experience.remove(job);
+        job.setPortfolio(null);
     }
 
+    public void addProject(Project project){
+        projects.add(project);
+        project.setPortfolio(this);
+    }
+    public void removeProject(Project project){
+        projects.remove(project);
+        project.setPortfolio(null);
+    }
 
 }

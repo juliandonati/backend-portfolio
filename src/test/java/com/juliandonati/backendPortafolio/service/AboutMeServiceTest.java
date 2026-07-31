@@ -20,12 +20,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @Transactional
 class AboutMeServiceTest {
+    private final UserService userService;
+    private final PortfolioService portfolioService;
+    private final AboutMeService aboutMeService;
     @Autowired
-    private UserService userService;
-    @Autowired
-    private PortfolioService portfolioService;
-    @Autowired
-    private AboutMeService aboutMeService;
+    public AboutMeServiceTest(UserService userService,
+                              PortfolioService portfolioService,
+                              AboutMeService aboutMeService){
+        this.userService = userService;
+        this.portfolioService = portfolioService;
+        this.aboutMeService = aboutMeService;
+    }
 
     private final String title = "About Me";
     private final String desc = "Love to code solutions";

@@ -3,6 +3,8 @@ package com.juliandonati.backendPortafolio.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 
@@ -28,6 +30,7 @@ public class Degree {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "portfolio_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude

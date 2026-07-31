@@ -19,13 +19,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @Transactional
 class RoleServiceTest {
+    private final RoleService roleService;
+    private final RoleRepository roleRepository;
+    private final EntityManager entityManager;
     @Autowired
-    private RoleService roleService;
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private EntityManager entityManager;
+    public RoleServiceTest(RoleService roleService,
+                           RoleRepository roleRepository,
+                           EntityManager entityManager){
+        this.roleService = roleService;
+        this.roleRepository = roleRepository;
+        this.entityManager = entityManager;
+    }
 
     private final String roleName1 = "ROLE_USER";
     private final String roleDesc1 = "DESC USER";
@@ -85,7 +89,7 @@ class RoleServiceTest {
     void testRoleCRUDLifeCycle() {
         // Arrange
         Role roleToSave = new Role(null, roleName1, roleDesc1, Set.of());
-        
+
         // CREATE
         Role savedRole = roleService.save(roleToSave);
         Long roleId = savedRole.getId();
@@ -96,7 +100,7 @@ class RoleServiceTest {
                 () -> assertEquals(roleName1, savedRole.getName()),
                 () -> assertEquals(roleDesc1, savedRole.getDescription())
         );
-        
+
         // READ
         // Act
         Role searchedRole = roleService.findById(roleId);
@@ -104,7 +108,7 @@ class RoleServiceTest {
         // Assert
         assertAll("Validando los campos del searchedRole",
                 () -> assertNotNull(searchedRole),
-                () -> assertEquals(roleId,searchedRole.getId()),
+                () -> assertEquals(roleId, searchedRole.getId()),
                 () -> assertEquals(roleName1, searchedRole.getName()),
                 () -> assertEquals(roleDesc1, searchedRole.getDescription())
         );
@@ -112,9 +116,11 @@ class RoleServiceTest {
         // Los roles no tienen update, por lo cual no existe tal parte del test del ciclo de vida CRUD de los roles
 
         // DELETE
-        assertDoesNotThrow(()->roleService.deleteById(roleId),TEST_THROWS_MESSAGE);
-        entityManager.flush();
         entityManager.clear();
-        assertTrue(roleRepository.findById(roleId).isEmpty());
+        assertDoesNotThrow(() -> {
+            roleService.deleteById(roleId);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
+        assertFalse(roleRepository.existsById(roleId));
     }
 }

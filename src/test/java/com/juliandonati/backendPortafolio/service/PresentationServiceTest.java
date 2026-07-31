@@ -21,12 +21,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @Transactional
 class PresentationServiceTest {
+    private final PortfolioRepository portfolioRepository;
+    private final PresentationService presentationService;
+    private final UserRepository userRepository;
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private PortfolioRepository portfolioRepository;
-    @Autowired
-    private PresentationService presentationService;
+    public PresentationServiceTest(PortfolioRepository portfolioRepository,
+                                   PresentationService presentationService,
+                                   UserRepository userRepository){
+        this.portfolioRepository = portfolioRepository;
+        this.presentationService = presentationService;
+        this.userRepository = userRepository;
+    }
 
     private final String presentationName = "nombre pres.";
     private final String presentationTitle = "titulo pres.";

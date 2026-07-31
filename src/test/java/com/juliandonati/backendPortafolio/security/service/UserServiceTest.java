@@ -24,16 +24,20 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @Transactional
 class UserServiceTest {
+    private final UserService userService;
+    private final UserRepository userRepository;
+    private final PortfolioRepository portfolioRepository;
+    private final EntityManager entityManager;
     @Autowired
-    private UserService userService;
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PortfolioRepository portfolioRepository;
-
-    @Autowired
-    private EntityManager entityManager;
+    public UserServiceTest(UserService userService,
+                           UserRepository userRepository,
+                           PortfolioRepository portfolioRepository,
+                           EntityManager entityManager){
+        this.userService = userService;
+        this.userRepository = userRepository;
+        this.portfolioRepository = portfolioRepository;
+        this.entityManager = entityManager;
+    }
 
     // PONER NOMBRES DISTINTOS A username1 y username2, QUE NINGUNO INCLUYA AL OTRO, PARA COMPROBAR QUE EL FILTRADO FUNCIONE
 
@@ -134,9 +138,11 @@ class UserServiceTest {
         User user = new User(null, username1, password1, dname1, email1, Set.of(), null, Set.of());
         userRepository.save(user);
 
-        assertDoesNotThrow(() -> userService.deleteByEmail(email1), TEST_THROWS_MESSAGE);
-        entityManager.flush();
         entityManager.clear();
+        assertDoesNotThrow(() -> {
+            userService.deleteByEmail(email1);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
         assertTrue(userRepository.findByEmail(email1).isEmpty());
     }
 
@@ -145,9 +151,11 @@ class UserServiceTest {
         User user = new User(null, username1, password1, dname1, email1, Set.of(), null, Set.of());
         userRepository.save(user);
 
-        assertDoesNotThrow(() -> userService.deleteByUsername(username1), TEST_THROWS_MESSAGE);
-        entityManager.flush();
         entityManager.clear();
+        assertDoesNotThrow(() -> {
+            userService.deleteByUsername(username1);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
         assertTrue(userRepository.findByUsername(username1).isEmpty());
     }
 
@@ -186,28 +194,30 @@ class UserServiceTest {
 
         assertAll("Validando los campos del User guardado...",
                 () -> assertNotNull(userId),
-                () -> assertEquals(username1,savedUser.getUsername()),
-                () -> assertEquals(password1,savedUser.getPassword()), // password1 sería la contraseña ya encriptada en este caso
-                () -> assertEquals(dname1,savedUser.getDisplayName()),
-                () -> assertEquals(email1,savedUser.getEmail())
+                () -> assertEquals(username1, savedUser.getUsername()),
+                () -> assertEquals(password1, savedUser.getPassword()), // password1 sería la contraseña ya encriptada en este caso
+                () -> assertEquals(dname1, savedUser.getDisplayName()),
+                () -> assertEquals(email1, savedUser.getEmail())
         );
         // READ
         User searchedUser = userService.findById(userId);
 
         assertAll("Validando los campos del User guardado...",
-                () -> assertEquals(userId,savedUser.getId()),
-                () -> assertEquals(username1,searchedUser.getUsername()),
-                () -> assertEquals(password1,searchedUser.getPassword()), // password1 sería la contraseña ya encriptada en este caso
-                () -> assertEquals(dname1,searchedUser.getDisplayName()),
-                () -> assertEquals(email1,searchedUser.getEmail())
+                () -> assertEquals(userId, savedUser.getId()),
+                () -> assertEquals(username1, searchedUser.getUsername()),
+                () -> assertEquals(password1, searchedUser.getPassword()), // password1 sería la contraseña ya encriptada en este caso
+                () -> assertEquals(dname1, searchedUser.getDisplayName()),
+                () -> assertEquals(email1, searchedUser.getEmail())
         );
         // UPDATE
         // todo Implementar UPDATE de User
 
         // DELETE
-        assertDoesNotThrow(()->userService.deleteById(userId),TEST_THROWS_MESSAGE);
-        entityManager.flush();
         entityManager.clear();
-        assertTrue(userRepository.findById(userId).isEmpty());
+        assertDoesNotThrow(() -> {
+            userService.deleteById(userId);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
+        assertFalse(userRepository.existsById(userId));
     }
 }

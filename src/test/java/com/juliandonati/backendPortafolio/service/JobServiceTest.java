@@ -24,15 +24,21 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @Transactional
 class JobServiceTest {
-    @Autowired
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
+    private final UserRepository userRepository;
+    private final PortfolioRepository portfolioRepository;
+    private final JobService jobService;
 
     @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private PortfolioRepository portfolioRepository;
-    @Autowired
-    private JobService jobService;
+    public JobServiceTest(EntityManager entityManager,
+                          UserRepository userRepository,
+                          PortfolioRepository portfolioRepository,
+                          JobService jobService) {
+        this.entityManager = entityManager;
+        this.userRepository = userRepository;
+        this.portfolioRepository = portfolioRepository;
+        this.jobService = jobService;
+    }
 
     private final String jobName1 = "Google";
     private final String jobName2 = "Apple";
@@ -40,7 +46,7 @@ class JobServiceTest {
     private final String jobPos2 = "Clerk";
     private final String jobDesc1 = "desc. placeholder 1";
     private final String jobDesc2 = "desc. placeholder 2";
-    private final LocalDate jobSDate2 =  LocalDate.of(2010, 12, 10), jobEDate2 = LocalDate.of(2012, 6, 1);
+    private final LocalDate jobSDate2 = LocalDate.of(2010, 12, 10), jobEDate2 = LocalDate.of(2012, 6, 1);
 
     @Test
     void testFindJobByOwnerUsernameReturnsListOfJobs() {
@@ -49,7 +55,7 @@ class JobServiceTest {
 
         Job
                 job1 = new Job(null, jobName1, jobPos1, jobDesc1, LocalDate.now(), null, null),
-                job2 = new Job(null, jobName2, jobPos2, jobDesc2,jobSDate2,jobEDate2, null);
+                job2 = new Job(null, jobName2, jobPos2, jobDesc2, jobSDate2, jobEDate2, null);
         portfolio.addExperience(job1);
         portfolio.addExperience(job2);
         portfolioRepository.save(portfolio);
@@ -57,8 +63,8 @@ class JobServiceTest {
         // Act
         String ownerUsername = MiscTestUtilities.TEST_OWNER_USERNAME;
         List<JobDto> result = jobService.findByOwnerUsername(ownerUsername);
-        JobDto jobDto1 = result.stream().filter(jobDto -> jobDto.getName().equals(jobName1)).findFirst().orElseThrow(()->new AssertionError("No se encontró el trabajo "+jobName1+" en la Base de Datos")),
-                jobDto2 = result.stream().filter(jobDto -> jobDto.getName().equals(jobName2)).findFirst().orElseThrow(()->new AssertionError("No se encontró el trabajo "+jobName2+" en la Base de Datos"));
+        JobDto jobDto1 = result.stream().filter(jobDto -> jobDto.getName().equals(jobName1)).findFirst().orElseThrow(() -> new AssertionError("No se encontró el trabajo " + jobName1 + " en la Base de Datos")),
+                jobDto2 = result.stream().filter(jobDto -> jobDto.getName().equals(jobName2)).findFirst().orElseThrow(() -> new AssertionError("No se encontró el trabajo " + jobName2 + " en la Base de Datos"));
 
         // Assert
         assertAll("Validando los campos de los JobDto...",
@@ -85,7 +91,7 @@ class JobServiceTest {
 
         Job
                 job1 = new Job(null, jobName1, jobPos1, jobDesc1, LocalDate.now(), null, null),
-                job2 = new Job(null, jobName2, jobPos2, jobDesc2,jobSDate2,jobEDate2, null);
+                job2 = new Job(null, jobName2, jobPos2, jobDesc2, jobSDate2, jobEDate2, null);
 
         portfolio.addExperience(job1);
         portfolio.addExperience(job2);
@@ -93,18 +99,18 @@ class JobServiceTest {
         Job savedJob1 = savedJobs.stream().filter(job -> job.getName().equals(jobName1)).findFirst().orElse(null),
                 savedJob2 = savedJobs.stream().filter(job -> job.getName().equals(jobName2)).findFirst().orElse(null);
         Long jobId1, jobId2;
-        if(savedJob1 != null)
+        if (savedJob1 != null)
             jobId1 = savedJob1.getId();
         else
             jobId1 = null;
-        if(savedJob2 != null)
+        if (savedJob2 != null)
             jobId2 = savedJob2.getId();
         else
             jobId2 = null;
 
-        assertNotNull(savedJobs,"No se guardó ningún trabajo");
-        assertNotNull(savedJob1,"No se guardó el trabajo 1");
-        assertNotNull(savedJob2,"No se guardó el trabajo 2");
+        assertNotNull(savedJobs, "No se guardó ningún trabajo");
+        assertNotNull(savedJob1, "No se guardó el trabajo 1");
+        assertNotNull(savedJob2, "No se guardó el trabajo 2");
         assertAll("Validando los campos de los Job...",
                 () -> assertEquals(2, savedJobs.size()),
                 () -> assertNotNull(jobId1),
@@ -120,17 +126,16 @@ class JobServiceTest {
         );
 
         // READ
-        JobDto searchedJob1 = jobService.findById(jobId1)
-                , searchedJob2 = jobService.findById(jobId2);
+        JobDto searchedJob1 = jobService.findById(jobId1), searchedJob2 = jobService.findById(jobId2);
 
         assertAll("Validando los campos del Job...",
                 () -> assertNotNull(searchedJob1),
-                () -> assertEquals(jobId1,searchedJob1.getId()),
+                () -> assertEquals(jobId1, searchedJob1.getId()),
                 () -> assertEquals(jobName1, searchedJob1.getName()),
                 () -> assertEquals(jobPos1, searchedJob1.getPosition()),
                 () -> assertEquals(jobDesc1, searchedJob1.getDescription()),
                 () -> assertNotNull(searchedJob2),
-                () -> assertEquals(jobId2,searchedJob2.getId()),
+                () -> assertEquals(jobId2, searchedJob2.getId()),
                 () -> assertEquals(jobName2, searchedJob2.getName()),
                 () -> assertEquals(jobPos2, searchedJob2.getPosition()),
                 () -> assertEquals(jobDesc2, searchedJob2.getDescription()),
@@ -143,13 +148,13 @@ class JobServiceTest {
         String newJobPos2 = "Manager";
         String newJobDesc2 = "updated job desc.";
         LocalDate newJobSDate2 = LocalDate.now();
-        JobDto newJob2 = new JobDto(null,newJobName2,newJobPos2,newJobDesc2,newJobSDate2,null);
+        JobDto newJob2 = new JobDto(null, newJobName2, newJobPos2, newJobDesc2, newJobSDate2, null);
 
-        JobDto updatedJob2 = jobService.update(newJob2,jobId2);
+        JobDto updatedJob2 = jobService.update(newJob2, jobId2);
 
         assertAll("Validando los campos del Job...",
                 () -> assertNotNull(updatedJob2),
-                () -> assertEquals(jobId2,updatedJob2.getId()),
+                () -> assertEquals(jobId2, updatedJob2.getId()),
                 () -> assertEquals(newJobName2, updatedJob2.getName()),
                 () -> assertEquals(newJobPos2, updatedJob2.getPosition()),
                 () -> assertEquals(newJobDesc2, updatedJob2.getDescription()),
@@ -158,11 +163,16 @@ class JobServiceTest {
         );
         // DELETE
         entityManager.clear();
-        entityManager.flush();
-        assertDoesNotThrow(()->jobService.deleteById(jobId1),TEST_THROWS_MESSAGE);
-        assertThrows(ResourceNotFoundException.class,()->jobService.findById(jobId1));
-        assertDoesNotThrow(()->jobService.deleteById(jobId2),TEST_THROWS_MESSAGE);
-        assertThrows(ResourceNotFoundException.class,()->jobService.findById(jobId2));
+        assertDoesNotThrow(() -> {
+            jobService.deleteById(jobId1);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
+        assertThrows(ResourceNotFoundException.class, () -> jobService.findById(jobId1));
+        assertDoesNotThrow(() -> {
+            jobService.deleteById(jobId2);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
+        assertThrows(ResourceNotFoundException.class, () -> jobService.findById(jobId2));
     }
 
 }

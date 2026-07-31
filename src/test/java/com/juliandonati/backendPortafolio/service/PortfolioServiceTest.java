@@ -20,21 +20,28 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @Transactional
 class PortfolioServiceTest {
-    @Autowired
-    private PortfolioService portfolioService;
-    @Autowired
-    private PortfolioRepository portfolioRepository;
-    @Autowired
-    private UserRepository userRepository;
+    private final PortfolioService portfolioService;
+    private final PortfolioRepository portfolioRepository;
+    private final UserRepository userRepository;
+    private final AboutMeService aboutMeService; // Para comprobar eliminación del AboutMe
+    private final PresentationService presentationService; // Para comprobar eliminación del Presentation
+    private final EntityManager entityManager;
 
     @Autowired
-    private AboutMeService aboutMeService; // Para comprobar eliminación del AboutMe
+    public PortfolioServiceTest(PortfolioService portfolioService,
+                                PortfolioRepository portfolioRepository,
+                                UserRepository userRepository,
+                                AboutMeService aboutMeService,
+                                PresentationService presentationService,
+                                EntityManager entityManager) {
+        this.portfolioService = portfolioService;
+        this.portfolioRepository = portfolioRepository;
+        this.userRepository = userRepository;
+        this.aboutMeService = aboutMeService;
+        this.presentationService = presentationService;
+        this.entityManager = entityManager;
+    }
 
-    @Autowired
-    private PresentationService presentationService; // Para comprobar eliminación del Presentation
-
-    @Autowired
-    EntityManager entityManager;
 
     private final String aboutMeTitle = "AboutMe Test Title";
     private final String aboutMeDesc = "AboutMe Test Desc";
@@ -121,9 +128,11 @@ class PortfolioServiceTest {
         Long aboutMeId = portfolioRepository.save(portfolio).getAboutMe().getId();
 
         // Act + Assert
-        assertDoesNotThrow(() -> portfolioService.deleteAboutMeById(aboutMeId), TEST_THROWS_MESSAGE);
-        entityManager.flush();
         entityManager.clear();
+        assertDoesNotThrow(() -> {
+            portfolioService.deleteAboutMeById(aboutMeId);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class, () -> aboutMeService.findById(aboutMeId));
     }
 
@@ -135,9 +144,11 @@ class PortfolioServiceTest {
         Long presentationId = portfolioRepository.save(portfolio).getPresentation().getId();
 
         // Act + Assert
-        assertDoesNotThrow(() -> portfolioService.deletePresentationById(presentationId), TEST_THROWS_MESSAGE);
-        entityManager.flush();
         entityManager.clear();
+        assertDoesNotThrow(() -> {
+            portfolioService.deletePresentationById(presentationId);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class, () -> presentationService.findById(presentationId));
     }
 
@@ -184,7 +195,7 @@ class PortfolioServiceTest {
 
         // READ
         Portfolio searchedPortfolio = portfolioService.findById(portfolioId);
-        
+
         assertAll("Validando los campos del Portfolio...",
                 () -> assertNotNull(searchedPortfolio),
                 () -> assertEquals(portfolioId, searchedPortfolio.getId()),
@@ -209,18 +220,18 @@ class PortfolioServiceTest {
         // UPDATE
         Portfolio newPortfolio = new Portfolio();
         newPortfolio.setOwner(
-                userRepository.findByUsername(TEST_OWNER_USERNAME).orElseThrow(()->new AssertionError("No se cargó correctamente el usuario de prueba"))
+                userRepository.findByUsername(TEST_OWNER_USERNAME).orElseThrow(() -> new AssertionError("No se cargó correctamente el usuario de prueba"))
         );
         newPortfolio.setSkills(savedPortfolio.getSkills());
         newPortfolio.setExperience(savedPortfolio.getExperience());
         newPortfolio.setDegrees(savedPortfolio.getDegrees());
-        
+
         String newAboutMeTitle = "New AboutMe Title!!!";
         String newAboutMeDesc = "New AboutMe Desc!!!";
         String newAboutMeImgUrl = "https://www.newaboutmeimgurl.com";
         String newAboutMeBtnText = "New AboutMe Btn Text!!!";
         String newAboutMeBtnUrl = "https://www.newaboutmebtnurl.com";
-        newPortfolio.setAboutMe(new AboutMe(savedPortfolio.getAboutMe().getId(),newAboutMeTitle,newAboutMeDesc,newAboutMeImgUrl,newAboutMeBtnText,newAboutMeBtnUrl,newPortfolio));
+        newPortfolio.setAboutMe(new AboutMe(savedPortfolio.getAboutMe().getId(), newAboutMeTitle, newAboutMeDesc, newAboutMeImgUrl, newAboutMeBtnText, newAboutMeBtnUrl, newPortfolio));
 
         String newPresentationName = "New Presentation Name!!!";
         String newPresentationTitle = "New Presentation Title!!!";
@@ -228,13 +239,13 @@ class PortfolioServiceTest {
         String newPresentationEmail = "new.presentation@test.com";
         String newPresentationPhoneNumber = "541234567895";
         String newPresentationImgUrl = "https://newPresentationimg.net";
-        newPortfolio.setPresentation(new Presentation(savedPortfolio.getPresentation().getId(),newPresentationName,newPresentationTitle,newPresentationDesc,newPresentationImgUrl,newPresentationEmail,newPresentationPhoneNumber,newPortfolio));
+        newPortfolio.setPresentation(new Presentation(savedPortfolio.getPresentation().getId(), newPresentationName, newPresentationTitle, newPresentationDesc, newPresentationImgUrl, newPresentationEmail, newPresentationPhoneNumber, newPortfolio));
 
-        portfolio.addSkill(new Skill(null,"placeholder4","placeholder","placeholder",null,"placeholder",null));
+        portfolio.addSkill(new Skill(null, "placeholder4", "placeholder", "placeholder", null, "placeholder", null));
         portfolio.addDegree(new Degree(null, "placeholder2", "placeholder", LocalDate.now(), null, null, portfolio));
         portfolio.addExperience(new Job(null, "placeholder6", "placeholder", "placeholder", LocalDate.now(), null, portfolio));
-        
-        Portfolio updatedPortfolio = portfolioService.update(newPortfolio,portfolioId);
+
+        Portfolio updatedPortfolio = portfolioService.update(newPortfolio, portfolioId);
 
 
         assertAll("Validando los campos del Portfolio...",
@@ -259,7 +270,11 @@ class PortfolioServiceTest {
         );
 
         // DELETE
-        assertDoesNotThrow(()->portfolioService.deleteById(portfolioId),TEST_THROWS_MESSAGE);
-        assertThrows(ResourceNotFoundException.class,()->portfolioService.findById(portfolioId));
+        entityManager.clear();
+        assertDoesNotThrow(() -> {
+            portfolioService.deleteById(portfolioId);
+            entityManager.flush();
+        }, TEST_THROWS_MESSAGE);
+        assertThrows(ResourceNotFoundException.class, () -> portfolioService.findById(portfolioId));
     }
 }
