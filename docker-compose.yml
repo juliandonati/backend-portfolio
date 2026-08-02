@@ -1,17 +1,18 @@
 version: '3.8'
 
 services:
-  app:
+  backend:
     build: .
     container_name: backend-portafolio-app
     ports:
       - "8080:8080"
     environment:
-      NEON_DB_URL: ${NEON_DB_URL}
-      NEON_DB_USERNAME: ${NEON_DB_USERNAME}
-      NEON_DB_PASSWORD: ${NEON_DB_PASSWORD}
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRATION: ${JWT_EXPIRATION}
       CLOUDINARY_URL: ${CLOUDINARY_URL}
-
       ACTIVE_PROFILE: ${ACTIVE_PROFILE}
+      DEFAULT_ADMIN_PASSWORD: ${DEFAULT_ADMIN_PASSWORD]
+      ALLOWED_CORS_URL: ${ALLOWED_CORS_URL}
