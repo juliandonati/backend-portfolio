@@ -27,6 +27,8 @@ class PortfolioServiceImplTest {
     PresentationRepository presentationRepository;
     @Mock
     AboutMeRepository aboutMeRepository;
+    @Mock
+    FileStorageService fileStorageService;
 
     @InjectMocks
     PortfolioServiceImpl portfolioService;
@@ -201,6 +203,35 @@ class PortfolioServiceImplTest {
         assertThrows(ResourceNotFoundException.class,()->portfolioService.deletePresentationById(mockPresentationId));
         verify(presentationRepository,times(1)).findById(mockPresentationId);
         verify(portfolioRepository,never()).save(any(Portfolio.class));
+    }
+
+    @Test
+    void testDeleteAllPortfolioImagesByIdDeletesAllPortfolioImagesSuccessfully() throws Exception{
+        // Arrange
+        Long mockId = 1L;
+        Portfolio mockPortfolio = new Portfolio();
+        Presentation mockPresentation1 = new Presentation();
+        AboutMe mockAboutMe1 = new AboutMe();
+        mockPresentation1.setImgUrl("https://www.imagen.com");
+        mockAboutMe1.setBgImgUrl("https://imgurl.com");
+        mockPortfolio.setPresentation(mockPresentation1);
+        mockPortfolio.setAboutMe(mockAboutMe1);
+        when(portfolioRepository.findById(mockId)).thenReturn(Optional.of(mockPortfolio));
+        // Act + Assert
+        assertDoesNotThrow(()->portfolioService.deleteAllPortfolioImagesById(mockId));
+        verify(portfolioRepository,times(1)).findById(mockId);
+        verify(fileStorageService,times(2)).deleteImageByUrl(anyString());
+    }
+
+    @Test
+    void testDeleteAllPortfolioImagesByIdThrowsResourceNotFoundException() throws Exception{
+        // Arrange
+        Long unexistentId = 99L;
+        when(portfolioRepository.findById(unexistentId)).thenReturn(Optional.empty());
+        // Act + Assert
+        assertThrows(ResourceNotFoundException.class,()->portfolioService.deleteAllPortfolioImagesById(unexistentId));
+        verify(portfolioRepository,times(1)).findById(unexistentId);
+        verify(fileStorageService,never()).deleteImageByUrl(anyString());
     }
 
 }

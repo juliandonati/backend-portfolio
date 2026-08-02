@@ -1,8 +1,6 @@
 package com.juliandonati.backendPortafolio.service;
 
-import com.juliandonati.backendPortafolio.domain.AboutMe;
-import com.juliandonati.backendPortafolio.domain.Portfolio;
-import com.juliandonati.backendPortafolio.domain.Presentation;
+import com.juliandonati.backendPortafolio.domain.*;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.repository.AboutMeRepository;
 import com.juliandonati.backendPortafolio.repository.PortfolioRepository;
@@ -11,12 +9,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PortfolioServiceImpl implements PortfolioService{
     private final PortfolioRepository portfolioRepository;
     private final AboutMeRepository aboutMeRepository;
     private final PresentationRepository presentationRepository;
+    private final FileStorageService fileStorageService;
     @Override
     @Transactional(readOnly = true)
     public Portfolio findById(long id) {
@@ -74,11 +76,17 @@ public class PortfolioServiceImpl implements PortfolioService{
     }
 
     @Override
-    public void deleteAboutMeById(long aboutMeId) {
+    public void deleteAboutMeById(long aboutMeId) throws Exception {
         AboutMe aboutMe = aboutMeRepository.findById(aboutMeId).orElseThrow(()->new ResourceNotFoundException("No se encontró un AboutMe con la id: "+ aboutMeId));
 
         Portfolio portfolio = aboutMe.getPortfolio();
+
+
         if(portfolio != null){
+            String aboutMeImgUrl = aboutMe.getBgImgUrl();
+            if(aboutMeImgUrl != null && !aboutMeImgUrl.trim().isEmpty())
+                fileStorageService.deleteImageByUrl(aboutMeImgUrl);
+
             portfolio.setAboutMe(null);
             aboutMe.setPortfolio(null);
             portfolioRepository.save(portfolio);
@@ -86,14 +94,34 @@ public class PortfolioServiceImpl implements PortfolioService{
     }
 
     @Override
-    public void deletePresentationById(long presentationId) {
+    public void deletePresentationById(long presentationId) throws Exception{
         Presentation presentation = presentationRepository.findById(presentationId).orElseThrow(()->new ResourceNotFoundException("No se encontró un Presentation con la id: "+ presentationId));
 
         Portfolio portfolio = presentation.getPortfolio();
         if(portfolio != null){
+            String presentationImgUrl = presentation.getImgUrl();
+            if(presentationImgUrl != null && !presentationImgUrl.trim().isEmpty())
+                fileStorageService.deleteImageByUrl(presentationImgUrl);
+            
             portfolio.setPresentation(null);
             presentation.setPortfolio(null);
             portfolioRepository.save(portfolio);
+        }
+    }
+
+    @Override
+    public void deleteAllPortfolioImagesById(Long id) throws Exception {
+        Portfolio portfolio = portfolioRepository.findById(id)
+                .orElseThrow(()->new ResourceNotFoundException("No se encontró un portfolio con la id: " + id));
+
+        List<String> imgUrlList = new ArrayList<>(portfolio.getSkills().stream().map(Skill::getImgUrl).toList());
+        imgUrlList.add(portfolio.getPresentation().getImgUrl());
+        imgUrlList.add(portfolio.getAboutMe().getBgImgUrl());
+        imgUrlList.addAll(portfolio.getDegrees().stream().map(Degree::getImgUrl).toList());
+
+        for(String imgUrl : imgUrlList){
+            if(imgUrl != null && !imgUrl.trim().isEmpty())
+                fileStorageService.deleteImageByUrl(imgUrl);
         }
     }
 }

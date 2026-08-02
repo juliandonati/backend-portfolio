@@ -11,6 +11,8 @@ public interface PortfolioService {
     Portfolio update(Portfolio portfolio, Long id);
 
     void deleteById(long id);
-    void deleteAboutMeById(long aboutMeId);
-    void deletePresentationById(long presentationId);
+    void deleteAboutMeById(long aboutMeId) throws Exception;
+    void deletePresentationById(long presentationId) throws Exception;
+
+    void deleteAllPortfolioImagesById(Long id) throws Exception;
 }

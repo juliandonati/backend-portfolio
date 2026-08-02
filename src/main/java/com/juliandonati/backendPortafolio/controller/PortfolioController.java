@@ -1,8 +1,6 @@
 package com.juliandonati.backendPortafolio.controller;
 
-import com.juliandonati.backendPortafolio.domain.Degree;
 import com.juliandonati.backendPortafolio.domain.Portfolio;
-import com.juliandonati.backendPortafolio.domain.Skill;
 import com.juliandonati.backendPortafolio.dto.PortfolioResponseDto;
 import com.juliandonati.backendPortafolio.exception.DuplicatedAttributeException;
 import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
@@ -89,15 +87,7 @@ public class PortfolioController {
         logger.debug("{} tiene un portafolio, eliminando...", ownerUsername);
 
         logger.debug("Eliminando todas las imágenes del portafolio...");
-        List<String> imgUrlList = new ArrayList<>(portfolio.getSkills().stream().map(Skill::getImgUrl).toList());
-        imgUrlList.add(portfolio.getPresentation().getImgUrl());
-        imgUrlList.addAll(portfolio.getDegrees().stream().map(Degree::getImgUrl).toList());
-
-        for(String imgUrl : imgUrlList){
-            if(imgUrl != null && !imgUrl.trim().isEmpty())
-                fileStorageService.deleteImageByUrl(imgUrl);
-        }
-
+        portfolioService.deleteAllPortfolioImagesById(portfolio.getId());
         logger.debug("¡Imágenes eliminadas con éxito!");
 
         user.setOwnedPortfolio(null); // orphanRemoval elimina automáticamente el portfolio

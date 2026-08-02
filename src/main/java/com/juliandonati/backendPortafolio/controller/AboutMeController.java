@@ -90,8 +90,7 @@ public class AboutMeController {
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
     @Operation(summary = "Eliminar About-Me por nombre del dueño de un portafolio",
             description = "Elimina un About-Me, si existe, especificado por el nombre del dueño del portafolio al que pertenece")
-
-    public ResponseEntity<Void> deleteAboutMe(@PathVariable String ownerUsername){
+    public ResponseEntity<Void> deleteAboutMe(@PathVariable String ownerUsername) throws Exception{
         logger.debug("Eliminando el About-Me de {}", ownerUsername);
 
         // todo Cuando permita subir imágenes, actualizar que aquí se borre.
