@@ -17,7 +17,7 @@ import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles("test")
+
 @Transactional
 class AboutMeServiceTest {
     private final UserService userService;

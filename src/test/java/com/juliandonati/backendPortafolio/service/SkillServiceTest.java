@@ -20,7 +20,7 @@ import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles("test")
+
 @Transactional
 class SkillServiceTest {
     @Autowired

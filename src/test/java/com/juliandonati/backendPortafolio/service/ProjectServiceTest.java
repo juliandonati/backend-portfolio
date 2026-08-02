@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@ActiveProfiles("test")
+
 class ProjectServiceTest {
     private final ProjectService projectService;
     private final ProjectRepository projectRepository;

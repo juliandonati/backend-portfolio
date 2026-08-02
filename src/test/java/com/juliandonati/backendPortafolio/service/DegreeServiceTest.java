@@ -21,7 +21,7 @@ import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles("test")
+
 @Transactional
 class DegreeServiceTest {
     private final EntityManager entityManager;

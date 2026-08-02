@@ -18,7 +18,7 @@ import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.creat
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles("test")
+
 @Transactional
 class PresentationServiceTest {
     private final PortfolioRepository portfolioRepository;

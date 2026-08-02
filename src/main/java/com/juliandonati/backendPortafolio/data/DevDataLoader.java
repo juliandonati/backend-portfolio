@@ -24,7 +24,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Profile("dev")
 @Order(2)
-public class TestDataLoader implements CommandLineRunner {
+public class DevDataLoader implements CommandLineRunner {
     private final UserService userService;
     private final RoleService roleService;
     private final PortfolioService portfolioService;
@@ -34,28 +34,6 @@ public class TestDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Role userRole;
-        try{
-            userRole = roleService.findByName("ROLE_USER");
-        }
-        catch(ResourceNotFoundException ex){
-            userRole = new Role();
-            userRole.setName("ROLE_USER");
-            userRole.setDescription("Rol genérico de usuario");
-            roleService.save(userRole);
-        }
-
-        Role adminRole;
-        try{
-            adminRole = roleService.findByName("ROLE_ADMIN");
-        }
-        catch(ResourceNotFoundException ex){
-            adminRole = new Role();
-            adminRole.setName("ROLE_ADMIN");
-            adminRole.setDescription("Rol genérico de administrador");
-            roleService.save(adminRole);
-        }
-
         User userTestUser;
         try{
             userTestUser = userService.findByUsername("usuario");
