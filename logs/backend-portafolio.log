@@ -2667,3 +2667,99 @@ org.springframework.security.core.userdetails.UsernameNotFoundException: No se e
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
 2026-08-02 14:05:09.356 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-08-02 14:05:09.356 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-08-02 14:43:03.781 INFO  c.j.b.BackendPortafolioApplicationTests - Starting BackendPortafolioApplicationTests using Java 21.0.10 with PID 22236 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-08-02 14:43:03.796 DEBUG c.j.b.BackendPortafolioApplicationTests - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-08-02 14:43:03.797 INFO  c.j.b.BackendPortafolioApplicationTests - The following 1 profile is active: "test"
+2026-08-02 14:43:05.068 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-02 14:43:05.189 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110 ms. Found 9 JPA repository interfaces.
+2026-08-02 14:43:06.644 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-02 14:43:06.685 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-08-02 14:43:06.902 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-08-02 14:43:06.903 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-08-02 14:43:08.239 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 14:43:08.373 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-02 14:43:10.021 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-08-02 14:43:10.233 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-02 14:43:11.330 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-08-02 14:43:11.416 INFO  c.j.b.BackendPortafolioApplicationTests - Started BackendPortafolioApplicationTests in 8.122 seconds (process running for 9.805)
+2026-08-02 14:43:13.749 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.security.service.RoleServiceTest]: RoleServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:13.807 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.security.service.RoleServiceTest
+2026-08-02 14:43:14.511 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.security.service.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:14.519 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.security.service.UserServiceTest
+2026-08-02 14:43:14.954 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.AboutMeServiceTest]: AboutMeServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:14.994 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.AboutMeServiceTest
+2026-08-02 14:43:15.160 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.DegreeServiceTest]: DegreeServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:15.163 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.DegreeServiceTest
+2026-08-02 14:43:15.518 DEBUG c.j.b.service.FileStorageServiceImpl - Eliminando imagen de publicId = file_iuofdx
+2026-08-02 14:43:15.518 DEBUG c.j.b.service.FileStorageServiceImpl - ¡Imagen eliminada con éxito!
+2026-08-02 14:43:15.771 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.JobServiceTest]: JobServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:15.773 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.JobServiceTest
+2026-08-02 14:43:16.073 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.PortfolioServiceTest]: PortfolioServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:16.075 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.PortfolioServiceTest
+2026-08-02 14:43:16.190 DEBUG c.j.b.service.FileStorageServiceImpl - Eliminando imagen de publicId = aboutmeimg
+2026-08-02 14:43:17.417 DEBUG c.j.b.service.FileStorageServiceImpl - Eliminando imagen de publicId = presentationimg
+2026-08-02 14:43:17.993 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.PresentationServiceTest]: PresentationServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:17.995 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.PresentationServiceTest
+2026-08-02 14:43:18.250 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.ProjectServiceTest]: ProjectServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:18.251 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.ProjectServiceTest
+2026-08-02 14:43:18.420 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.SkillServiceTest]: SkillServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:43:18.422 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.SkillServiceTest
+2026-08-02 14:43:18.512 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 14:43:18.515 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-08-02 14:43:18.516 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-08-02 14:46:13.433 INFO  c.j.b.BackendPortafolioApplicationTests - Starting BackendPortafolioApplicationTests using Java 21.0.10 with PID 6212 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-08-02 14:46:13.434 DEBUG c.j.b.BackendPortafolioApplicationTests - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-08-02 14:46:13.434 INFO  c.j.b.BackendPortafolioApplicationTests - The following 1 profile is active: "test"
+2026-08-02 14:46:14.432 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-02 14:46:14.537 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 95 ms. Found 9 JPA repository interfaces.
+2026-08-02 14:46:15.691 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-02 14:46:15.735 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-08-02 14:46:15.903 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-08-02 14:46:15.905 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-08-02 14:46:16.988 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 14:46:17.101 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-02 14:46:18.520 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-08-02 14:46:18.691 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-02 14:46:19.618 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-08-02 14:46:19.679 INFO  c.j.b.BackendPortafolioApplicationTests - Started BackendPortafolioApplicationTests in 6.588 seconds (process running for 7.857)
+2026-08-02 14:46:21.292 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.security.service.RoleServiceTest]: RoleServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:21.341 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.security.service.RoleServiceTest
+2026-08-02 14:46:21.886 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.security.service.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:21.888 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.security.service.UserServiceTest
+2026-08-02 14:46:22.325 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.AboutMeServiceTest]: AboutMeServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:22.366 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.AboutMeServiceTest
+2026-08-02 14:46:22.534 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.DegreeServiceTest]: DegreeServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:22.535 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.DegreeServiceTest
+2026-08-02 14:46:22.859 DEBUG c.j.b.service.FileStorageServiceImpl - Eliminando imagen de publicId = file_iuofdx
+2026-08-02 14:46:22.859 DEBUG c.j.b.service.FileStorageServiceImpl - ¡Imagen eliminada con éxito!
+2026-08-02 14:46:23.099 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.JobServiceTest]: JobServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:23.102 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.JobServiceTest
+2026-08-02 14:46:23.406 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.PortfolioServiceTest]: PortfolioServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:23.411 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.PortfolioServiceTest
+2026-08-02 14:46:23.419 INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-08-02 14:46:23.463 INFO  c.j.b.service.PortfolioServiceTest - Starting PortfolioServiceTest using Java 21.0.10 with PID 6212 (started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-08-02 14:46:23.463 DEBUG c.j.b.service.PortfolioServiceTest - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-08-02 14:46:23.463 INFO  c.j.b.service.PortfolioServiceTest - The following 1 profile is active: "test"
+2026-08-02 14:46:23.849 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-02 14:46:23.895 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42 ms. Found 9 JPA repository interfaces.
+2026-08-02 14:46:24.101 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-02 14:46:24.103 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-08-02 14:46:24.104 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
+2026-08-02 14:46:24.104 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-08-02 14:46:24.239 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 14:46:24.484 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-08-02 14:46:24.547 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-02 14:46:25.009 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-08-02 14:46:25.039 INFO  c.j.b.service.PortfolioServiceTest - Started PortfolioServiceTest in 1.62 seconds (process running for 13.218)
+2026-08-02 14:46:25.244 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.PresentationServiceTest]: PresentationServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:25.245 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.PresentationServiceTest
+2026-08-02 14:46:25.459 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.ProjectServiceTest]: ProjectServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:25.461 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.ProjectServiceTest
+2026-08-02 14:46:25.631 INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.juliandonati.backendPortafolio.service.SkillServiceTest]: SkillServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-08-02 14:46:25.634 INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.juliandonati.backendPortafolio.BackendPortafolioApplication for test class com.juliandonati.backendPortafolio.service.SkillServiceTest
+2026-08-02 14:46:25.749 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 14:46:25.753 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-08-02 14:46:25.755 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-08-02 14:46:25.760 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 14:46:25.761 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-08-02 14:46:25.761 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.

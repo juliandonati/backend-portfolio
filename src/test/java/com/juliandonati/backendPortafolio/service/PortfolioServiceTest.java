@@ -8,18 +8,22 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
 import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 
 @Transactional
 class PortfolioServiceTest {
+    @MockitoBean
+    private FileStorageService fileStorageService;
+
     private final PortfolioService portfolioService;
     private final PortfolioRepository portfolioRepository;
     private final UserRepository userRepository;
@@ -121,11 +125,12 @@ class PortfolioServiceTest {
     }
 
     @Test
-    void testDeleteAboutMeByIdDeletesAboutMeSuccessfully() {
+    void testDeleteAboutMeByIdDeletesAboutMeSuccessfully() throws Exception {
         // Arrange
         Portfolio portfolio = createPortfolio(userRepository);
         portfolio.setAboutMe(new AboutMe(null, aboutMeTitle, aboutMeDesc, aboutMeImgUrl, aboutMeBtnText, aboutMeBtnUrl, portfolio));
         Long aboutMeId = portfolioRepository.save(portfolio).getAboutMe().getId();
+        doNothing().when(fileStorageService).deleteImageByUrl(aboutMeImgUrl);
 
         // Act + Assert
         entityManager.clear();
@@ -134,14 +139,16 @@ class PortfolioServiceTest {
             entityManager.flush();
         }, TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class, () -> aboutMeService.findById(aboutMeId));
+        verify(fileStorageService,times(1)).deleteImageByUrl(aboutMeImgUrl);
     }
 
     @Test
-    void testDeletePresentationByIdDeletesPresentationSuccessfully() {
+    void testDeletePresentationByIdDeletesPresentationSuccessfully() throws Exception {
         // Arrange
         Portfolio portfolio = createPortfolio(userRepository);
         portfolio.setPresentation(new Presentation(null, presentationName, presentationTitle, presentationDesc, presentationImgUrl, presentationEmail, presentationPhoneNumber, portfolio));
         Long presentationId = portfolioRepository.save(portfolio).getPresentation().getId();
+        doNothing().when(fileStorageService).deleteImageByUrl(presentationImgUrl);
 
         // Act + Assert
         entityManager.clear();
@@ -150,6 +157,7 @@ class PortfolioServiceTest {
             entityManager.flush();
         }, TEST_THROWS_MESSAGE);
         assertThrows(ResourceNotFoundException.class, () -> presentationService.findById(presentationId));
+        verify(fileStorageService,times(1)).deleteImageByUrl(presentationImgUrl);
     }
 
     @Test
