@@ -43,7 +43,7 @@ public class DegreeController {
 
     @GetMapping("/list/{ownerUsername}")
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
-    @Operation(summary = "Consultar título académico por nombre del dueño de un portafolio",
+    @Operation(summary = "Consultar títulos académicos por nombre del dueño de un portafolio",
             description = "Devuelve todos los títulos académicos de un portafolio buscándolos por el nombre de su dueño, incluyendo todos sus campos.")
     public ResponseEntity<List<DegreeDto>> getAllDegreesByOwner(@PathVariable String ownerUsername) {
         logger.debug("Recuperando los títulos académicos de {}", ownerUsername);
@@ -80,6 +80,17 @@ public class DegreeController {
 
         logger.info("¡El nuevo título académico de {} ha sido creado correctamente!", ownerUsername);
         return new ResponseEntity<>(updatedDegreeList, HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/{degreeId}")
+    @PreAuthorize("@degreeSecurityEvaluator.isOwner(#degreeId,authentication.name) or hasRole('ADMIN')")
+    @Operation(summary = "Consultar título académico por su ID",
+            description = "Devuelve un título académico buscándolo por su ID, incluyendo todos sus campos.")
+    public ResponseEntity<DegreeDto> getDegreeById(@PathVariable Long degreeId) {
+        logger.debug("Recuperando título académico de id: {}", degreeId);
+        DegreeDto degreeDto = degreeService.findById(degreeId);
+        logger.info("¡Devolviendo el título académico de id: {}!",degreeId);
+        return ResponseEntity.ok(degreeDto);
     }
 
     @PutMapping(path = "/{degreeId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -134,6 +145,4 @@ public class DegreeController {
 
         return ResponseEntity.noContent().build();
     }
-
-    // todo: Endpoint GET by ID
 }
