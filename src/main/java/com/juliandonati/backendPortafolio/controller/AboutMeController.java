@@ -6,8 +6,8 @@ import com.juliandonati.backendPortafolio.dto.AboutMeDto;
 import com.juliandonati.backendPortafolio.exception.DuplicatedAttributeException;
 import com.juliandonati.backendPortafolio.mapper.AboutMeMapper;
 import com.juliandonati.backendPortafolio.service.AboutMeService;
+import com.juliandonati.backendPortafolio.service.FileStorageService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
-import com.juliandonati.backendPortafolio.service.PresentationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -31,8 +31,9 @@ public class AboutMeController {
 
     private final PortfolioService portfolioService;
 
+    private final FileStorageService fileStorageService;
+
     private final Logger logger = LoggerFactory.getLogger(AboutMeController.class);
-    private final PresentationService presentationService;
 
     @GetMapping("/{ownerUsername}")
     @PreAuthorize("#ownerUsername == authentication.name or hasRole('ADMIN')")
@@ -93,9 +94,15 @@ public class AboutMeController {
     public ResponseEntity<Void> deleteAboutMe(@PathVariable String ownerUsername) throws Exception{
         logger.debug("Eliminando el About-Me de {}", ownerUsername);
 
-        // todo Cuando permita subir imágenes, actualizar que aquí se borre.
         logger.debug("Obteniendo id del About-Me...");
-        portfolioService.deletePresentationById(presentationService.findByOwnerUsername(ownerUsername).getId());
+        AboutMeDto aboutMeDto = aboutMeService.findByOwnerUsername(ownerUsername);
+        String aboutMeImgUrl = aboutMeDto.getBgImgUrl();
+        if(aboutMeImgUrl != null && !aboutMeImgUrl.trim().isEmpty()){
+            logger.debug("Eliminando imagen de fondo de About-Me...");
+            fileStorageService.deleteImageByUrl(aboutMeImgUrl);
+            logger.info("¡Imagen de fondo de About-Me eliminada con éxito!");
+        }
+        portfolioService.deleteAboutMeById(aboutMeDto.getId());
         logger.info("¡About-Me de {} eliminado con éxito!", ownerUsername);
         return ResponseEntity.noContent().build();
     }
