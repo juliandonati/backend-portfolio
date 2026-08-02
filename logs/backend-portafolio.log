@@ -2763,3 +2763,44 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 2026-08-02 14:46:25.760 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-08-02 14:46:25.761 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
 2026-08-02 14:46:25.761 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-08-02 17:15:24.797 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.3 with PID 11668 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-08-02 17:15:24.814 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-08-02 17:15:24.816 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
+2026-08-02 17:15:24.863 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-02 17:15:24.863 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-02 17:15:27.655 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-02 17:15:27.764 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98 ms. Found 9 JPA repository interfaces.
+2026-08-02 17:15:28.534 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-02 17:15:28.547 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-08-02 17:15:28.549 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-02 17:15:28.549 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-08-02 17:15:28.610 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 3745 ms
+2026-08-02 17:15:29.506 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-02 17:15:29.547 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-08-02 17:15:29.810 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-08-02 17:15:29.811 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-08-02 17:15:31.203 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 17:15:31.325 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-02 17:15:32.606 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-02 17:15:33.103 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-08-02 17:15:33.241 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-02 17:15:34.136 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-08-02 17:15:34.202 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-08-02 17:15:34.286 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-08-02 17:15:34.299 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-08-02 17:15:34.308 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 10.062 seconds (process running for 11.016)
+2026-08-02 17:15:34.421 DEBUG c.j.b.data.RoleDataLoader - CREANDO ROL DE USER
+2026-08-02 17:15:34.472 INFO  c.j.b.data.RoleDataLoader - ¡ROL DE USER CREADO CON ÉXITO!
+2026-08-02 17:15:34.473 DEBUG c.j.b.data.RoleDataLoader - CREANDO ROL DE ADMIN
+2026-08-02 17:15:34.476 INFO  c.j.b.data.RoleDataLoader - ¡ROL DE ADMIN CREADO CON ÉXITO!
+2026-08-02 17:15:34.530 DEBUG c.j.b.data.UserDataLoader - EL ADMIN DEFAULT NO EXISTE, CREANDO...
+2026-08-02 17:15:34.623 INFO  c.j.b.data.UserDataLoader - ¡ADMIN DEFAULT CREADO!
+2026-08-02 17:15:38.326 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-02 17:15:39.138 INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 471 ms
+2026-08-02 17:17:56.706 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-02 17:17:56.711 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-08-02 17:17:58.430 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 17:17:58.435 WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
+2026-08-02 17:17:58.435 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-08-02 17:17:58.436 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

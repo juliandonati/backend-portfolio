@@ -53,6 +53,7 @@ public class SecurityConfig {
                     auth
                             .requestMatchers("/api/v1/health/ping").permitAll()
                             .requestMatchers("/api/v1/auth/login").permitAll()
+                            .requestMatchers("/api/v1/auth/register").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/v1/users").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/v1/portfolio/{ownerUsername}", "/api/v1/portfolio/{ownerUsername}/exists").permitAll()
                             .anyRequest().authenticated();
