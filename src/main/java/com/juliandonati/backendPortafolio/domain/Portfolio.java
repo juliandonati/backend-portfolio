@@ -11,9 +11,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "portfolios")
-
-/* todo Revisar que la estructura de la BD sea correcta, y que las queries se encuentren optimizadas */
-
 @Getter
 @Setter
 public class Portfolio {
