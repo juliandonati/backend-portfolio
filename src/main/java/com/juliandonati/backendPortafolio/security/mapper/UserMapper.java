@@ -2,6 +2,7 @@ package com.juliandonati.backendPortafolio.security.mapper;
 
 import com.juliandonati.backendPortafolio.security.domain.Role;
 import com.juliandonati.backendPortafolio.security.domain.User;
+import com.juliandonati.backendPortafolio.security.dto.NormalUserRegisterRequestDto;
 import com.juliandonati.backendPortafolio.security.dto.RegisterRequestDto;
 import com.juliandonati.backendPortafolio.security.dto.UserSummaryResponseDto;
 import com.juliandonati.backendPortafolio.security.service.RoleService;
@@ -47,4 +48,7 @@ public abstract class UserMapper {
 
 
     public abstract UserSummaryResponseDto toUserSummaryResponseDto(User user);
+
+    @Mapping(target = "roles", expression = "java(java.util.Set.of(\"ROLE_USER\"))")
+    public abstract RegisterRequestDto toRegisterRequestDto(NormalUserRegisterRequestDto normalUserRegisterRequestDto);
 }

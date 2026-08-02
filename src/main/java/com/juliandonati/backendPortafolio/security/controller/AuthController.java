@@ -2,8 +2,9 @@ package com.juliandonati.backendPortafolio.security.controller;
 
 import com.juliandonati.backendPortafolio.security.dto.JwtResponseDto;
 import com.juliandonati.backendPortafolio.security.dto.LoginRequestDto;
-import com.juliandonati.backendPortafolio.security.dto.RegisterRequestDto;
+import com.juliandonati.backendPortafolio.security.dto.NormalUserRegisterRequestDto;
 import com.juliandonati.backendPortafolio.security.jwt.JwtGenerator;
+import com.juliandonati.backendPortafolio.security.mapper.UserMapper;
 import com.juliandonati.backendPortafolio.security.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,9 +12,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -35,17 +34,24 @@ public class AuthController {
     private final UserService userService;
 
     private final Logger logger = LoggerFactory.getLogger(AuthController.class);
+    private final UserMapper userMapper;
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/register")
-    @Operation(summary = "Registrar nuevo usuario mediante RegisterRequestDto",
-            description = "Permite registrar a un nuevo usuario enviando un objeto RegisterRequestDto con sus campos completos y válidos")
-    public ResponseEntity<String> registerUser(@RequestBody @Valid RegisterRequestDto registerRequestDto) {
-        logger.debug("Registrando usuario de username: {}", registerRequestDto.getUsername());
-        userService.register(registerRequestDto);
-        logger.info("¡Usuario de username: {} creado con éxito!", registerRequestDto.getUsername());
+    @Operation(summary = "Registrar nuevo usuario normal mediante NormalUserRegisterRequestDto",
+            description = "Permite registrar a un nuevo usuario normal enviando un objeto NormalUserRegisterRequestDto con sus campos completos y válidos")
+    public ResponseEntity<String> registerUser(@RequestBody @Valid NormalUserRegisterRequestDto normalUserRegisterRequestDto){
+        // Para evitar bots. Muy importante:
+        if(normalUserRegisterRequestDto.getRecoveryEmail() != null && !normalUserRegisterRequestDto.getRecoveryEmail().trim().isEmpty()) {
+            logger.debug("Un bot intentó registrarse.");
+            return ResponseEntity.ok("¡Usuario creado con éxito!");
+        }
 
-        return new ResponseEntity<>("¡El usuario ha sido creado con éxito!", HttpStatus.CREATED);
+        logger.debug("Registrando nuevo usuario...");
+        userService.register(
+                userMapper.toRegisterRequestDto(normalUserRegisterRequestDto)
+        );
+        logger.info("¡Usuario de username {} creado con éxito!",normalUserRegisterRequestDto.getUsername());
+        return ResponseEntity.ok("¡Usuario creado con éxito!");
     }
 
     @PostMapping("/login")

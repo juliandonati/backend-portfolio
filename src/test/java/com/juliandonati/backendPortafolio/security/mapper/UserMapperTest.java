@@ -2,6 +2,7 @@ package com.juliandonati.backendPortafolio.security.mapper;
 
 import com.juliandonati.backendPortafolio.security.domain.Role;
 import com.juliandonati.backendPortafolio.security.domain.User;
+import com.juliandonati.backendPortafolio.security.dto.NormalUserRegisterRequestDto;
 import com.juliandonati.backendPortafolio.security.dto.RegisterRequestDto;
 import com.juliandonati.backendPortafolio.security.dto.UserSummaryResponseDto;
 import com.juliandonati.backendPortafolio.security.service.RoleService;
@@ -124,6 +125,30 @@ class UserMapperTest {
                 () -> assertNotNull(result),
                 () -> assertEquals(username,result.getUsername()),
                 () -> assertEquals(dname,result.getDisplayName())
+        );
+    }
+
+    @Test
+    void testMapToRegisterRequestDto() {
+        // Arrange
+        NormalUserRegisterRequestDto normalUserRegisterRequestDto = new NormalUserRegisterRequestDto();
+        normalUserRegisterRequestDto.setUsername(username);
+        normalUserRegisterRequestDto.setDisplayName(dname);
+        normalUserRegisterRequestDto.setUnencryptedPassword(password);
+        normalUserRegisterRequestDto.setEmail(email);
+
+        // Act
+        RegisterRequestDto result = userMapper.toRegisterRequestDto(normalUserRegisterRequestDto);
+
+        // Assert
+        assertAll("Validando los campos del RegisterRequestDto...",
+                () -> assertNotNull(result),
+                () -> assertEquals(username, result.getUsername()),
+                () -> assertEquals(dname, result.getDisplayName()),
+                () -> assertEquals(password, result.getUnencryptedPassword()),
+                () -> assertEquals(email, result.getEmail()),
+                () -> assertEquals(1, result.getRoles().size()),
+                () -> assertTrue(result.getRoles().stream().anyMatch(r->r.equals("ROLE_USER")))
         );
     }
 }
