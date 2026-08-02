@@ -93,8 +93,11 @@ public class PortfolioController {
         imgUrlList.add(portfolio.getPresentation().getImgUrl());
         imgUrlList.addAll(portfolio.getDegrees().stream().map(Degree::getImgUrl).toList());
 
-        for(String imgUrl : imgUrlList)
-            fileStorageService.deleteImageByUrl(imgUrl);
+        for(String imgUrl : imgUrlList){
+            if(imgUrl != null && !imgUrl.trim().isEmpty())
+                fileStorageService.deleteImageByUrl(imgUrl);
+        }
+
         logger.debug("¡Imágenes eliminadas con éxito!");
 
         user.setOwnedPortfolio(null); // orphanRemoval elimina automáticamente el portfolio
