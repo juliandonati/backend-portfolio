@@ -41,12 +41,11 @@ public class DegreeController {
     private final Logger logger = LoggerFactory.getLogger(DegreeController.class);
 
 
-
     @GetMapping("/list/{ownerUsername}")
     @PreAuthorize("authentication.name == #ownerUsername or hasRole('ADMIN')")
     @Operation(summary = "Consultar título académico por nombre del dueño de un portafolio",
             description = "Devuelve todos los títulos académicos de un portafolio buscándolos por el nombre de su dueño, incluyendo todos sus campos.")
-    public ResponseEntity<List<DegreeDto>> getAllDegreesByOwner(@PathVariable String ownerUsername){
+    public ResponseEntity<List<DegreeDto>> getAllDegreesByOwner(@PathVariable String ownerUsername) {
         logger.debug("Recuperando los títulos académicos de {}", ownerUsername);
         List<DegreeDto> degreeDtos = degreeService.findByOwnerUsername(ownerUsername);
         logger.info("¡Devolviendo los títulos académicos de {}!", ownerUsername);
@@ -60,12 +59,12 @@ public class DegreeController {
     public ResponseEntity<List<DegreeDto>> createDegree(@PathVariable String ownerUsername,
                                                         @Valid @RequestPart("degree") DegreeDto degreeDto,
                                                         @Valid @RequestPart(required = false, value = "img-file") MultipartFile imageMpFile)
-    throws IOException {
+            throws IOException {
         logger.debug("Buscando portafolio de {}", ownerUsername);
         Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
         Degree degree = degreeMapper.toEntity(degreeDto);
 
-        if(imageMpFile != null && !imageMpFile.isEmpty()){
+        if (imageMpFile != null && !imageMpFile.isEmpty()) {
             logger.debug("El usuario subió una imagen, subiendo...");
             String imageUrl = fileStorageService.uploadImage(imageMpFile, ownerUsername);
             logger.debug("¡Imagen subida con éxito!");
@@ -90,20 +89,19 @@ public class DegreeController {
     public ResponseEntity<DegreeDto> updateDegree(@PathVariable Long degreeId,
                                                   @Valid @RequestPart("degree") DegreeDto degreeDto,
                                                   @RequestPart(required = false, value = "img-file") MultipartFile imageMpFile)
-    throws Exception {
+            throws Exception {
         logger.debug("Actualizando título académico de id: {}", degreeId);
 
-        if(imageMpFile != null && !imageMpFile.isEmpty()){
+        if (imageMpFile != null && !imageMpFile.isEmpty()) {
             logger.debug("El usuario subió una nueva imagen, subiendo...");
             String imageUrl = fileStorageService.uploadImage(imageMpFile, degreeService.findOwnerUsernameByDegreeId(degreeId));
             logger.debug("¡Imagen subida con éxito!");
 
-            try{
+            try {
                 logger.debug("Eliminando imagen vieja...");
                 fileStorageService.deleteImageByUrl(degreeService.findImgUrlByDegreeId(degreeId));
                 logger.debug("¡Imagen vieja eliminada con éxito!");
-            }
-            catch(ResourceNotFoundException ex){
+            } catch (ResourceNotFoundException ex) {
                 logger.debug("El título no tiene ninguna imagen que eliminar.");
             }
 
@@ -120,17 +118,14 @@ public class DegreeController {
     @PreAuthorize("@degreeSecurityEvaluator.isOwner(#degreeId,authentication.name) or hasRole('ADMIN')")
     @Operation(summary = "Eliminar título académico por ID",
             description = "Elimina un título académico, si existe, especificado por su ID")
-    public ResponseEntity<Void> deleteDegree(@PathVariable Long degreeId) throws Exception{
+    public ResponseEntity<Void> deleteDegree(@PathVariable Long degreeId) throws Exception {
         logger.debug("Eliminando título académico de id: {}", degreeId);
 
-        try{
-
-            logger.debug("Eliminando imagen del título académico...");
-            fileStorageService.deleteImageByUrl(degreeService.findImgUrlByDegreeId(degreeId));
+        String imgUrl = degreeService.findImgUrlByDegreeId(degreeId);
+        if (imgUrl != null && !imgUrl.isEmpty()) {
+            logger.debug("El título académico tiene una imagen, eliminandola...");
+            fileStorageService.deleteImageByUrl(imgUrl);
             logger.debug("¡Imagen del título académico eliminada con éxito!");
-        }
-        catch(ResourceNotFoundException e){
-            logger.debug("El título académico no tiene imagen que eliminar.");
         }
 
 

@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_OWNER_USERNAME;
 import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.TEST_THROWS_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -62,24 +63,24 @@ class ProjectServiceImplTest {
 
         // Assert
         assertAll("Validando campos de los ProjectDto",
-                () -> assertEquals(2,result.size()),
-                () -> assertEquals(id1,result1.getId()),
-                () -> assertEquals(title1,result1.getTitle()),
-                () -> assertEquals(desc1,result1.getDescription()),
-                () -> assertEquals(startDate1,result1.getStartDate()),
-                () -> assertEquals(endDate1,result1.getEndDate()),
-                () -> assertEquals(url1,result1.getUrl()),
-                () -> assertEquals(imgUrl1,result1.getImgUrl()),
-                () -> assertEquals(id2,result2.getId()),
-                () -> assertEquals(title2,result2.getTitle()),
-                () -> assertEquals(desc2,result2.getDescription()),
-                () -> assertEquals(startDate2,result2.getStartDate()),
-                () -> assertEquals(endDate2,result2.getEndDate()),
-                () -> assertEquals(url2,result2.getUrl()),
-                () -> assertEquals(imgUrl2,result2.getImgUrl())
+                () -> assertEquals(2, result.size()),
+                () -> assertEquals(id1, result1.getId()),
+                () -> assertEquals(title1, result1.getTitle()),
+                () -> assertEquals(desc1, result1.getDescription()),
+                () -> assertEquals(startDate1, result1.getStartDate()),
+                () -> assertEquals(endDate1, result1.getEndDate()),
+                () -> assertEquals(url1, result1.getUrl()),
+                () -> assertEquals(imgUrl1, result1.getImgUrl()),
+                () -> assertEquals(id2, result2.getId()),
+                () -> assertEquals(title2, result2.getTitle()),
+                () -> assertEquals(desc2, result2.getDescription()),
+                () -> assertEquals(startDate2, result2.getStartDate()),
+                () -> assertEquals(endDate2, result2.getEndDate()),
+                () -> assertEquals(url2, result2.getUrl()),
+                () -> assertEquals(imgUrl2, result2.getImgUrl())
         );
-        verify(projectRepository,times(1)).findByOwnerUsername(username);
-        verify(projectMapper,times(2)).toDto(any(Project.class));
+        verify(projectRepository, times(1)).findByOwnerUsername(username);
+        verify(projectMapper, times(2)).toDto(any(Project.class));
     }
 
     @Test
@@ -87,9 +88,9 @@ class ProjectServiceImplTest {
         // Arrange
         when(projectRepository.existsById(id1)).thenReturn(true);
         // Act + Assert
-        assertDoesNotThrow(()->projectService.deleteById(id1),TEST_THROWS_MESSAGE);
-        verify(projectRepository,times(1)).existsById(id1);
-        verify(projectRepository,times(1)).deleteById(id1);
+        assertDoesNotThrow(() -> projectService.deleteById(id1), TEST_THROWS_MESSAGE);
+        verify(projectRepository, times(1)).existsById(id1);
+        verify(projectRepository, times(1)).deleteById(id1);
     }
 
     @Test
@@ -98,9 +99,9 @@ class ProjectServiceImplTest {
         Long mockUnexistentId = 99L;
         when(projectRepository.existsById(mockUnexistentId)).thenReturn(false);
         // Act + Assert
-        assertThrows(ResourceNotFoundException.class,()->projectService.deleteById(mockUnexistentId));
-        verify(projectRepository,times(1)).existsById(mockUnexistentId);
-        verify(projectRepository,never()).deleteById(anyLong());
+        assertThrows(ResourceNotFoundException.class, () -> projectService.deleteById(mockUnexistentId));
+        verify(projectRepository, times(1)).existsById(mockUnexistentId);
+        verify(projectRepository, never()).deleteById(anyLong());
     }
 
     @Test
@@ -117,24 +118,24 @@ class ProjectServiceImplTest {
 
         // Assert
         assertAll("Validando campos de los ProjectDto",
-                () -> assertEquals(2,result.size()),
-                () -> assertEquals(id1,result1.getId()),
-                () -> assertEquals(title1,result1.getTitle()),
-                () -> assertEquals(desc1,result1.getDescription()),
-                () -> assertEquals(startDate1,result1.getStartDate()),
-                () -> assertEquals(endDate1,result1.getEndDate()),
-                () -> assertEquals(url1,result1.getUrl()),
-                () -> assertEquals(imgUrl1,result1.getImgUrl()),
-                () -> assertEquals(id2,result2.getId()),
-                () -> assertEquals(title2,result2.getTitle()),
-                () -> assertEquals(desc2,result2.getDescription()),
-                () -> assertEquals(startDate2,result2.getStartDate()),
-                () -> assertEquals(endDate2,result2.getEndDate()),
-                () -> assertEquals(url2,result2.getUrl()),
-                () -> assertEquals(imgUrl2,result2.getImgUrl())
-                );
-        verify(projectRepository,times(1)).findAll();
-        verify(projectMapper,times(2)).toDto(any(Project.class));
+                () -> assertEquals(2, result.size()),
+                () -> assertEquals(id1, result1.getId()),
+                () -> assertEquals(title1, result1.getTitle()),
+                () -> assertEquals(desc1, result1.getDescription()),
+                () -> assertEquals(startDate1, result1.getStartDate()),
+                () -> assertEquals(endDate1, result1.getEndDate()),
+                () -> assertEquals(url1, result1.getUrl()),
+                () -> assertEquals(imgUrl1, result1.getImgUrl()),
+                () -> assertEquals(id2, result2.getId()),
+                () -> assertEquals(title2, result2.getTitle()),
+                () -> assertEquals(desc2, result2.getDescription()),
+                () -> assertEquals(startDate2, result2.getStartDate()),
+                () -> assertEquals(endDate2, result2.getEndDate()),
+                () -> assertEquals(url2, result2.getUrl()),
+                () -> assertEquals(imgUrl2, result2.getImgUrl())
+        );
+        verify(projectRepository, times(1)).findAll();
+        verify(projectMapper, times(2)).toDto(any(Project.class));
     }
 
     @Test
@@ -146,16 +147,16 @@ class ProjectServiceImplTest {
         ProjectDto result = projectService.findById(id1);
         // Assert
         assertAll("Validando campos de los ProjectDto",
-                () -> assertEquals(id1,result.getId()),
-                () -> assertEquals(title1,result.getTitle()),
-                () -> assertEquals(desc1,result.getDescription()),
-                () -> assertEquals(startDate1,result.getStartDate()),
-                () -> assertEquals(endDate1,result.getEndDate()),
-                () -> assertEquals(url1,result.getUrl()),
-                () -> assertEquals(imgUrl1,result.getImgUrl())
+                () -> assertEquals(id1, result.getId()),
+                () -> assertEquals(title1, result.getTitle()),
+                () -> assertEquals(desc1, result.getDescription()),
+                () -> assertEquals(startDate1, result.getStartDate()),
+                () -> assertEquals(endDate1, result.getEndDate()),
+                () -> assertEquals(url1, result.getUrl()),
+                () -> assertEquals(imgUrl1, result.getImgUrl())
         );
-        verify(projectRepository,times(1)).findById(id1);
-        verify(projectMapper,times(1)).toDto(mockProject);
+        verify(projectRepository, times(1)).findById(id1);
+        verify(projectMapper, times(1)).toDto(mockProject);
     }
 
     @Test
@@ -164,9 +165,9 @@ class ProjectServiceImplTest {
         Long mockUnexistentId = 99L;
         when(projectRepository.findById(mockUnexistentId)).thenReturn(Optional.empty());
         // Act + Assert
-        assertThrows(ResourceNotFoundException.class,()->projectService.findById(mockUnexistentId));
-        verify(projectRepository,times(1)).findById(mockUnexistentId);
-        verify(projectMapper,never()).toDto(any(Project.class));
+        assertThrows(ResourceNotFoundException.class, () -> projectService.findById(mockUnexistentId));
+        verify(projectRepository, times(1)).findById(mockUnexistentId);
+        verify(projectMapper, never()).toDto(any(Project.class));
     }
 
     @Test
@@ -179,25 +180,25 @@ class ProjectServiceImplTest {
         LocalDate newEndDate = null;
         String newUrl = "https://newurl.com";
         String newImgUrl = "https://newimgurl.com";
-        Project mockUpdatedProject = new Project(id1,newTitle,newDesc,newStartDate,newEndDate,newUrl,newImgUrl,null);
+        Project mockUpdatedProject = new Project(id1, newTitle, newDesc, newStartDate, newEndDate, newUrl, newImgUrl, null);
         when(projectRepository.findById(id1)).thenReturn(Optional.of(mockOldProject));
         when(projectRepository.save(any(Project.class))).thenReturn(mockUpdatedProject);
         // Act
-        ProjectDto mockProjectDto = new ProjectDto(null,newTitle,newDesc,newStartDate,newEndDate,newUrl,newImgUrl);
-        ProjectDto result = projectService.update(mockProjectDto,id1);
+        ProjectDto mockProjectDto = new ProjectDto(null, newTitle, newDesc, newStartDate, newEndDate, newUrl, newImgUrl);
+        ProjectDto result = projectService.update(mockProjectDto, id1);
         // Assert
         assertAll("Validando campos de los ProjectDto",
-                () -> assertEquals(id1,result.getId()),
-                () -> assertEquals(newTitle,result.getTitle()),
-                () -> assertEquals(newDesc,result.getDescription()),
-                () -> assertEquals(newStartDate,result.getStartDate()),
-                () -> assertEquals(newEndDate,result.getEndDate()),
-                () -> assertEquals(newUrl,result.getUrl()),
-                () -> assertEquals(newImgUrl,result.getImgUrl())
+                () -> assertEquals(id1, result.getId()),
+                () -> assertEquals(newTitle, result.getTitle()),
+                () -> assertEquals(newDesc, result.getDescription()),
+                () -> assertEquals(newStartDate, result.getStartDate()),
+                () -> assertEquals(newEndDate, result.getEndDate()),
+                () -> assertEquals(newUrl, result.getUrl()),
+                () -> assertEquals(newImgUrl, result.getImgUrl())
         );
-        verify(projectRepository,times(1)).findById(id1);
-        verify(projectMapper,times(1)).updateEntity(mockProjectDto,mockOldProject);
-        verify(projectRepository,times(1)).save(mockUpdatedProject);
+        verify(projectRepository, times(1)).findById(id1);
+        verify(projectMapper, times(1)).updateEntity(mockProjectDto, mockOldProject);
+        verify(projectRepository, times(1)).save(mockUpdatedProject);
     }
 
     @Test
@@ -206,10 +207,59 @@ class ProjectServiceImplTest {
         Long mockUnexistentId = 99L;
         when(projectRepository.findById(mockUnexistentId)).thenReturn(Optional.empty());
         // Act + Assert
-        assertThrows(ResourceNotFoundException.class,()->projectService.update(new ProjectDto(),mockUnexistentId));
-        verify(projectRepository,times(1)).findById(mockUnexistentId);
-        verify(projectMapper,never()).updateEntity(any(ProjectDto.class),any(Project.class));
-        verify(projectRepository,never()).save(any(Project.class));
+        assertThrows(ResourceNotFoundException.class, () -> projectService.update(new ProjectDto(), mockUnexistentId));
+        verify(projectRepository, times(1)).findById(mockUnexistentId);
+        verify(projectMapper, never()).updateEntity(any(ProjectDto.class), any(Project.class));
+        verify(projectRepository, never()).save(any(Project.class));
     }
+
+    @Test
+    void testFindImgUrlByProjectIdReturnsImgUrlSuccessfully() {
+        // Arrange
+        when(projectRepository.findImgUrlByProjectId(id1)).thenReturn(Optional.of(imgUrl1));
+        // Act
+        String result = projectService.findImgUrlByProjectId(id1);
+        // Assert
+        assertAll("Validando String recibido",
+                () -> assertNotNull(result),
+                () -> assertEquals(imgUrl1, result)
+        );
+        verify(projectRepository,times(1)).findImgUrlByProjectId(id1);
+    }
+
+    @Test
+    void testFindImgUrlByProjectIdThrowsResourceNotFoundException() {
+        // Arrange
+        Long unexistentId = 99L;
+        when(projectRepository.findImgUrlByProjectId(unexistentId)).thenReturn(Optional.empty());
+        // Act + Assert
+        assertThrows(ResourceNotFoundException.class,()->projectService.findImgUrlByProjectId(unexistentId));
+        verify(projectRepository,times(1)).findImgUrlByProjectId(unexistentId);
+    }
+
+    @Test
+    void testFindOwnerUsernameByProjectIdReturnsOwnerUsernameSuccessfully() {
+        // Arrange
+        when(projectRepository.findOwnerUsernameByProjectId(id1)).thenReturn(Optional.of(TEST_OWNER_USERNAME));
+        // Act
+        String result = projectService.findOwnerUsernameByProjectId(id1);
+        // Assert
+        assertAll("Validando String recibido",
+                () -> assertNotNull(result),
+                () -> assertEquals(TEST_OWNER_USERNAME, result)
+        );
+        verify(projectRepository,times(1)).findOwnerUsernameByProjectId(id1);
+    }
+
+    @Test
+    void testFindOwnerUsernameByProjectIdThrowsResourceNotFoundException() {
+        // Arrange
+        Long unexistentId = 99L;
+        when(projectRepository.findOwnerUsernameByProjectId(unexistentId)).thenReturn(Optional.empty());
+        // Act + Assert
+        assertThrows(ResourceNotFoundException.class,()->projectService.findOwnerUsernameByProjectId(unexistentId));
+        verify(projectRepository,times(1)).findOwnerUsernameByProjectId(unexistentId);
+    }
+
 
 }

@@ -22,6 +22,16 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public String findImgUrlByProjectId(Long id) throws ResourceNotFoundException {
+        return projectRepository.findImgUrlByProjectId(id).orElseThrow(()->new ResourceNotFoundException("No se encontró un proyecto con la id: " + id));
+    }
+
+    @Override
+    public String findOwnerUsernameByProjectId(Long id) throws ResourceNotFoundException {
+        return projectRepository.findOwnerUsernameByProjectId(id).orElseThrow(()->new ResourceNotFoundException("No se encontró un proyecto con la id: " + id));
+    }
+
+    @Override
     public void deleteById(Long id) throws ResourceNotFoundException {
         if(!projectRepository.existsById(id))
             throw new ResourceNotFoundException("No se encontró un proyecto con la id: " + id);

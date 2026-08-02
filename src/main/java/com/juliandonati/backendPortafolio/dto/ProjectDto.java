@@ -1,6 +1,7 @@
 package com.juliandonati.backendPortafolio.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -18,7 +19,7 @@ public class ProjectDto {
     @NotBlank(message = "Debes introducir una descripción para el proyecto")
     @Size(max = 255, message = "La descripción del proyecto no puede superar los 255 caracteres")
     private String description;
-    @NotBlank(message = "Debes introducir una fecha de inicio para el proyecto")
+    @NotNull(message = "Debes introducir una fecha de inicio para el proyecto")
     private LocalDate startDate;
     private LocalDate endDate;
     private String url;

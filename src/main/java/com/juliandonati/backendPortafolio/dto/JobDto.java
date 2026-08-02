@@ -1,6 +1,7 @@
 package com.juliandonati.backendPortafolio.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +22,7 @@ public class JobDto {
     @NotBlank(message = "Debes describir el trabajo")
     @Size(max = 255, message = "La descripción del trabajo no puede sobrepasar los 255 carácteres")
     private String description;
-    @NotBlank(message = "Debes definir la fecha en la que te contrataron")
+    @NotNull(message = "Debes definir la fecha en la que te contrataron")
     private LocalDate startDate;
     private LocalDate endDate;
 }

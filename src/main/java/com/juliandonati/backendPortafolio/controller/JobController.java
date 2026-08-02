@@ -38,9 +38,9 @@ public class JobController {
     @Operation(summary = "Consultar experiencia laboral por nombre del dueño de un portafolio",
             description = "Devuelve la experiencia laboral de un portafolio buscándolos por el nombre de su dueño, incluyendo todos los campos de cada trabajo.")
     public ResponseEntity<List<JobDto>> getAllJobsByOwner(@PathVariable String ownerUsername){
-        logger.debug("Recuperando la experiencia laboral de "+ownerUsername);
+        logger.debug("Recuperando la experiencia laboral de {}", ownerUsername);
         List<JobDto> jobDtos = jobService.findByOwnerUsername(ownerUsername);
-        logger.info("¡Devolviendo la experiencia laboral de "+ownerUsername+'!');
+        logger.info("¡Devolviendo la experiencia laboral de {}!", ownerUsername);
 
         return ResponseEntity.ok(jobDtos);
     }
@@ -51,9 +51,9 @@ public class JobController {
     @Operation(summary = "Consultar trabajo por ID",
             description = "Devuelve un trabajo específico buscándolo por ID, incluyendo todos sus campos.")
     public ResponseEntity<JobDto> getJobById(@PathVariable Long jobId){
-        logger.debug("Recuperando el trabajo de id: "+jobId);
+        logger.debug("Recuperando el trabajo de id: {}", jobId);
         JobDto jobDto = jobService.findById(jobId);
-        logger.info("¡Devolviendo el trabajo de id: "+jobId+'!');
+        logger.info("¡Devolviendo el trabajo de id: {}!", jobId);
 
         return ResponseEntity.ok(jobDto);
     }
@@ -63,7 +63,7 @@ public class JobController {
     @Operation(summary = "Publicar trabajo por nombre del dueño de un portafolio",
             description = "Publica un nuevo trabajo con todos sus campos, al portafolio perteneciente al usuario cuyo nombre es especificado")
     public ResponseEntity<List<JobDto>> createJob(@PathVariable String ownerUsername, @Valid @RequestBody JobDto jobDto){
-        logger.debug("Recuperando el portafolio de "+ ownerUsername);
+        logger.debug("Recuperando el portafolio de {}", ownerUsername);
         Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
         portfolio.addExperience(jobMapper.toEntity(jobDto));
 
@@ -72,7 +72,7 @@ public class JobController {
                 .getExperience()
                 .stream().map(jobMapper::toDto).toList();
 
-        logger.info("¡Nuevo trabajo de "+ownerUsername+" creado con éxito!");
+        logger.info("¡Nuevo trabajo de {} creado con éxito!", ownerUsername);
         return new ResponseEntity<>(updatedExperienceDto, HttpStatus.CREATED);
     }
 
@@ -81,9 +81,9 @@ public class JobController {
     @Operation(summary = "Actualizar trabajo por ID",
             description = "Actualiza los campos modificados de un trabajo especificado por su ID")
     public ResponseEntity<JobDto> updateJob(@PathVariable Long jobId, @Valid @RequestBody JobDto jobDto){
-        logger.debug("Recuperando el trabajo de id: "+jobId);
+        logger.debug("Recuperando el trabajo de id: {}", jobId);
         JobDto updatedJob = jobService.update(jobDto, jobId);
-        logger.info("¡Trabajo de id: "+jobId+" actualizado con éxito!");
+        logger.info("¡Trabajo de id: {} actualizado con éxito!", jobId);
 
         return ResponseEntity.ok(updatedJob);
     }
@@ -93,9 +93,9 @@ public class JobController {
     @Operation(summary = "Eliminar trabajo por ID",
             description = "Elimina un trabajo, si existe, especificado por su ID")
     public ResponseEntity<Void> deleteJob(@PathVariable Long jobId){
-        logger.debug("Eliminando trabajo de id: "+ jobId);
+        logger.debug("Eliminando trabajo de id: {}", jobId);
         jobService.deleteById(jobId);
-        logger.info("¡Trabajo de id: "+jobId+" eliminado con éxito!");
+        logger.info("¡Trabajo de id: {} eliminado con éxito!", jobId);
 
         return ResponseEntity.noContent().build();
     }

@@ -133,9 +133,12 @@ public class PresentationController {
     public ResponseEntity<Void> deletePresentation(@PathVariable String ownerUsername) throws Exception{
         logger.debug("Eliminando presentación de {}", ownerUsername);
 
-        logger.debug("Eliminando imagen de la presentación...");
-        fileStorageService.deleteImageByUrl(presentationService.findImgUrlByOwnerUsername(ownerUsername));
-        logger.debug("¡Imagen eliminada con éxito!");
+        String imgUrl = presentationService.findImgUrlByOwnerUsername(ownerUsername);
+        if(imgUrl != null && imgUrl.isEmpty()) {
+            logger.debug("La presentación tiene una imagen, eliminandola...");
+            fileStorageService.deleteImageByUrl(imgUrl);
+            logger.debug("¡Imagen eliminada con éxito!");
+        }
 
         logger.debug("Obteniendo id de la presentación...");
         portfolioService.deletePresentationById(presentationService.findByOwnerUsername(ownerUsername).getId());

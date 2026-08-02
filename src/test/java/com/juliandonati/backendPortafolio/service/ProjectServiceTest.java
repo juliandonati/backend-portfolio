@@ -29,10 +29,11 @@ class ProjectServiceTest {
     private final PortfolioRepository portfolioRepository;
     private final PortfolioService portfolioService;
     private final EntityManager entityManager;
+
     @Autowired
-    public ProjectServiceTest(ProjectService projectService, 
-                              ProjectRepository projectRepository, 
-                              UserRepository userRepository, 
+    public ProjectServiceTest(ProjectService projectService,
+                              ProjectRepository projectRepository,
+                              UserRepository userRepository,
                               PortfolioService portfolioService,
                               PortfolioRepository portfolioRepository,
                               EntityManager entityManager) {
@@ -73,18 +74,56 @@ class ProjectServiceTest {
         // Assert
         assertAll("Validando los campos del proyecto",
                 () -> assertEquals(2, result.size()),
-                () -> assertEquals(title1,result1.getTitle()),
-                () -> assertEquals(desc1,result1.getDescription()),
-                () -> assertEquals(startDate1,result1.getStartDate()),
-                () -> assertEquals(endDate1,result1.getEndDate()),
-                () -> assertEquals(url1,result1.getUrl()),
-                () -> assertEquals(imgUrl1,result1.getImgUrl()),
-                () -> assertEquals(title2,result2.getTitle()),
-                () -> assertEquals(desc2,result2.getDescription()),
-                () -> assertEquals(startDate2,result2.getStartDate()),
-                () -> assertEquals(endDate2,result2.getEndDate()),
-                () -> assertEquals(url2,result2.getUrl()),
-                () -> assertEquals(imgUrl2,result2.getImgUrl())
+                () -> assertEquals(title1, result1.getTitle()),
+                () -> assertEquals(desc1, result1.getDescription()),
+                () -> assertEquals(startDate1, result1.getStartDate()),
+                () -> assertEquals(endDate1, result1.getEndDate()),
+                () -> assertEquals(url1, result1.getUrl()),
+                () -> assertEquals(imgUrl1, result1.getImgUrl()),
+                () -> assertEquals(title2, result2.getTitle()),
+                () -> assertEquals(desc2, result2.getDescription()),
+                () -> assertEquals(startDate2, result2.getStartDate()),
+                () -> assertEquals(endDate2, result2.getEndDate()),
+                () -> assertEquals(url2, result2.getUrl()),
+                () -> assertEquals(imgUrl2, result2.getImgUrl())
+        );
+    }
+
+    @Test
+    void testFindImgUrlByProjectIdReturnsImgUrlSuccessfully() {
+        // Arrange
+        Portfolio portfolio = createPortfolio(userRepository);
+        portfolio.addProject(new Project(null, title1, desc1, startDate1, endDate1, url1, imgUrl1, null));
+        Long projectId = portfolioRepository.save(portfolio).getProjects().stream().findFirst()
+                .orElseThrow(() -> new AssertionError("No cargó correctamente el proyecto de prueba"))
+                .getId();
+
+        // Act
+        String result = projectService.findImgUrlByProjectId(projectId);
+
+        // Assert
+        assertAll("Validando String recibido",
+                () -> assertNotNull(result),
+                () -> assertEquals(imgUrl1, result)
+        );
+    }
+
+    @Test
+    void testFindOwnerUsernameByProjectIdReturnsOwnerUsernameSuccessfully() {
+        // Arrange
+        Portfolio portfolio = createPortfolio(userRepository);
+        portfolio.addProject(new Project(null, title1, desc1, startDate1, endDate1, url1, imgUrl1, null));
+        Long projectId = portfolioRepository.save(portfolio).getProjects().stream().findFirst()
+                .orElseThrow(() -> new AssertionError("No cargó correctamente el proyecto de prueba"))
+                .getId();
+
+        // Act
+        String result = projectService.findOwnerUsernameByProjectId(projectId);
+
+        // Assert
+        assertAll("Validando String recibido",
+                () -> assertNotNull(result),
+                () -> assertEquals(TEST_OWNER_USERNAME, result)
         );
     }
 
@@ -100,23 +139,23 @@ class ProjectServiceTest {
 
         assertAll("Validando los campos del proyecto",
                 () -> assertNotNull(projectId),
-                () -> assertEquals(title1,savedProject.getTitle()),
-                () -> assertEquals(desc1,savedProject.getDescription()),
-                () -> assertEquals(startDate1,savedProject.getStartDate()),
-                () -> assertEquals(endDate1,savedProject.getEndDate()),
-                () -> assertEquals(url1,savedProject.getUrl()),
-                () -> assertEquals(imgUrl1,savedProject.getImgUrl())
+                () -> assertEquals(title1, savedProject.getTitle()),
+                () -> assertEquals(desc1, savedProject.getDescription()),
+                () -> assertEquals(startDate1, savedProject.getStartDate()),
+                () -> assertEquals(endDate1, savedProject.getEndDate()),
+                () -> assertEquals(url1, savedProject.getUrl()),
+                () -> assertEquals(imgUrl1, savedProject.getImgUrl())
         );
         // READ
         ProjectDto searchedProjectDto = projectService.findById(projectId);
         assertAll("Validando los campos del proyecto",
-                () -> assertEquals(projectId,searchedProjectDto.getId()),
-                () -> assertEquals(title1,searchedProjectDto.getTitle()),
-                () -> assertEquals(desc1,searchedProjectDto.getDescription()),
-                () -> assertEquals(startDate1,searchedProjectDto.getStartDate()),
-                () -> assertEquals(endDate1,searchedProjectDto.getEndDate()),
-                () -> assertEquals(url1,searchedProjectDto.getUrl()),
-                () -> assertEquals(imgUrl1,searchedProjectDto.getImgUrl())
+                () -> assertEquals(projectId, searchedProjectDto.getId()),
+                () -> assertEquals(title1, searchedProjectDto.getTitle()),
+                () -> assertEquals(desc1, searchedProjectDto.getDescription()),
+                () -> assertEquals(startDate1, searchedProjectDto.getStartDate()),
+                () -> assertEquals(endDate1, searchedProjectDto.getEndDate()),
+                () -> assertEquals(url1, searchedProjectDto.getUrl()),
+                () -> assertEquals(imgUrl1, searchedProjectDto.getImgUrl())
         );
         // UPDATE
         String newTitle = "NEW TITULO!!!";
@@ -125,26 +164,26 @@ class ProjectServiceTest {
         LocalDate newEndDate = null;
         String newUrl = "https://urlnuevaproyecto.com";
         String newImgUrl = "https://urlimgproyectonuevo.com";
-        ProjectDto newProjectDto = new ProjectDto(null,newTitle,newDesc,newStartDate,newEndDate,newUrl,newImgUrl);
-        
-        ProjectDto updatedProjectDto = projectService.update(newProjectDto,projectId);
+        ProjectDto newProjectDto = new ProjectDto(null, newTitle, newDesc, newStartDate, newEndDate, newUrl, newImgUrl);
+
+        ProjectDto updatedProjectDto = projectService.update(newProjectDto, projectId);
 
         assertAll("Validando los campos del proyecto",
-                () -> assertEquals(projectId,updatedProjectDto.getId()),
-                () -> assertEquals(newTitle,updatedProjectDto.getTitle()),
-                () -> assertEquals(newDesc,updatedProjectDto.getDescription()),
-                () -> assertEquals(newStartDate,updatedProjectDto.getStartDate()),
-                () -> assertEquals(newEndDate,updatedProjectDto.getEndDate()),
-                () -> assertEquals(newUrl,updatedProjectDto.getUrl()),
-                () -> assertEquals(newImgUrl,updatedProjectDto.getImgUrl())
+                () -> assertEquals(projectId, updatedProjectDto.getId()),
+                () -> assertEquals(newTitle, updatedProjectDto.getTitle()),
+                () -> assertEquals(newDesc, updatedProjectDto.getDescription()),
+                () -> assertEquals(newStartDate, updatedProjectDto.getStartDate()),
+                () -> assertEquals(newEndDate, updatedProjectDto.getEndDate()),
+                () -> assertEquals(newUrl, updatedProjectDto.getUrl()),
+                () -> assertEquals(newImgUrl, updatedProjectDto.getImgUrl())
         );
         // DELETE
         entityManager.clear();
-        assertDoesNotThrow(()-> {
-            projectService.deleteById(projectId);
-            entityManager.flush();
-            }
-                ,TEST_THROWS_MESSAGE);
+        assertDoesNotThrow(() -> {
+                    projectService.deleteById(projectId);
+                    entityManager.flush();
+                }
+                , TEST_THROWS_MESSAGE);
         assertFalse(projectRepository.existsById(projectId));
     }
 }

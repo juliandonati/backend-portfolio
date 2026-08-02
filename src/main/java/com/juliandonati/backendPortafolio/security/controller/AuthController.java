@@ -41,9 +41,9 @@ public class AuthController {
     @Operation(summary = "Registrar nuevo usuario mediante RegisterRequestDto",
             description = "Permite registrar a un nuevo usuario enviando un objeto RegisterRequestDto con sus campos completos y válidos")
     public ResponseEntity<String> registerUser(@RequestBody @Valid RegisterRequestDto registerRequestDto) {
-        logger.debug("Registrando usuario de username: "+ registerRequestDto.getUsername());
+        logger.debug("Registrando usuario de username: {}", registerRequestDto.getUsername());
         userService.register(registerRequestDto);
-        logger.info("¡Usuario de username: "+ registerRequestDto.getUsername()+" creado con éxito!");
+        logger.info("¡Usuario de username: {} creado con éxito!", registerRequestDto.getUsername());
 
         return new ResponseEntity<>("¡El usuario ha sido creado con éxito!", HttpStatus.CREATED);
     }
@@ -52,14 +52,14 @@ public class AuthController {
     @Operation(summary = "Iniciar sesión de usuario mediante LoginRequestDto",
             description = "Permite iniciar la sesión de un usuario enviando un objeto LoginRequestDto con sus campos completos y válidos, y devuelve un objeto JwtResponseDto que contiene un JWT")
     public ResponseEntity<JwtResponseDto> authenticateUser(@RequestBody @Valid LoginRequestDto loginRequestDto) {
-        logger.debug("Autenticando usuario de login: "+ loginRequestDto.getUsernameOrEmail());
+        logger.debug("Autenticando usuario de login: {}", loginRequestDto.getUsernameOrEmail());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequestDto.getUsernameOrEmail(), // Por ahora funciona SOLO con username
                         loginRequestDto.getUnencryptedPassword()
                 )
         );
-        logger.info("¡Usuario de login: "+loginRequestDto.getUsernameOrEmail()+" autenticado con éxito!");
+        logger.info("¡Usuario de login: {} autenticado con éxito!", loginRequestDto.getUsernameOrEmail());
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

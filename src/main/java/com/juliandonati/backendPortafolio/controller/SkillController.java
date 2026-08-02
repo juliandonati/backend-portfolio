@@ -2,7 +2,6 @@ package com.juliandonati.backendPortafolio.controller;
 
 import com.juliandonati.backendPortafolio.domain.Portfolio;
 import com.juliandonati.backendPortafolio.dto.SkillDto;
-import com.juliandonati.backendPortafolio.exception.ResourceNotFoundException;
 import com.juliandonati.backendPortafolio.mapper.SkillMapper;
 import com.juliandonati.backendPortafolio.service.FileStorageService;
 import com.juliandonati.backendPortafolio.service.PortfolioService;
@@ -44,9 +43,9 @@ public class SkillController {
     @Operation(summary = "Consultar habilidad por nombre del dueño de un portafolio",
             description = "Devuelve todas las habilidades de un portafolio buscándolas por el nombre de su dueño, incluyendo todos sus campos.")
     public ResponseEntity<List<SkillDto>> getAllSkillsByOwner(@PathVariable String ownerUsername){
-        logger.debug("Buscando habilidades del portafolio de "+ownerUsername);
+        logger.debug("Buscando habilidades del portafolio de {}", ownerUsername);
         List<SkillDto> skillDtos = skillService.findSkillsByOwnerUsername(ownerUsername);
-        logger.info("¡Devolviendo habilidades del portafolio de "+ownerUsername+'!');
+        logger.info("¡Devolviendo habilidades del portafolio de {}!", ownerUsername);
 
         return ResponseEntity.ok(skillDtos);
     }
@@ -59,10 +58,10 @@ public class SkillController {
                                                       @Valid @RequestPart("skill") SkillDto skillDto,
                                                       @RequestPart(required = false, value = "img-file") MultipartFile imgMpFile)
     throws IOException {
-        logger.debug("Buscando portafolio de "+ownerUsername);
+        logger.debug("Buscando portafolio de {}", ownerUsername);
         Portfolio portfolio = portfolioService.findByOwnerUsername(ownerUsername);
 
-        logger.debug("Portafolio de "+ownerUsername+" encontrado, añadiendo habilidad...");
+        logger.debug("Portafolio de {} encontrado, añadiendo habilidad...", ownerUsername);
 
         if(imgMpFile != null && !imgMpFile.isEmpty()){
             logger.debug("El usuario agregó una imagen, subiendo...");
@@ -76,7 +75,7 @@ public class SkillController {
                 .getSkills()
                 .stream().map(skillMapper::toDto)
                 .toList();
-        logger.info("¡Habilidad nueva del portafolio de "+ownerUsername+" creada con éxito!");
+        logger.info("¡Habilidad nueva del portafolio de {} creada con éxito!", ownerUsername);
 
         return new ResponseEntity<>(updatedSkillDtos, HttpStatus.CREATED);
     }
@@ -86,9 +85,9 @@ public class SkillController {
     @Operation(summary = "Consultar habilidad por ID",
             description = "Devuelve una habilidad específica buscándola por ID, incluyendo todos sus campos.")
     public ResponseEntity<SkillDto> getSkill(@PathVariable Long skillId){
-        logger.debug("Buscando habilidad de id: "+skillId);
+        logger.debug("Buscando habilidad de id: {}", skillId);
         SkillDto skillDto = skillService.findById(skillId);
-        logger.info("¡Devolviendo habilidad de id: "+skillId+'!');
+        logger.info("¡Devolviendo habilidad de id: {}!", skillId);
 
         return ResponseEntity.ok(skillDto);
     }
@@ -117,9 +116,9 @@ public class SkillController {
             skillDto.setImgUrl(imgUrl);
         }
 
-        logger.debug("Actualizando habilidad de id: "+skillId+'!');
+        logger.debug("Actualizando habilidad de id: {}!", skillId);
         SkillDto updatedSkillDto = skillService.update(skillDto, skillId);
-        logger.info("¡Habilidad de id: "+skillDto+" actualizada con éxito!");
+        logger.info("¡Habilidad de id: {} actualizada con éxito!", skillDto);
         return ResponseEntity.ok(updatedSkillDto);
     }
 
@@ -128,19 +127,17 @@ public class SkillController {
     @Operation(summary = "Eliminar habilidad por ID",
             description = "Elimina una habilidad, si existe, especificada por su ID")
     public ResponseEntity<Void> deleteSkill(@PathVariable Long skillId) throws Exception{
-        logger.debug("Eliminando habilidad de id: "+skillId+'!');
+        logger.debug("Eliminando habilidad de id: {}!", skillId);
 
-        try{
-            logger.debug("Eliminando imagen de la habilidad...");
-            fileStorageService.deleteImageByUrl(skillService.findImgUrlBySkillId(skillId));
+        String imgUrl = skillService.findImgUrlBySkillId(skillId);
+        if(imgUrl != null && !imgUrl.isEmpty()){
+            logger.debug("La habilidad tiene una imagen, eliminandola...");
+            fileStorageService.deleteImageByUrl(imgUrl);
             logger.debug("¡Imagen eliminada con éxito!");
-        }
-        catch(ResourceNotFoundException e){
-            logger.debug("La habilidad no tiene una imagen que eliminar.");
         }
 
         skillService.deleteById(skillId);
-        logger.info("¡Habilidad de id: "+skillId+" eliminada con éxito!");
+        logger.info("¡Habilidad de id: {} eliminada con éxito!", skillId);
 
         return ResponseEntity.noContent().build();
     }
