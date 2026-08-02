@@ -17,16 +17,9 @@ import java.util.Arrays;
 @Order(0)
 @Profile("!test")
 public class RoleDataLoader implements CommandLineRunner {
-    private Environment env;
     private final RoleService roleService;
-
-
-
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("🚨 ALERTA - DATALOADER EJECUTÁNDOSE. PERFILES ACTIVOS: " +
-                Arrays.toString(env.getActiveProfiles()));
-
         Role userRole;
         try {
             userRole = roleService.findByName("ROLE_USER");
