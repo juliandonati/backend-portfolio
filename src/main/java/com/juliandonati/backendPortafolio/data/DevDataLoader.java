@@ -51,7 +51,7 @@ public class DevDataLoader implements CommandLineRunner {
 
         User adminTestUser;
         try{
-            adminTestUser = userService.findByUsername("admin_test_user");
+            adminTestUser = userService.findByUsername("admin"); // todo Crear QUERY personalizada existsByUsername
         }
         catch(ResourceNotFoundException ex){
             RegisterRequestDto requestDto = new RegisterRequestDto();
