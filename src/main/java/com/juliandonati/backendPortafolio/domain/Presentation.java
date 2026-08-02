@@ -26,7 +26,6 @@ public class Presentation {
 
     private String imgUrl;
 
-    @Column(length = 254)
     private String email;
 
     @Column(length = 15)
