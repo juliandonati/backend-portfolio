@@ -49,11 +49,11 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> {
                     if(environment.acceptsProfiles(Profiles.of("dev")))
-                        auth.requestMatchers("/swagger-ui/**","/v3/api-docs/**","/v3/api-docs.yaml","/swagger-resources/**","/webjars/**").permitAll();
+                        auth.requestMatchers("/h2-console/**","/swagger-ui/**","/v3/api-docs/**","/v3/api-docs.yaml","/swagger-resources/**","/webjars/**").permitAll();
                     auth
+                            .requestMatchers("/api/v1/health/ping").permitAll()
                             .requestMatchers("/api/v1/auth/login").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/v1/users").permitAll()
-                            .requestMatchers("/h2-console/**").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/v1/portfolio/{ownerUsername}", "/api/v1/portfolio/{ownerUsername}/exists").permitAll()
                             .anyRequest().authenticated();
                     // El resto de rutas van a estar protegidas por @PreAuthorized
