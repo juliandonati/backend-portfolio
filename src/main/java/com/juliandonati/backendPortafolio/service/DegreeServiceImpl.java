@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -60,8 +61,8 @@ public class DegreeServiceImpl implements DegreeService {
 
     @Override
     @Transactional(readOnly = true)
-    public String findImgUrlByDegreeId(Long id) throws ResourceNotFoundException {
-        return degreeRepository.findImgUrlByDegreeId(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró un título académico de id: " + id));
+    public Optional<String> findOptionalImgUrlByDegreeId(Long id){
+        return degreeRepository.findImgUrlByDegreeId(id);
     }
 
     @Override

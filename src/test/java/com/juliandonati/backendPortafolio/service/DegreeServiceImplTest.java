@@ -178,29 +178,32 @@ class DegreeServiceImplTest {
     }
 
     @Test
-    void testFindImgUrlByDegreeIdReturnsImgUrl() {
+    void testFindOptionalImgUrlByDegreeIdReturnsOptionalImgUrlSuccessfully() {
         // Arrange
         Long mockId = 32L;
         String mockImgUrl = "http://imagen-prueba.com.ar";
         when(degreeRepository.findImgUrlByDegreeId(mockId)).thenReturn(Optional.of(mockImgUrl));
 
         // Act
-        String result = degreeService.findImgUrlByDegreeId(mockId);
+        Optional<String> result = degreeService.findOptionalImgUrlByDegreeId(mockId);
 
         // Assert
-        assertNotNull(result);
-        assertEquals(mockImgUrl,result);
+        assertTrue(result.isPresent());
+        assertEquals(mockImgUrl,result.get());
         verify(degreeRepository,times(1)).findImgUrlByDegreeId(mockId);
     }
 
     @Test
-    void testFindImgUrlByDegreeIdThrowsResourceNotFoundException(){
+    void testFindOptionalImgUrlByDegreeIdReturnsEmptyOptionalSuccessfully(){
         // Arrange
         Long mockId = 999L;
         when(degreeRepository.findImgUrlByDegreeId(mockId)).thenReturn(Optional.empty());
 
-        // Act + Assert
-        assertThrows(ResourceNotFoundException.class,()->degreeService.findImgUrlByDegreeId(mockId));
+        // Act
+        Optional<String> result = degreeService.findOptionalImgUrlByDegreeId(mockId);
+
+        // Assert
+        assertTrue(result.isEmpty());
         verify(degreeRepository,times(1)).findImgUrlByDegreeId(mockId);
     }
 

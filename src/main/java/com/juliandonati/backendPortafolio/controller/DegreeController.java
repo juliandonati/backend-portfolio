@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/degrees")
@@ -89,7 +90,7 @@ public class DegreeController {
     public ResponseEntity<DegreeDto> getDegreeById(@PathVariable Long degreeId) {
         logger.debug("Recuperando título académico de id: {}", degreeId);
         DegreeDto degreeDto = degreeService.findById(degreeId);
-        logger.info("¡Devolviendo el título académico de id: {}!",degreeId);
+        logger.info("¡Devolviendo el título académico de id: {}!", degreeId);
         return ResponseEntity.ok(degreeDto);
     }
 
@@ -108,13 +109,16 @@ public class DegreeController {
             String imageUrl = fileStorageService.uploadImage(imageMpFile, degreeService.findOwnerUsernameByDegreeId(degreeId));
             logger.debug("¡Imagen subida con éxito!");
 
-            try {
-                logger.debug("Eliminando imagen vieja...");
-                fileStorageService.deleteImageByUrl(degreeService.findImgUrlByDegreeId(degreeId));
-                logger.debug("¡Imagen vieja eliminada con éxito!");
-            } catch (ResourceNotFoundException ex) {
-                logger.debug("El título no tiene ninguna imagen que eliminar.");
+            Optional<String> oldImageUrlOptional = degreeService.findOptionalImgUrlByDegreeId(degreeId);
+            if (oldImageUrlOptional.isPresent()) {
+                String oldImageUrl = oldImageUrlOptional.get();
+                if (!oldImageUrl.trim().isEmpty()) {
+                    logger.debug("Eliminando imagen vieja de título académico...");
+                    fileStorageService.deleteImageByUrl(oldImageUrl);
+                    logger.debug("¡Imagen vieja de título académico eliminada con éxito!");
+                }
             }
+
 
             degreeDto.setImgUrl(imageUrl);
         }
@@ -132,11 +136,14 @@ public class DegreeController {
     public ResponseEntity<Void> deleteDegree(@PathVariable Long degreeId) throws Exception {
         logger.debug("Eliminando título académico de id: {}", degreeId);
 
-        String imgUrl = degreeService.findImgUrlByDegreeId(degreeId);
-        if (imgUrl != null && !imgUrl.isEmpty()) {
-            logger.debug("El título académico tiene una imagen, eliminandola...");
-            fileStorageService.deleteImageByUrl(imgUrl);
-            logger.debug("¡Imagen del título académico eliminada con éxito!");
+        Optional<String> oldImageUrlOptional = degreeService.findOptionalImgUrlByDegreeId(degreeId);
+        if (oldImageUrlOptional.isPresent()) {
+            String oldImageUrl = oldImageUrlOptional.get();
+            if (!oldImageUrl.trim().isEmpty()) {
+                logger.debug("Eliminando imagen de título académico...");
+                fileStorageService.deleteImageByUrl(oldImageUrl);
+                logger.debug("¡Imagen de título académico eliminada con éxito!");
+            }
         }
 
 

@@ -10,11 +10,11 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
@@ -62,7 +62,7 @@ class DegreeServiceTest {
     }
 
     @Test
-    void testFindImgUrlByDegreeIdReturnsImgUrl() {
+    void testFindOptionalImgUrlByDegreeIdReturnsOptionalImgUrlSuccessfully() {
         // Arrange
         Portfolio portfolioToSave = createPortfolio(userRepository);
         String name = "Generic Degree Title", desc = "Generic Degree Desc", imgUrl = "https://www.imgurl.com";
@@ -73,11 +73,11 @@ class DegreeServiceTest {
         Long degreeId = portfolioRepository.save(portfolioToSave).getDegrees().stream().toList().getFirst().getId();
 
         // Act
-        String result = degreeService.findImgUrlByDegreeId(degreeId);
+        Optional<String> result = degreeService.findOptionalImgUrlByDegreeId(degreeId);
 
         // Assert
-        assertNotNull(result);
-        assertEquals(imgUrl, result);
+        assertTrue(result.isPresent());
+        assertEquals(imgUrl, result.get());
     }
 
     @Test
