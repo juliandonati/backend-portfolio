@@ -10,11 +10,11 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -90,7 +90,7 @@ class ProjectServiceTest {
     }
 
     @Test
-    void testFindImgUrlByProjectIdReturnsImgUrlSuccessfully() {
+    void testFindImgUrlByProjectIdReturnsOptionalImgUrlSuccessfully() {
         // Arrange
         Portfolio portfolio = createPortfolio(userRepository);
         portfolio.addProject(new Project(null, title1, desc1, startDate1, endDate1, url1, imgUrl1, null));
@@ -99,12 +99,12 @@ class ProjectServiceTest {
                 .getId();
 
         // Act
-        String result = projectService.findImgUrlByProjectId(projectId);
+        Optional<String> result = projectService.findOptionalImgUrlByProjectId(projectId);
 
         // Assert
         assertAll("Validando String recibido",
-                () -> assertNotNull(result),
-                () -> assertEquals(imgUrl1, result)
+                () -> assertTrue(result.isPresent()),
+                () -> assertEquals(imgUrl1, result.get())
         );
     }
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,8 +26,8 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     @Transactional(readOnly = true)
-    public String findImgUrlByProjectId(Long id) throws ResourceNotFoundException {
-        return projectRepository.findImgUrlByProjectId(id).orElseThrow(()->new ResourceNotFoundException("No se encontró un proyecto con la id: " + id));
+    public Optional<String> findOptionalImgUrlByProjectId(Long id){
+        return projectRepository.findImgUrlByProjectId(id);
     }
 
     @Override

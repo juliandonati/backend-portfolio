@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/projects")
@@ -102,11 +103,14 @@ public class ProjectController {
             String newImgUrl = fileStorageService.uploadImage(imgMpFile,projectService.findOwnerUsernameByProjectId(id));
             logger.info("¡Nueva imagen del proyecto subida con éxito!");
 
-            String oldImgUrl = projectService.findImgUrlByProjectId(id);
-            if(oldImgUrl != null && !oldImgUrl.isEmpty()){
-                logger.debug("Eliminando imagen vieja del proyecto...");
-                fileStorageService.deleteImageByUrl(oldImgUrl);
-                logger.info("¡Imagen vieja del proyecto eliminada con éxito!");
+            Optional<String> oldImgUrlOptional = projectService.findOptionalImgUrlByProjectId(id);
+            if(oldImgUrlOptional.isPresent()){
+                String oldImgUrl = oldImgUrlOptional.get();
+                if(!oldImgUrl.trim().isEmpty()){
+                    logger.debug("Eliminando imagen vieja del proyecto...");
+                    fileStorageService.deleteImageByUrl(oldImgUrl);
+                    logger.info("¡Imagen vieja del proyecto eliminada con éxito!");
+                }
             }
             projectDto.setImgUrl(newImgUrl);
         }
@@ -123,13 +127,15 @@ public class ProjectController {
             description = "Elimina un proyecto, si existe, especificado por su ID")
     public ResponseEntity<Void> deleteProject(@PathVariable Long id) throws Exception{
         logger.debug("Eliminando el proyecto de id: {}",id);
-        String imgUrl = projectService.findImgUrlByProjectId(id);
-        if(imgUrl != null && !imgUrl.isEmpty()){
-            logger.debug("El proyecto contenía una imagen, eliminandola...");
-            fileStorageService.deleteImageByUrl(imgUrl);
-            logger.info("¡Imagen del proyecto eliminada con éxito!");
+        Optional<String> oldImgUrlOptional = projectService.findOptionalImgUrlByProjectId(id);
+        if(oldImgUrlOptional.isPresent()){
+            String oldImgUrl = oldImgUrlOptional.get();
+            if(!oldImgUrl.trim().isEmpty()){
+                logger.debug("Eliminando imagen del proyecto...");
+                fileStorageService.deleteImageByUrl(oldImgUrl);
+                logger.info("¡Imagen del proyecto eliminada con éxito!");
+            }
         }
-
         projectService.deleteById(id);
         logger.info("¡Proyecto eliminado con éxito!");
 

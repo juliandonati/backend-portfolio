@@ -214,26 +214,28 @@ class ProjectServiceImplTest {
     }
 
     @Test
-    void testFindImgUrlByProjectIdReturnsImgUrlSuccessfully() {
+    void testFindOptionalImgUrlByProjectIdReturnsOptionalImgUrlSuccessfully() {
         // Arrange
         when(projectRepository.findImgUrlByProjectId(id1)).thenReturn(Optional.of(imgUrl1));
         // Act
-        String result = projectService.findImgUrlByProjectId(id1);
+        Optional<String> result = projectService.findOptionalImgUrlByProjectId(id1);
         // Assert
         assertAll("Validando String recibido",
-                () -> assertNotNull(result),
-                () -> assertEquals(imgUrl1, result)
+                () -> assertTrue(result.isPresent()),
+                () -> assertEquals(imgUrl1, result.get())
         );
         verify(projectRepository,times(1)).findImgUrlByProjectId(id1);
     }
 
     @Test
-    void testFindImgUrlByProjectIdThrowsResourceNotFoundException() {
+    void testFindOptionalImgUrlByProjectIdReturnsEmptyOptionalSuccessfully() {
         // Arrange
         Long unexistentId = 99L;
         when(projectRepository.findImgUrlByProjectId(unexistentId)).thenReturn(Optional.empty());
-        // Act + Assert
-        assertThrows(ResourceNotFoundException.class,()->projectService.findImgUrlByProjectId(unexistentId));
+        // Act
+        Optional<String> result = projectService.findOptionalImgUrlByProjectId(unexistentId);
+        // Assert
+        assertTrue(result.isEmpty());
         verify(projectRepository,times(1)).findImgUrlByProjectId(unexistentId);
     }
 
