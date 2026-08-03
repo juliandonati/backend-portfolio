@@ -177,24 +177,26 @@ class SkillServiceImplTest {
     }
 
     @Test
-    void testFindImgUrlBySkillIdReturnsImgUrl() {
+    void testFindImgUrlBySkillIdReturnsOptionalImgUrl() {
         String mockImgUrl = "http://imagenepica.com.ar";
         Long mockId= 45L;
         when(skillRepository.findImgUrlBySkillId(mockId)).thenReturn(Optional.of(mockImgUrl));
 
-        String result = skillService.findImgUrlBySkillId(mockId);
+        Optional<String> result = skillService.findOptionalImgUrlBySkillId(mockId);
 
-        assertNotNull(result);
-        assertEquals(mockImgUrl,result);
+        assertTrue(result.isPresent());
+        assertEquals(mockImgUrl,result.get());
         verify(skillRepository,times(1)).findImgUrlBySkillId(mockId);
     }
 
     @Test
-    void testFindImgUrlBySkillIdThrowsResourceNotFoundException() {
+    void testFindOptionalImgUrlBySkillIdReturnsEmptyOptional() {
         Long mockId= 999L;
         when(skillRepository.findImgUrlBySkillId(mockId)).thenReturn(Optional.empty());
 
-        assertThrows(ResourceNotFoundException.class,()->skillService.findImgUrlBySkillId(mockId));
+        Optional<String> result = skillService.findOptionalImgUrlBySkillId(mockId);
+
+        assertTrue(result.isEmpty());
         verify(skillRepository,times(1)).findImgUrlBySkillId(mockId);
     }
 }

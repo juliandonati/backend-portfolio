@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/skills")
@@ -106,11 +107,14 @@ public class SkillController {
             String imgUrl = fileStorageService.uploadImage(imgMpFile, skillService.findOwnerUsernameBySkillId(skillId));
             logger.debug("¡Imagen subida con éxito!");
 
-            String oldImgUrl = skillService.findImgUrlBySkillId(skillId);
-            if(oldImgUrl != null && !oldImgUrl.isEmpty()){
-                logger.debug("Eliminando imagen vieja...");
-                fileStorageService.deleteImageByUrl(oldImgUrl);
-                logger.debug("¡Imagen vieja eliminada con éxito!");
+            Optional<String> oldImgUrlOptional = skillService.findOptionalImgUrlBySkillId(skillId);
+            if(oldImgUrlOptional.isPresent()){
+                String oldImgUrl = oldImgUrlOptional.get();
+                if(!oldImgUrl.trim().isEmpty()) {
+                    logger.debug("Eliminando imagen vieja...");
+                    fileStorageService.deleteImageByUrl(oldImgUrl);
+                    logger.debug("¡Imagen vieja eliminada con éxito!");
+                }
             }
 
             skillDto.setImgUrl(imgUrl);
@@ -129,11 +133,14 @@ public class SkillController {
     public ResponseEntity<Void> deleteSkill(@PathVariable Long skillId) throws Exception{
         logger.debug("Eliminando habilidad de id: {}!", skillId);
 
-        String imgUrl = skillService.findImgUrlBySkillId(skillId);
-        if(imgUrl != null && !imgUrl.isEmpty()){
-            logger.debug("La habilidad tiene una imagen, eliminandola...");
-            fileStorageService.deleteImageByUrl(imgUrl);
-            logger.debug("¡Imagen eliminada con éxito!");
+        Optional<String> oldImgUrlOptional = skillService.findOptionalImgUrlBySkillId(skillId);
+        if(oldImgUrlOptional.isPresent()){
+            String oldImgUrl = oldImgUrlOptional.get();
+            if(!oldImgUrl.trim().isEmpty()) {
+                logger.debug("Eliminando imagen...");
+                fileStorageService.deleteImageByUrl(oldImgUrl);
+                logger.debug("¡Imagen eliminada con éxito!");
+            }
         }
 
         skillService.deleteById(skillId);

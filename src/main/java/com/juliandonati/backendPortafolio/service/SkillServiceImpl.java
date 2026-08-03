@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -66,7 +67,7 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     @Transactional(readOnly = true)
-    public String findImgUrlBySkillId(Long id) throws ResourceNotFoundException {
-        return skillRepository.findImgUrlBySkillId(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró una habilidad con la id: " + id));
+    public Optional<String> findOptionalImgUrlBySkillId(Long id){
+        return skillRepository.findImgUrlBySkillId(id);
     }
 }

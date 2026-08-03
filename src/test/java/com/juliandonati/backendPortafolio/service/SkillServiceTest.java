@@ -10,10 +10,10 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static com.juliandonati.backendPortafolio.service.MiscTestUtilities.*;
@@ -102,7 +102,7 @@ class SkillServiceTest {
     }
 
     @Test
-    void testFindImgUrlBySkillIdReturnsImgUrl() {
+    void testFindOptionalImgUrlBySkillIdReturnsOptionalImgUrl() {
         // Arrange
         Portfolio portfolio = createPortfolio(userRepository);
         portfolio.addSkill(
@@ -113,10 +113,10 @@ class SkillServiceTest {
                 .getId();
 
         // Act
-        String result = skillService.findImgUrlBySkillId(skillId);
+        Optional<String> result = skillService.findOptionalImgUrlBySkillId(skillId);
 
-        assertNotNull(result);
-        assertEquals(skillImgUrl1, result);
+        assertTrue(result.isPresent());
+        assertEquals(skillImgUrl1, result.get());
     }
 
     @Test
