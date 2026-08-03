@@ -58,6 +58,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional
     public User save(User user) throws ResourceNotFoundException {
         return userRepository.save(user);
     }
@@ -100,6 +101,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public boolean hasPortfolio(String username) throws ResourceNotFoundException {
         if(!userRepository.existsByUsername(username))
             throw new ResourceNotFoundException("No existe un usuario con el nombre: " + username);

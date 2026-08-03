@@ -2804,3 +2804,78 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
 2026-08-02 17:17:58.435 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-08-02 17:17:58.436 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-08-02 20:03:12.082 INFO  c.j.b.BackendPortafolioApplication - Starting BackendPortafolioApplication using Java 25.0.3 with PID 26508 (G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio\target\classes started by lolth in G:\Usuarios\lolth\Documentos\Workspace Eclipse & IntelliJ\backendPortafolio)
+2026-08-02 20:03:12.106 DEBUG c.j.b.BackendPortafolioApplication - Running with Spring Boot v4.0.3, Spring v7.0.5
+2026-08-02 20:03:12.106 INFO  c.j.b.BackendPortafolioApplication - The following 1 profile is active: "dev"
+2026-08-02 20:03:12.153 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-02 20:03:12.154 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-02 20:03:16.911 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-02 20:03:17.013 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 9 JPA repository interfaces.
+2026-08-02 20:03:17.764 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-08-02 20:03:17.778 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-08-02 20:03:17.779 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-08-02 20:03:17.779 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-08-02 20:03:17.840 INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 5685 ms
+2026-08-02 20:03:18.768 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-02 20:03:18.810 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-08-02 20:03:19.050 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-08-02 20:03:19.051 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-08-02 20:03:21.537 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 20:03:21.632 INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-02 20:03:22.826 DEBUG c.j.b.s.jwt.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-08-02 20:03:23.351 INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2026-08-02 20:03:23.502 WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-02 20:03:24.664 INFO  o.s.b.h.a.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-08-02 20:03:24.769 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2026-08-02 20:03:24.884 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-08-02 20:03:24.907 INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-08-02 20:03:24.919 INFO  c.j.b.BackendPortafolioApplication - Started BackendPortafolioApplication in 13.494 seconds (process running for 14.471)
+2026-08-02 20:03:25.074 DEBUG c.j.b.data.RoleDataLoader - CREANDO ROL DE USER
+2026-08-02 20:03:25.154 INFO  c.j.b.data.RoleDataLoader - ¡ROL DE USER CREADO CON ÉXITO!
+2026-08-02 20:03:25.158 DEBUG c.j.b.data.RoleDataLoader - CREANDO ROL DE ADMIN
+2026-08-02 20:03:25.164 INFO  c.j.b.data.RoleDataLoader - ¡ROL DE ADMIN CREADO CON ÉXITO!
+2026-08-02 20:03:25.241 DEBUG c.j.b.data.UserDataLoader - EL ADMIN DEFAULT NO EXISTE, CREANDO...
+2026-08-02 20:03:25.366 INFO  c.j.b.data.UserDataLoader - ¡ADMIN DEFAULT CREADO!
+2026-08-02 20:04:54.001 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-02 20:07:23.257 DEBUG c.j.b.s.controller.UserController - Recuperando usuarios mediante el filtro: j
+2026-08-02 20:07:23.281 INFO  c.j.b.s.controller.UserController - ¡Devolviendo todos los usuarios que contengan el filtro: j!
+2026-08-02 20:07:23.317 WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-08-02 20:07:24.206 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: julian.donati
+2026-08-02 20:07:24.230 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: julian.donati
+2026-08-02 20:07:31.697 DEBUG c.j.b.s.controller.AuthController - Autenticando usuario de login: julian.donati
+2026-08-02 20:07:31.847 INFO  c.j.b.s.controller.AuthController - ¡Usuario de login: julian.donati autenticado con éxito!
+2026-08-02 20:07:59.818 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: julian.donati
+2026-08-02 20:07:59.833 INFO  c.j.b.controller.PortfolioController - No existe.
+2026-08-02 20:07:59.837 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: julian.donati
+2026-08-02 20:07:59.838 INFO  c.j.b.controller.PortfolioController - No existe.
+2026-08-02 20:08:01.185 DEBUG c.j.b.controller.PortfolioController - Verificando si existe el portafolio de julian.donati
+2026-08-02 20:08:01.186 DEBUG c.j.b.controller.PortfolioController - El portafolio de julian.donati no existe, buscando usuario...
+2026-08-02 20:08:01.188 DEBUG c.j.b.controller.PortfolioController - El usuario de julian.donati existe, creando portafolio...
+2026-08-02 20:08:01.194 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de julian.donati creado con éxito!
+2026-08-02 20:08:01.227 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: julian.donati
+2026-08-02 20:08:01.231 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de julian.donati recuperado con éxito!
+2026-08-02 20:08:01.236 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: julian.donati
+2026-08-02 20:08:01.238 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de julian.donati recuperado con éxito!
+2026-08-02 20:08:12.269 DEBUG c.j.b.controller.DegreeController - Buscando portafolio de julian.donati
+2026-08-02 20:08:12.270 DEBUG c.j.b.controller.DegreeController - El usuario subió una imagen, subiendo...
+2026-08-02 20:08:15.045 DEBUG c.j.b.controller.DegreeController - ¡Imagen subida con éxito!
+2026-08-02 20:08:15.045 DEBUG c.j.b.controller.DegreeController - Guardando el nuevo título académico en el portafolio de julian.donati
+2026-08-02 20:08:15.054 INFO  c.j.b.controller.DegreeController - ¡El nuevo título académico de julian.donati ha sido creado correctamente!
+2026-08-02 20:08:16.811 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: julian.donati
+2026-08-02 20:08:16.813 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-08-02 20:08:16.816 DEBUG c.j.b.controller.PortfolioController - Verificando si existe un portafolio de dueño: julian.donati
+2026-08-02 20:08:16.817 INFO  c.j.b.controller.PortfolioController - ¡Existe!
+2026-08-02 20:08:18.249 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: julian.donati
+2026-08-02 20:08:18.252 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de julian.donati recuperado con éxito!
+2026-08-02 20:08:18.255 DEBUG c.j.b.controller.PortfolioController - Recuperando el portafolio de: julian.donati
+2026-08-02 20:08:18.259 INFO  c.j.b.controller.PortfolioController - ¡Portafolio de julian.donati recuperado con éxito!
+2026-08-02 20:09:49.335 INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-02 20:09:49.340 INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-08-02 20:09:50.380 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-02 20:09:50.387 WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de datos ya esta cerrada (para des-habilitar el cerrado automatico durante el shutdown de la VM, agregue ";DB_CLOSE_ON_EXIT=FALSE" a la URL de conexión)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
+2026-08-02 20:09:50.387 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-08-02 20:09:50.388 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

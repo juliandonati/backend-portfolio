@@ -7,6 +7,7 @@ import com.juliandonati.backendPortafolio.mapper.AboutMeMapper;
 import com.juliandonati.backendPortafolio.repository.AboutMeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,16 +18,19 @@ public class AboutMeServiceImpl implements AboutMeService {
     private final AboutMeMapper aboutMeMapper;
 
     @Override
+    @Transactional(readOnly = true)
     public List<AboutMeDto> findAll() {
         return aboutMeRepository.findAll().stream().map(aboutMeMapper::toDto).toList();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public AboutMeDto findById(Long id) throws ResourceNotFoundException {
         return aboutMeMapper.toDto(aboutMeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró un 'SOBRE MÍ' de id: " + id)));
     }
 
     @Override
+    @Transactional
     public AboutMeDto save(AboutMeDto aboutMeDto) {
         return aboutMeMapper.toDto(
                 aboutMeRepository.save(aboutMeMapper.toEntity(aboutMeDto))
@@ -34,6 +38,7 @@ public class AboutMeServiceImpl implements AboutMeService {
     }
 
     @Override
+    @Transactional
     public AboutMeDto update(AboutMeDto aboutMeDto, Long id) throws ResourceNotFoundException {
         AboutMe aboutMeToUpdate = aboutMeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró un 'SOBRE MÍ' de id: " + id));
         AboutMe updatedAboutMe = aboutMeMapper.updateEntity(aboutMeDto, aboutMeToUpdate);
@@ -45,6 +50,7 @@ public class AboutMeServiceImpl implements AboutMeService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public AboutMeDto findByOwnerUsername(String username) throws ResourceNotFoundException {
         return aboutMeMapper.toDto(
                 aboutMeRepository.findByOwnerUsername(username).orElseThrow(() -> new ResourceNotFoundException("El usuario o el portafolio no existe"))
@@ -52,6 +58,7 @@ public class AboutMeServiceImpl implements AboutMeService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public boolean existsByOwnerUsername(String username) {
         return aboutMeRepository.existsByOwnerUsername(username);
     }

@@ -32,6 +32,7 @@ public class PortfolioServiceImpl implements PortfolioService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public boolean existsByOwnerUsername(String username) {
         return portfolioRepository.existsByOwnerUsername(username);
     }
@@ -76,6 +77,7 @@ public class PortfolioServiceImpl implements PortfolioService{
     }
 
     @Override
+    @Transactional
     public void deleteAboutMeById(long aboutMeId) throws Exception {
         AboutMe aboutMe = aboutMeRepository.findById(aboutMeId).orElseThrow(()->new ResourceNotFoundException("No se encontró un AboutMe con la id: "+ aboutMeId));
 
@@ -94,6 +96,7 @@ public class PortfolioServiceImpl implements PortfolioService{
     }
 
     @Override
+    @Transactional
     public void deletePresentationById(long presentationId) throws Exception{
         Presentation presentation = presentationRepository.findById(presentationId).orElseThrow(()->new ResourceNotFoundException("No se encontró un Presentation con la id: "+ presentationId));
 
@@ -110,6 +113,7 @@ public class PortfolioServiceImpl implements PortfolioService{
     }
 
     @Override
+    @Transactional
     public void deleteAllPortfolioImagesById(Long id) throws Exception {
         Portfolio portfolio = portfolioRepository.findById(id)
                 .orElseThrow(()->new ResourceNotFoundException("No se encontró un portfolio con la id: " + id));
