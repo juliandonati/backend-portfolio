@@ -45,8 +45,10 @@ public class FileStorageServiceImpl implements FileStorageService {
     @Transactional
     @PreDestroy
     public void deleteAllFiles() throws Exception {
-        if (activeProfile.equals("dev"))
+        /*if (activeProfile.equals("dev"))
             cloudinary.api().deleteAllResources(ObjectUtils.emptyMap());
+
+            No habilitar con dirección de prod de Cloudinary */
     }
 
     @Transactional
