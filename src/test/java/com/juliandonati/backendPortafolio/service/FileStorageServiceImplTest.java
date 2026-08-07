@@ -3,6 +3,7 @@ package com.juliandonati.backendPortafolio.service;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Uploader;
 
+import com.juliandonati.backendPortafolio.exception.UnsafeFileException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,6 +27,9 @@ class FileStorageServiceImplTest {
     @Mock
     Cloudinary cloudinary;
 
+    @Mock
+    ImageModerationService imageModerationService;
+
     @InjectMocks
     FileStorageServiceImpl fileStorageService;
 
@@ -43,6 +47,7 @@ class FileStorageServiceImplTest {
         when(cloudinary.uploader()).thenReturn(mockUploader);
         // Puede ser cualquier arreglo de bytes, porque quizás se comprime el archivo o se cambia su contenido de alguna manera.
         when(mockUploader.upload(any(byte[].class), anyMap())).thenReturn(Map.of("url",mockImageUrl));
+        when(imageModerationService.isImageSafe(mockImageMPFile)).thenReturn(true);
 
         // Act
         String result = fileStorageService.uploadImage(mockImageMPFile,"pedrito");
@@ -51,7 +56,29 @@ class FileStorageServiceImplTest {
         assertNotNull(result);
         assertEquals(mockImageUrl,result);
         verify(cloudinary,times(1)).uploader();
+        verify(imageModerationService,times(1)).isImageSafe(mockImageMPFile);
         verify(mockUploader,times(1)).upload(any(byte[].class),anyMap());
+    }
+
+    @Test
+    void testUploadImageThrowsUnsafeFileException() throws IOException {
+        // Arrange
+        Uploader mockUploader = mock(Uploader.class);
+
+        MockMultipartFile mockImageMPFile = new MockMultipartFile(
+                "mock-name",
+                "mock-og-name",
+                "image/jpeg",
+                "mock content".getBytes());
+        String mockImageUrl = "http://imagenprueba.com";
+        // Puede ser cualquier arreglo de bytes, porque quizás se comprime el archivo o se cambia su contenido de alguna manera.
+        when(imageModerationService.isImageSafe(mockImageMPFile)).thenReturn(false);
+
+        // Act + Assert
+        assertThrows(UnsafeFileException.class,()->fileStorageService.uploadImage(mockImageMPFile,"pedrito"));
+        verify(cloudinary,never()).uploader();
+        verify(imageModerationService,times(1)).isImageSafe(mockImageMPFile);
+        verify(mockUploader,never()).upload(any(byte[].class),anyMap());
     }
 
     /*@Test
