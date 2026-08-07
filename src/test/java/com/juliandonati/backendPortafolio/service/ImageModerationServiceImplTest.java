@@ -1,41 +1,46 @@
 package com.juliandonati.backendPortafolio.service;
 
-import com.google.cloud.vision.v1.*;
-import com.google.rpc.Status;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ImageModerationServiceImplTest {
 
     @Mock
-    ImageAnnotatorClient imageAnnotatorClient;
+    RestTemplate restTemplate;
 
-    @InjectMocks
     private ImageModerationServiceImpl imageModerationService;
-
-    private MockedStatic<ImageAnnotatorClient> mockedStaticClient;
 
     private MultipartFile mockFile;
 
     @BeforeEach
     void setUp() {
+        // No usamos @InjectMocks: el campo "restTemplate" de la clase ya viene
+        // inicializado en su declaración (private final RestTemplate restTemplate = new RestTemplate()),
+        // y la inyección por campo de Mockito solo pisa campos que estén en null.
+        // Como resultado, @InjectMocks dejaría pasar el RestTemplate real sin avisar.
+        // Por eso instanciamos manualmente y forzamos el reemplazo por reflection.
+        imageModerationService = new ImageModerationServiceImpl();
+        ReflectionTestUtils.setField(imageModerationService, "restTemplate", restTemplate);
+
         mockFile = new MockMultipartFile(
                 "file",
                 "test-image.jpg",
@@ -43,83 +48,43 @@ class ImageModerationServiceImplTest {
                 "fake-image-content".getBytes()
         );
 
-        // Mockeamos el método estático ImageAnnotatorClient.create() para que
-        // devuelva nuestro mock en lugar de intentar conectarse a Google Vision de verdad
-        mockedStaticClient = mockStatic(ImageAnnotatorClient.class);
-        mockedStaticClient.when(ImageAnnotatorClient::create).thenReturn(imageAnnotatorClient);
+        // Los campos @Value no se resuelven en un test unitario, los seteamos a mano
+        ReflectionTestUtils.setField(imageModerationService, "apiUser", "fake-user");
+        ReflectionTestUtils.setField(imageModerationService, "apiSecret", "fake-secret");
     }
 
-    @AfterEach
-    void tearDown() {
-        mockedStaticClient.close();
+    private String buildJson(String status, double safeNudityScore, double goreProbability) {
+        return String.format(
+                "{\"status\":\"%s\",\"nudity\":{\"none\":%s},\"gore\":{\"prob\":%s}}",
+                status, safeNudityScore, goreProbability
+        );
     }
 
-    private BatchAnnotateImagesResponse buildResponse(Likelihood adult, Likelihood violence, Likelihood racy) {
-        SafeSearchAnnotation annotation = SafeSearchAnnotation.newBuilder()
-                .setAdult(adult)
-                .setViolence(violence)
-                .setRacy(racy)
-                .build();
-
-        AnnotateImageResponse annotateImageResponse = AnnotateImageResponse.newBuilder()
-                .setSafeSearchAnnotation(annotation)
-                .build();
-
-        return BatchAnnotateImagesResponse.newBuilder()
-                .addResponses(annotateImageResponse)
-                .build();
-    }
-
-    private BatchAnnotateImagesResponse buildErrorResponse() {
-        AnnotateImageResponse errorResponse = AnnotateImageResponse.newBuilder()
-                .setError(Status.newBuilder().setMessage("Error simulado de la API").build())
-                .build();
-
-        return BatchAnnotateImagesResponse.newBuilder()
-                .addResponses(errorResponse)
-                .build();
-    }
+    // ---------- Tests de isImageSafe ----------
 
     @Test
-    void testIsImageSafeReturnsTrueWhenAllLikelihoodsAreSafe() throws IOException {
+    void testIsImageSafeReturnsTrueWhenSightengineReportsSafeImage() throws IOException {
         // Arrange
-        BatchAnnotateImagesResponse response = buildResponse(
-                Likelihood.VERY_UNLIKELY, Likelihood.UNLIKELY, Likelihood.UNKNOWN
-        );
-        when(imageAnnotatorClient.batchAnnotateImages(anyList())).thenReturn(response);
+        String json = buildJson("success", 0.95, 0.01);
+        ResponseEntity<String> responseEntity = new ResponseEntity<>(json, HttpStatus.OK);
+        when(restTemplate.postForEntity(anyString(), any(HttpEntity.class), eq(String.class)))
+                .thenReturn(responseEntity);
 
         // Act
         boolean result = imageModerationService.isImageSafe(mockFile);
 
         // Assert
         assertTrue(result);
-        verify(imageAnnotatorClient, times(1)).batchAnnotateImages(anyList());
-        verify(imageAnnotatorClient, times(1)).close();
+        verify(restTemplate, times(1)).postForEntity(anyString(), any(HttpEntity.class), eq(String.class));
     }
 
     @Test
-    void testIsImageSafeReturnsFalseWhenAdultContentIsPossible() throws IOException {
-        // Arrange
-        BatchAnnotateImagesResponse response = buildResponse(
-                Likelihood.POSSIBLE, Likelihood.VERY_UNLIKELY, Likelihood.VERY_UNLIKELY
-        );
-        when(imageAnnotatorClient.batchAnnotateImages(anyList())).thenReturn(response);
-
-        // Act
-        boolean result = imageModerationService.isImageSafe(mockFile);
-
-        // Assert
-        assertFalse(result);
-        verify(imageAnnotatorClient, times(1)).batchAnnotateImages(anyList());
-    }
-
-    @Test
-    void testIsImageSafeReturnsFalseWhenViolenceIsLikely() throws IOException {
-        // Arrange
-        BatchAnnotateImagesResponse response = buildResponse(
-                Likelihood.VERY_UNLIKELY, Likelihood.LIKELY, Likelihood.VERY_UNLIKELY
-        );
-        when(imageAnnotatorClient.batchAnnotateImages(anyList())).thenReturn(response);
+    void testIsImageSafeReturnsFalseWhenSightengineReportsNudity() throws IOException {
+        // Arrange (safeNudityScore < 0.8 => se considera desnudez)
+        String json = buildJson("success", 0.5, 0.01);
+        ResponseEntity<String> responseEntity = new ResponseEntity<>(json, HttpStatus.OK);
+        when(restTemplate.postForEntity(anyString(), any(HttpEntity.class), eq(String.class)))
+                .thenReturn(responseEntity);
 
         // Act
         boolean result = imageModerationService.isImageSafe(mockFile);
@@ -129,12 +94,12 @@ class ImageModerationServiceImplTest {
     }
 
     @Test
-    void testIsImageSafeReturnsFalseWhenRacyIsVeryLikely() throws IOException {
-        // Arrange
-        BatchAnnotateImagesResponse response = buildResponse(
-                Likelihood.VERY_UNLIKELY, Likelihood.VERY_UNLIKELY, Likelihood.VERY_LIKELY
-        );
-        when(imageAnnotatorClient.batchAnnotateImages(anyList())).thenReturn(response);
+    void testIsImageSafeReturnsFalseWhenSightengineReportsGore() throws IOException {
+        // Arrange (probabilityGore > 0.2 => se considera violento)
+        String json = buildJson("success", 0.95, 0.5);
+        ResponseEntity<String> responseEntity = new ResponseEntity<>(json, HttpStatus.OK);
+        when(restTemplate.postForEntity(anyString(), any(HttpEntity.class), eq(String.class)))
+                .thenReturn(responseEntity);
 
         // Act
         boolean result = imageModerationService.isImageSafe(mockFile);
@@ -144,66 +109,93 @@ class ImageModerationServiceImplTest {
     }
 
     @Test
-    void testIsImageSafeReturnsFalseWhenApiResponseHasError() throws IOException {
+    void testIsImageSafeReturnsFalseWhenRestTemplateThrowsException() throws IOException {
         // Arrange
-        BatchAnnotateImagesResponse response = buildErrorResponse();
-        when(imageAnnotatorClient.batchAnnotateImages(anyList())).thenReturn(response);
+        when(restTemplate.postForEntity(anyString(), any(HttpEntity.class), eq(String.class)))
+                .thenThrow(new RuntimeException("Timeout de conexión"));
 
         // Act
         boolean result = imageModerationService.isImageSafe(mockFile);
 
+        // Assert (el catch general del método rechaza la imagen ante cualquier falla)
+        assertFalse(result);
+    }
+
+    @Test
+    void testIsImageSafeReturnsFalseWhenApiRespondsWithErrorStatus() throws IOException {
+        // Arrange
+        String json = "{\"status\":\"failure\",\"error\":{\"message\":\"Créditos insuficientes\"}}";
+        ResponseEntity<String> responseEntity = new ResponseEntity<>(json, HttpStatus.OK);
+        when(restTemplate.postForEntity(anyString(), any(HttpEntity.class), eq(String.class)))
+                .thenReturn(responseEntity);
+
+        // Act (isPossiblyUnsafe lanza RuntimeException, que el catch general de isImageSafe absorbe)
+        boolean result = imageModerationService.isImageSafe(mockFile);
+
         // Assert
         assertFalse(result);
-        verify(imageAnnotatorClient, times(1)).batchAnnotateImages(anyList());
     }
 
     @Test
-    void testIsImageSafeSendsCorrectRequestToClient() throws IOException {
+    void testIsImageSafeReturnsFalseWhenFileThrowsIOException() throws IOException {
         // Arrange
-        BatchAnnotateImagesResponse response = buildResponse(
-                Likelihood.VERY_UNLIKELY, Likelihood.VERY_UNLIKELY, Likelihood.VERY_UNLIKELY
-        );
-        when(imageAnnotatorClient.batchAnnotateImages(anyList())).thenReturn(response);
+        MultipartFile brokenFile = mock(MultipartFile.class);
+        when(brokenFile.getBytes()).thenThrow(new IOException("No se pudo leer el archivo"));
 
         // Act
-        imageModerationService.isImageSafe(mockFile);
+        boolean result = imageModerationService.isImageSafe(brokenFile);
 
         // Assert
-        ArgumentCaptor<List<AnnotateImageRequest>> captor = ArgumentCaptor.forClass(List.class);
-        verify(imageAnnotatorClient).batchAnnotateImages(captor.capture());
+        assertFalse(result);
+        verifyNoInteractions(restTemplate);
+    }
 
-        List<AnnotateImageRequest> capturedRequests = captor.getValue();
-        assertEquals(1, capturedRequests.size());
-        assertEquals(Feature.Type.SAFE_SEARCH_DETECTION, capturedRequests.get(0).getFeatures(0).getType());
+    // ---------- Tests de isPossiblyUnsafe ----------
+
+    @Test
+    void testIsPossiblyUnsafeReturnsTrueWhenImageIsSafe() throws Exception {
+        // Arrange
+        String json = buildJson("success", 0.9, 0.05);
+
+        // Act
+        boolean result = imageModerationService.isPossiblyUnsafe(json);
+
+        // Assert
+        assertTrue(result);
     }
 
     @Test
-    void testIsPossiblyUnsafeReturnsTrueForPossible() {
-        assertTrue(imageModerationService.isPossiblyUnsafe(Likelihood.POSSIBLE));
+    void testIsPossiblyUnsafeReturnsFalseWhenNudityScoreIsBelowThreshold() throws Exception {
+        // Arrange
+        String json = buildJson("success", 0.79, 0.0);
+
+        // Act
+        boolean result = imageModerationService.isPossiblyUnsafe(json);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    void testIsPossiblyUnsafeReturnsTrueForLikely() {
-        assertTrue(imageModerationService.isPossiblyUnsafe(Likelihood.LIKELY));
+    void testIsPossiblyUnsafeReturnsFalseWhenGoreProbabilityExceedsThreshold() throws Exception {
+        // Arrange
+        String json = buildJson("success", 1.0, 0.21);
+
+        // Act
+        boolean result = imageModerationService.isPossiblyUnsafe(json);
+
+        // Assert
+        assertFalse(result);
     }
 
     @Test
-    void testIsPossiblyUnsafeReturnsTrueForVeryLikely() {
-        assertTrue(imageModerationService.isPossiblyUnsafe(Likelihood.VERY_LIKELY));
-    }
+    void testIsPossiblyUnsafeThrowsExceptionWhenStatusIsNotSuccess() {
+        // Arrange
+        String json = "{\"status\":\"failure\",\"error\":{\"message\":\"API key inválida\"}}";
 
-    @Test
-    void testIsPossiblyUnsafeReturnsFalseForUnlikely() {
-        assertFalse(imageModerationService.isPossiblyUnsafe(Likelihood.UNLIKELY));
-    }
-
-    @Test
-    void testIsPossiblyUnsafeReturnsFalseForVeryUnlikely() {
-        assertFalse(imageModerationService.isPossiblyUnsafe(Likelihood.VERY_UNLIKELY));
-    }
-
-    @Test
-    void testIsPossiblyUnsafeReturnsFalseForUnknown() {
-        assertFalse(imageModerationService.isPossiblyUnsafe(Likelihood.UNKNOWN));
+        // Act + Assert
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> imageModerationService.isPossiblyUnsafe(json));
+        assertTrue(exception.getMessage().contains("Fallo en la API de Sightengine"));
     }
 }

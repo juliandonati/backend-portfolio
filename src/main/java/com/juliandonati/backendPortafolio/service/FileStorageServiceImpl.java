@@ -2,9 +2,11 @@ package com.juliandonati.backendPortafolio.service;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.juliandonati.backendPortafolio.exception.UnsafeFileException;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,19 +18,24 @@ import java.util.Map;
 
 @Component
 public class FileStorageServiceImpl implements FileStorageService {
+    private ImageModerationService imageModerationService;
     private final Cloudinary cloudinary;
-
     private final Logger logger = LoggerFactory.getLogger(FileStorageServiceImpl.class);
 
-    public FileStorageServiceImpl(Cloudinary c) {
+    @Autowired
+    public FileStorageServiceImpl(Cloudinary c, ImageModerationService imageModerationService) {
         cloudinary = c;
+        this.imageModerationService = imageModerationService;
     }
 
     @Value("${ACTIVE_PROFILE}")
     private String activeProfile;
 
     @Transactional
-    public String uploadImage(MultipartFile imageMPFile, String username) throws IOException {
+    public String uploadImage(MultipartFile imageMPFile, String username) throws IOException, UnsafeFileException {
+        if(!imageModerationService.isImageSafe(imageMPFile))
+            throw new UnsafeFileException("La imagen subida se detectó como inapropiada");
+
         Map<String, Object> uploaderConfig = ObjectUtils.asMap(
                 "use_filename", true,
                 "unique_filename", true,

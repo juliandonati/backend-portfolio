@@ -98,4 +98,15 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(responseBody, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(UnsafeFileException.class)
+    public ResponseEntity<Object> handleUnsafeFileException(UnsafeFileException ex, WebRequest webRequest){
+        Map <String, Object> responseBody = new HashMap<>();
+
+        responseBody.put("status", HttpStatus.BAD_REQUEST);
+        responseBody.put("error","Se detectó un archivo inapropiado");
+        responseBody.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(responseBody, HttpStatus.BAD_REQUEST);
+    }
 }
