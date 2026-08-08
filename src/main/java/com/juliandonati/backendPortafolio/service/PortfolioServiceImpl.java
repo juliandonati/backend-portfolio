@@ -14,11 +14,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PortfolioServiceImpl implements PortfolioService{
+public class PortfolioServiceImpl implements PortfolioService {
     private final PortfolioRepository portfolioRepository;
     private final AboutMeRepository aboutMeRepository;
     private final PresentationRepository presentationRepository;
     private final FileStorageService fileStorageService;
+
     @Override
     @Transactional(readOnly = true)
     public Portfolio findById(long id) {
@@ -64,29 +65,21 @@ public class PortfolioServiceImpl implements PortfolioService{
     @Override
     @Transactional
     public void deleteById(long id) {
-        Portfolio portfolioToDelete = portfolioRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("No se encontró un portfolio con la id: " + id));
-
-        portfolioToDelete.setSkills(null);
-        portfolioToDelete.setExperience(null);
-        portfolioToDelete.setDegrees(null);
-        portfolioToDelete.setAboutMe(null);
-        portfolioToDelete.setPresentation(null);
-        portfolioRepository.save(portfolioToDelete);
-
+        Portfolio portfolioToDelete = portfolioRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró un portfolio con la id: " + id));
         portfolioRepository.deleteById(id);
     }
 
     @Override
     @Transactional
     public void deleteAboutMeById(long aboutMeId) throws Exception {
-        AboutMe aboutMe = aboutMeRepository.findById(aboutMeId).orElseThrow(()->new ResourceNotFoundException("No se encontró un AboutMe con la id: "+ aboutMeId));
+        AboutMe aboutMe = aboutMeRepository.findById(aboutMeId).orElseThrow(() -> new ResourceNotFoundException("No se encontró un AboutMe con la id: " + aboutMeId));
 
         Portfolio portfolio = aboutMe.getPortfolio();
 
 
-        if(portfolio != null){
+        if (portfolio != null) {
             String aboutMeImgUrl = aboutMe.getBgImgUrl();
-            if(aboutMeImgUrl != null && !aboutMeImgUrl.trim().isEmpty())
+            if (aboutMeImgUrl != null && !aboutMeImgUrl.trim().isEmpty())
                 fileStorageService.deleteImageByUrl(aboutMeImgUrl);
 
             portfolio.setAboutMe(null);
@@ -97,15 +90,15 @@ public class PortfolioServiceImpl implements PortfolioService{
 
     @Override
     @Transactional
-    public void deletePresentationById(long presentationId) throws Exception{
-        Presentation presentation = presentationRepository.findById(presentationId).orElseThrow(()->new ResourceNotFoundException("No se encontró un Presentation con la id: "+ presentationId));
+    public void deletePresentationById(long presentationId) throws Exception {
+        Presentation presentation = presentationRepository.findById(presentationId).orElseThrow(() -> new ResourceNotFoundException("No se encontró un Presentation con la id: " + presentationId));
 
         Portfolio portfolio = presentation.getPortfolio();
-        if(portfolio != null){
+        if (portfolio != null) {
             String presentationImgUrl = presentation.getImgUrl();
-            if(presentationImgUrl != null && !presentationImgUrl.trim().isEmpty())
+            if (presentationImgUrl != null && !presentationImgUrl.trim().isEmpty())
                 fileStorageService.deleteImageByUrl(presentationImgUrl);
-            
+
             portfolio.setPresentation(null);
             presentation.setPortfolio(null);
             portfolioRepository.save(portfolio);
@@ -116,15 +109,22 @@ public class PortfolioServiceImpl implements PortfolioService{
     @Transactional
     public void deleteAllPortfolioImagesById(Long id) throws Exception {
         Portfolio portfolio = portfolioRepository.findById(id)
-                .orElseThrow(()->new ResourceNotFoundException("No se encontró un portfolio con la id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró un portfolio con la id: " + id));
 
         List<String> imgUrlList = new ArrayList<>(portfolio.getSkills().stream().map(Skill::getImgUrl).toList());
-        imgUrlList.add(portfolio.getPresentation().getImgUrl());
-        imgUrlList.add(portfolio.getAboutMe().getBgImgUrl());
+
+        Presentation presentation = portfolio.getPresentation();
+        if (presentation != null)
+            imgUrlList.add(presentation.getImgUrl());
+
+        AboutMe aboutMe = portfolio.getAboutMe();
+        if (aboutMe != null)
+            imgUrlList.add(aboutMe.getBgImgUrl());
+
         imgUrlList.addAll(portfolio.getDegrees().stream().map(Degree::getImgUrl).toList());
 
-        for(String imgUrl : imgUrlList){
-            if(imgUrl != null && !imgUrl.trim().isEmpty())
+        for (String imgUrl : imgUrlList) {
+            if (imgUrl != null && !imgUrl.trim().isEmpty())
                 fileStorageService.deleteImageByUrl(imgUrl);
         }
     }
