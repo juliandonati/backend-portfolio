@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDate;
 
@@ -28,6 +29,8 @@ public class ProjectDto implements DtoWithDates{
     private LocalDate startDate;
     @PastOrPresent(message = "La fecha de finalización no puede ser futura")
     private LocalDate endDate;
+    @URL(message = "El formato de la URL es incorrecto")
     private String url;
+    @URL(message = "El formato de la URL es incorrecto")
     private String imgUrl;
 }

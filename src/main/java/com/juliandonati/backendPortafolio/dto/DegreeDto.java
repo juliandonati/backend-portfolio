@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDate;
 
@@ -28,5 +29,6 @@ public class DegreeDto implements DtoWithDates{
     private LocalDate startDate;
     @PastOrPresent(message = "La fecha de egreso no puede ser futura")
     private LocalDate endDate;
+    @URL(message = "El formato de la URL es incorrecto")
     private String imgUrl;
 }

@@ -23,5 +23,6 @@ public class PresentationDto {
     @Email(message = "Formato de e-mail inválido")
     @Size(max = 254, message = "Tu email no puede sobrepasar los 254 caracteres")
     private String email;
+    @Size(max = 15, message = "El número telefónico no puede sobrepasar los 15 caracteres")
     private String phoneNumber;
 }
